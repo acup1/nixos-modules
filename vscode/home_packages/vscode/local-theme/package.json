@@ -1,0 +1,81 @@
+{
+  "name": "acup-local-colorways",
+  "displayName": "Acup Local Colorways",
+  "publisher": "acup",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Ocean",
+        "uiTheme": "vs-dark",
+        "path": "./themes/ocean.json"
+      },
+      {
+        "label": "Ocean High Contrast",
+        "uiTheme": "vs-dark",
+        "path": "./themes/ocean-high-contrast.json"
+      },
+      {
+        "label": "High Contrast",
+        "uiTheme": "vs-dark",
+        "path": "./themes/high-contrast.json"
+      },
+      {
+        "label": "Montana",
+        "uiTheme": "vs-dark",
+        "path": "./themes/montana.json"
+      },
+      {
+        "label": "Harbor",
+        "uiTheme": "vs-dark",
+        "path": "./themes/harbor.json"
+      },
+      {
+        "label": "Nocturne",
+        "uiTheme": "vs-dark",
+        "path": "./themes/nocturne.json"
+      },
+      {
+        "label": "Orchid",
+        "uiTheme": "vs-dark",
+        "path": "./themes/orchid.json"
+      },
+      {
+        "label": "Fern",
+        "uiTheme": "vs-dark",
+        "path": "./themes/fern.json"
+      },
+      {
+        "label": "Ember",
+        "uiTheme": "vs-dark",
+        "path": "./themes/ember.json"
+      },
+      {
+        "label": "Sandstone",
+        "uiTheme": "vs-dark",
+        "path": "./themes/sandstone.json"
+      },
+      {
+        "label": "Aurora",
+        "uiTheme": "vs-dark",
+        "path": "./themes/aurora.json"
+      },
+      {
+        "label": "Lagoon",
+        "uiTheme": "vs-dark",
+        "path": "./themes/lagoon.json"
+      },
+      {
+        "label": "Graphite",
+        "uiTheme": "vs-dark",
+        "path": "./themes/graphite.json"
+      }
+    ]
+  }
+}
