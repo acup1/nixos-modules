@@ -3,7 +3,7 @@
     telegram-desktop
     discord
     # discord-canary
-    # rocketchat-desktop
+    rocketchat-desktop
     # teams-for-linux
   ];
 }

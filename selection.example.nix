@@ -19,6 +19,7 @@ in [
   (import (modulesRoot + "/file-viewers"))
   (import (modulesRoot + "/fonts"))
   (import (modulesRoot + "/games"))
+  (import (modulesRoot + "/circuit-artist"))
   (import (modulesRoot + "/graphics"))
   (import (modulesRoot + "/hardware"))
   (import (modulesRoot + "/math"))
