@@ -11,5 +11,7 @@
   * Настройка демона виртуализации `virtualisation.libvirtd` с пакетом `pkgs.qemu_kvm`, правами root и эмулятором TPM `swtpm`.
 * `packages/devops.nix`:
   * Контейнеры и оркестрация: `docker`, `docker-compose`, `kubectl`.
-  * Виртуализация: `qemu`, `virt-manager`, `winboat`.
+  * Kubernetes: `kubectl`, `helm`, `minikube`.
+  * Docker в macOS: `colima` с автозапуском через LaunchAgent.
+  * Виртуализация в NixOS: `qemu`, `virt-manager`.
   * Инфраструктура как код (IaC): `terraform`, `terragrunt`.

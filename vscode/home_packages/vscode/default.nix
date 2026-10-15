@@ -10,6 +10,16 @@
     meta.license = lib.licenses.mit;
   };
 
+  codexExtension = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      publisher = "openai";
+      name = "chatgpt";
+      version = "26.51007.21434";
+      arch = "darwin-arm64";
+      hash = "sha256-JKSbsmx4QLw43Kle0Pj3L6+9bUYNO0ggyaapbaT9MPs=";
+    };
+  };
+
   mapCommand = before: command: {
     inherit before;
     commands = [command];
@@ -18,6 +28,12 @@
   normalKey = key: command: {
     inherit key command;
     when = "editorTextFocus && vim.active && vim.mode == 'Normal' && !inDebugRepl";
+  };
+  terminalSequence = key: text: {
+    inherit key;
+    command = "workbench.action.terminal.sendSequence";
+    args = {inherit text;};
+    when = "terminalFocus";
   };
   toggleTerminal = "workbench.action.terminal.toggleTerminal";
   terminalWhen = "terminalFocus || (editorTextFocus && vim.active && !inDebugRepl)";
@@ -32,6 +48,7 @@ in {
     profiles.default = {
       extensions = [
         pkgs.vscode-extensions.vscodevim.vim
+        codexExtension
         localColorways
       ];
 
@@ -153,6 +170,40 @@ in {
           key = "escape";
           command = "workbench.action.focusActiveEditorGroup";
           when = "terminalFocus && !terminalFindVisible && !terminalSuggestWidgetVisible";
+        }
+
+        # Karabiner turns Linux Ctrl shortcuts into Cmd shortcuts in GUI apps.
+        # Convert them back to control characters inside VS Code's terminal.
+        (terminalSequence "cmd+a" (builtins.fromJSON ''"\u0001"''))
+        (terminalSequence "cmd+b" (builtins.fromJSON ''"\u0002"''))
+        (terminalSequence "cmd+c" (builtins.fromJSON ''"\u0003"''))
+        (terminalSequence "cmd+d" (builtins.fromJSON ''"\u0004"''))
+        (terminalSequence "cmd+f" (builtins.fromJSON ''"\u0006"''))
+        (terminalSequence "cmd+g" (builtins.fromJSON ''"\u0007"''))
+        (terminalSequence "cmd+i" (builtins.fromJSON ''"\u0009"''))
+        (terminalSequence "cmd+k" (builtins.fromJSON ''"\u000b"''))
+        (terminalSequence "cmd+l" (builtins.fromJSON ''"\u000c"''))
+        (terminalSequence "cmd+n" (builtins.fromJSON ''"\u000e"''))
+        (terminalSequence "cmd+o" (builtins.fromJSON ''"\u000f"''))
+        (terminalSequence "cmd+p" (builtins.fromJSON ''"\u0010"''))
+        (terminalSequence "cmd+q" (builtins.fromJSON ''"\u0011"''))
+        (terminalSequence "cmd+r" (builtins.fromJSON ''"\u0012"''))
+        (terminalSequence "cmd+s" (builtins.fromJSON ''"\u0013"''))
+        (terminalSequence "cmd+t" (builtins.fromJSON ''"\u0014"''))
+        (terminalSequence "cmd+v" (builtins.fromJSON ''"\u0016"''))
+        (terminalSequence "cmd+w" (builtins.fromJSON ''"\u0017"''))
+        (terminalSequence "cmd+x" (builtins.fromJSON ''"\u0018"''))
+        (terminalSequence "cmd+shift+z" (builtins.fromJSON ''"\u0019"''))
+        (terminalSequence "cmd+z" (builtins.fromJSON ''"\u001a"''))
+        {
+          key = "cmd+shift+c";
+          command = "workbench.action.terminal.copySelection";
+          when = "terminalFocus";
+        }
+        {
+          key = "cmd+shift+v";
+          command = "workbench.action.terminal.paste";
+          when = "terminalFocus";
         }
       ];
     };

@@ -40,8 +40,8 @@ in {
         softtabstop = 2;
       };
       dashboard.alpha.enable = true;
-      lazy.plugins.alpha-nvim.after = ''
-        local alpha = require("alpha")
+      lazy.plugins."alpha-nvim".setupOpts = lib.mkForce (mkLuaInline ''
+        (function()
         local dashboard = require("alpha.themes.dashboard")
 
         dashboard.section.header.val = {
@@ -95,8 +95,9 @@ in {
         dashboard.section.header.opts.hl = "AlphaHeader"
         dashboard.section.footer.opts.hl = "AlphaFooter"
 
-        alpha.setup(dashboard.opts)
-      '';
+        return dashboard.config
+        end)()
+      '');
       luaConfigRC.rounded-borders = entryAnywhere ''
         -- LSP окна (hover, diagnostics)
         vim.lsp.handlers["textDocument/hover"] =
@@ -169,7 +170,9 @@ in {
         })
       '';
 
-      lazy.plugins.conform-nvim.after = ''
+      lazy.plugins."conform.nvim" = {
+        package = pkgs.vimPlugins.conform-nvim;
+        after = ''
         local conform = require("conform")
         conform.formatters.sqlfluff = {
           command = "sqlfluff-tsql",
@@ -183,10 +186,14 @@ in {
             lsp_fallback = false,
           },
         })
-      '';
+        '';
+      };
 
-      extraPackages = with pkgs; [
-        wl-clipboard
+      extraPackages =
+        lib.optionals pkgs.stdenv.hostPlatform.isLinux [
+          pkgs.wl-clipboard
+        ]
+        ++ (with pkgs; [
         imagemagick
         sqlfluff
         (pkgs.writeShellScriptBin "sqlfluff-tsql" ''
@@ -196,7 +203,7 @@ in {
           cat "$tmpfile" | sed 's/__TEMP__\([A-Za-z]\)/#\1/g'
           rm -f "$tmpfile"
         '')
-      ];
+      ]);
       binds = {
         whichKey.enable = true;
       };

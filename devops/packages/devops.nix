@@ -1,23 +1,20 @@
-{pkgs, ...}: let
-  # customGo = pkgs.go.overrideAttrs (old: {
-  #   preConfigure = (old.preConfigure or "") + ''
-  #     export CGO_ENABLED=0
-  #   '';
-  # });
-  # customWinboat = pkgs.winboat.override {
-  #   buildGoModule = args: pkgs.buildGoModule (args // { go = customGo; });
-  # };
-in {
-  environment.systemPackages = with pkgs; [
-    docker
-    docker-compose
-    winboat
-    kubectl
+{lib, pkgs, ...}: {
+  environment.systemPackages =
+    (with pkgs; [
+      docker
+      docker-compose
+      kubectl
+      kubernetes-helm
+      minikube
 
-    virt-manager
-    qemu
-
-    terraform
-    terragrunt
-  ];
+      terraform
+      terragrunt
+    ])
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin (with pkgs; [
+      colima
+    ])
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux (with pkgs; [
+      virt-manager
+      qemu
+    ]);
 }
