@@ -3,3 +3,8 @@ edit = [
 	{ run = 'nvim "$@"', block = true, for = "unix" },
 ]
 
+[open]
+prepend_rules = [
+	{ mime = "text/*", use = "edit" },
+]
+

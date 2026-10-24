@@ -4,6 +4,9 @@
     cling
     clang
 
+    rustc
+    cargo
+
     go
     gnumake
     python3

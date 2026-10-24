@@ -7,6 +7,10 @@
 }: let
   inherit (inputs.nvf.lib.nvim.dag) entryAnywhere entryAfter;
   inherit (lib.generators) mkLuaInline;
+  openCommand =
+    if pkgs.stdenv.hostPlatform.isDarwin
+    then "open"
+    else "xdg-open";
 in {
   imports = [
     inputs.nvf.homeManagerModules.default
@@ -32,7 +36,10 @@ in {
           },
         })
       '';
-      startPlugins = [pkgs.vimPlugins.mini-nvim];
+      startPlugins = with pkgs.vimPlugins; [
+        mini-nvim
+        neo-tree-diagnostics-nvim
+      ];
       options = {
         tabstop = 2;
         shiftwidth = 2;
@@ -40,8 +47,8 @@ in {
         softtabstop = 2;
       };
       dashboard.alpha.enable = true;
-      lazy.plugins."alpha-nvim".setupOpts = lib.mkForce (mkLuaInline ''
-        (function()
+      lazy.plugins.alpha-nvim.after = ''
+        local alpha = require("alpha")
         local dashboard = require("alpha.themes.dashboard")
 
         dashboard.section.header.val = {
@@ -95,16 +102,11 @@ in {
         dashboard.section.header.opts.hl = "AlphaHeader"
         dashboard.section.footer.opts.hl = "AlphaFooter"
 
-        return dashboard.config
-        end)()
-      '');
+        alpha.setup(dashboard.opts)
+      '';
       luaConfigRC.rounded-borders = entryAnywhere ''
-        -- LSP окна (hover, diagnostics)
-        vim.lsp.handlers["textDocument/hover"] =
-          vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-
-        vim.lsp.handlers["textDocument/signatureHelp"] =
-          vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+        -- Default border for LSP and other floating windows.
+        vim.o.winborder = "rounded"
 
         vim.diagnostic.config({
           float = { border = "rounded" },
@@ -170,9 +172,7 @@ in {
         })
       '';
 
-      lazy.plugins."conform.nvim" = {
-        package = pkgs.vimPlugins.conform-nvim;
-        after = ''
+      lazy.plugins.conform-nvim.after = ''
         local conform = require("conform")
         conform.formatters.sqlfluff = {
           command = "sqlfluff-tsql",
@@ -186,12 +186,12 @@ in {
             lsp_fallback = false,
           },
         })
-        '';
-      };
+      '';
 
       extraPackages =
         lib.optionals pkgs.stdenv.hostPlatform.isLinux [
           pkgs.wl-clipboard
+          pkgs.xdg-utils
         ]
         ++ (with pkgs; [
         imagemagick
@@ -292,7 +292,7 @@ in {
           commands = {
             system_open = mkLuaInline ''
               function(state)
-                (vim.ui.open or vim.fn.jobstart)({ "xdg-open", state.tree:get_node():get_id() })
+                vim.fn.jobstart({ "${openCommand}", state.tree:get_node():get_id() }, { detach = true })
               end
             '';
             parent_or_close = mkLuaInline ''
@@ -551,6 +551,13 @@ in {
           # lsp.enable = true;
           treesitter.enable = true;
           format.enable = true;
+        };
+        yaml = {
+          enable = true;
+          lsp.enable = true;
+          format.enable = true;
+          format.type = ["prettier"];
+          treesitter.enable = true;
         };
       };
 
