@@ -30,7 +30,7 @@
 | **kicad** | Home | САПР печатных плат KiCad | [kicad/README.md](kicad/README.md) |
 | **math** | NixOS | Математика и радио: Qalculate GTK, GNU Octave, GNU Radio | [math/README.md](math/README.md) |
 | **messengers** | NixOS | Мессенджеры: Telegram Desktop, Discord | [messengers/README.md](messengers/README.md) |
-| **moonlight** | NixOS | Клиент игрового стриминга Moonlight | [moonlight/README.md](moonlight/README.md) |
+| **moonlight** | NixOS + Darwin | Клиент игрового стриминга Moonlight | [moonlight/README.md](moonlight/README.md) |
 | **multimedia** | NixOS | Запись и стриминг экрана: OBS Studio | [multimedia/README.md](multimedia/README.md) |
 | **music** | Home | Музыкальный плеер Muffon | [music/README.md](music/README.md) |
 | **nix-serve** | NixOS | Локальный бинарный кэш-сервер Nix на порту 5000 | [nix-serve/README.md](nix-serve/README.md) |
