@@ -2,6 +2,7 @@
   environment.systemPackages = with pkgs; [
     cling
     clang
+    jre
 
     rustc
     cargo
