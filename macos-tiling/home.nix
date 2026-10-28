@@ -171,7 +171,6 @@ in {
       # Applications and system actions.
       f13          : ${closeWindowUnderMouse}
       lcmd - q      : /usr/bin/open -na '${ghosttyApp}'
-      lcmd - space  : ${skhd} -k 'f18'
       lcmd - x      : ${skhd} -k 'f19'
       lcmd - o      : /usr/bin/open '/System/Applications/Mission Control.app'
       lcmd + shift - k : osascript -e 'set currentVolume to output volume of (get volume settings)' -e 'set volume output volume (currentVolume - 5)'

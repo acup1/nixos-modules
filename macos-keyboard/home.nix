@@ -147,10 +147,11 @@
           };
           rules = [
             {
-              description = "Send dedicated signals for Mod+C and Mod+V";
+              description = "Send dedicated signals for Mod+C, Mod+V, and Mod+Space";
               manipulators = [
                 (tilingSignal "c" "f13")
                 (tilingSignal "v" "f14")
+                (tilingSignal "spacebar" "f18")
               ];
             }
             {
@@ -211,7 +212,7 @@ in {
         $DRY_RUN_CMD /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:61:enabled false" "$symbolic_hotkeys"
       fi
 
-      # Mod+Space emits the otherwise unused F18 key through skhd.
+      # Mod+Space emits the otherwise unused F18 key through Karabiner.
       if /usr/libexec/PlistBuddy -c "Print :AppleSymbolicHotKeys:60" "$symbolic_hotkeys" >/dev/null 2>&1; then
         $DRY_RUN_CMD /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:60:enabled true" "$symbolic_hotkeys"
         $DRY_RUN_CMD /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:60:value:parameters:0 65535" "$symbolic_hotkeys"
