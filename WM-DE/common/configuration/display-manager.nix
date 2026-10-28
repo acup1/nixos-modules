@@ -1,8 +1,4 @@
 {...}: {
-  # programs.niri sets this to "niri" by default; leave it unset so GDM
-  # follows the user's remembered AccountsService session.
-  services.displayManager.defaultSession = null;
-
   services.displayManager.gdm = {
     enable = true;
     # wayland = true;
