@@ -8,7 +8,7 @@
 in {
   home.packages = with pkgs; [
     inputs.iio-hyprland.packages.${hostSystem}.default
-    squeekboard
+    # squeekboard
   ];
   wayland.windowManager.hyprland = {
     enable = true;
