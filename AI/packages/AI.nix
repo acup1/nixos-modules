@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     #lmstudio
     ollama-cuda
@@ -8,5 +12,14 @@
   services.ollama = {
     enable = true;
     package = pkgs.ollama-cuda;
+
+    user = "ollama";
+    group = "ollama";
+
+    home = "/var/lib/ollama";
+    modelsDir = "/var/lib/ollama/models";
   };
+
+  systemd.services.ollama.serviceConfig.DynamicUser =
+    lib.mkForce false;
 }
