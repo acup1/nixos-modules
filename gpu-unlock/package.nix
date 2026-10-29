@@ -49,19 +49,22 @@ in
       kernelModuleMakeFlags
       ++ ["KDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"];
 
-    installPhase = ''
-      runHook preInstall
+    installFlags = [
+      "-C"
+      "${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
+      "M=$(PWD)"
+      "INSTALL_MOD_PATH=$(out)"
+      "INSTALL_MOD_DIR=extra"
+    ];
+    installTargets = ["modules_install"];
 
-      install -Dm644 gpu_unlock.ko \
-        "$out/lib/modules/${kernel.modDirVersion}/extra/gpu_unlock.ko"
+    postInstall = ''
       install -Dm644 -t "$out/lib/firmware/gpu-unlock/${nvidiaVersion}" \
         ../../assets/*.bin
       install -Dm644 ../../README.md \
         "$out/share/doc/gpu-unlock/README.md"
       install -Dm644 -t "$out/share/licenses/gpu-unlock" \
         ../../licenses/*.txt ../../firmware/NOTICE.md ../../assets/NVIDIA-LICENSE
-
-      runHook postInstall
     '';
 
     enableParallelBuilding = true;
