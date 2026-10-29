@@ -59,6 +59,7 @@ in {
     environment = {
       HOME = home;
       NPM_CONFIG_PREFIX = "${home}/.local";
+      OLLAMA_LAUNCH_DSH_API_KEY = "ollama";
       PATH = lib.mkForce (lib.concatStringsSep ":" [
         "${nodeHome}/bin"
         "${home}/.local/bin"
@@ -80,7 +81,7 @@ in {
     serviceConfig = {
       User = username;
       WorkingDirectory = home;
-      ExecStart = "${lib.getExe pkgs.ollama} launch dsh --model qwen3.5:9b --yes -- --patch ${ollamaPatch} --no-open --port 5001 --public-url http://ru.cupscloud.ru:5001 --trusted-host ru.cupscloud.ru:5001";
+      ExecStart = "${home}/.local/bin/dsh web --patch ${ollamaPatch} --no-open --port 5001 --public-url http://ru.cupscloud.ru:5001 --trusted-host ru.cupscloud.ru:5001";
       Restart = "on-failure";
       RestartSec = "5s";
       TimeoutStopSec = "30s";
