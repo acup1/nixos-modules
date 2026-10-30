@@ -142,4 +142,7 @@ in {
       UMask = "0077";
     };
   };
+
+  networking.firewall.allowedTCPPorts = [5001];
+  # networking.firewall.allowedUDPPorts = [5001];
 }
