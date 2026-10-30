@@ -6,42 +6,62 @@
 }: let
   home = "/home/${username}";
   nodeHome = "${home}/.local/opt/node-v22.19.0-linux-x64";
-  ollamaPatch = pkgs.writeText "dsh-ollama.cordis.yml" ''
-    - id: agent-default-model
-      config:
-        provider: ollama
-        model: qwen3.5:9b
-    - id: llm-pi-ai
-      config:
-        providers:
-          ollama:
-            displayName: Ollama
-            apiKeyEnv: OLLAMA_LAUNCH_DSH_API_KEY
-            api: openai-completions
-            baseURL: http://127.0.0.1:11434/v1
-            models:
-              - id: qwen3.5:9b
-                name: qwen3.5:9b
-                contextWindow: 262144
-                input:
-                  - text
-                  - image
-              - id: rafw007/qwen35-claude-coder:9b
-                name: rafw007/qwen35-claude-coder:9b
-                contextWindow: 262144
-                input:
-                  - text
-                  - image
-              - id: brnpistone/Qwen3-4B-AgentCoder-q6-k:latest
-                name: brnpistone/Qwen3-4B-AgentCoder-q6-k:latest
-                contextWindow: 262144
-                input:
-                  - text
-              - id: qwen3:14b
-                name: qwen3:14b
-                contextWindow: 40960
-                input:
-                  - text
+  ollamaPatchGenerator = pkgs.writeText "dsh-ollama-patch.mjs" ''
+    const response = await fetch("http://127.0.0.1:11434/api/tags");
+    if (!response.ok) {
+      throw new Error(`Ollama returned HTTP ''${response.status}`);
+    }
+
+    const catalog = await response.json();
+    const names = catalog.models
+      ?.map((model) => model.name)
+      .filter((name) => typeof name === "string" && name.length > 0);
+
+    if (!names?.length) {
+      throw new Error("Ollama has no installed models");
+    }
+
+    const preferredModel = "qwen3.5:9b";
+    const defaultModel = names.includes(preferredModel) ? preferredModel : names[0];
+    const patch = [
+      {
+        id: "agent-default-model",
+        config: {
+          provider: "ollama",
+          model: defaultModel,
+        },
+      },
+      {
+        id: "llm-pi-ai",
+        config: {
+          providers: {
+            ollama: {
+              displayName: "Ollama",
+              apiKeyEnv: "OLLAMA_LAUNCH_DSH_API_KEY",
+              api: "openai-completions",
+              baseURL: "http://127.0.0.1:11434/v1",
+              defaultContextWindow: 262144,
+              defaultMaxTokens: 32768,
+              models: names.map((name) => ({ id: name, name })),
+            },
+          },
+        },
+      },
+    ];
+
+    process.stdout.write(JSON.stringify(patch, null, 2));
+  '';
+  dshStart = pkgs.writeShellScript "dsh-start" ''
+    set -euo pipefail
+
+    patch_path="''${RUNTIME_DIRECTORY}/ollama.cordis.json"
+    "${nodeHome}/bin/node" "${ollamaPatchGenerator}" > "$patch_path"
+    exec "${home}/.local/bin/dsh" web \
+      --patch "$patch_path" \
+      --no-open \
+      --port 5001 \
+      --public-url http://ru.cupscloud.ru:5001 \
+      --trusted-host ru.cupscloud.ru:5001
   '';
 in {
   systemd.services.dsh = {
@@ -81,7 +101,9 @@ in {
     serviceConfig = {
       User = username;
       WorkingDirectory = home;
-      ExecStart = "${home}/.local/bin/dsh web --patch ${ollamaPatch} --no-open --port 5001 --public-url http://ru.cupscloud.ru:5001 --trusted-host ru.cupscloud.ru:5001";
+      ExecStart = dshStart;
+      RuntimeDirectory = "dsh";
+      RuntimeDirectoryMode = "0700";
       Restart = "on-failure";
       RestartSec = "5s";
       TimeoutStopSec = "30s";
