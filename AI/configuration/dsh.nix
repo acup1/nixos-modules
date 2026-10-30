@@ -21,6 +21,38 @@
       throw new Error("Ollama has no installed models");
     }
 
+    async function describeModel(name) {
+      const model = { id: name, name, input: ["text"] };
+
+      try {
+        const modelResponse = await fetch("http://127.0.0.1:11434/api/show", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ model: name }),
+        });
+        if (!modelResponse.ok) {
+          throw new Error("Ollama returned HTTP " + modelResponse.status);
+        }
+
+        const description = await modelResponse.json();
+        if (description.capabilities?.includes("vision")) {
+          model.input.push("image");
+        }
+
+        const contextWindow = Object.entries(description.model_info ?? {})
+          .find(([key, value]) => key.endsWith(".context_length") && Number.isFinite(value))
+          ?.[1];
+        if (contextWindow > 0) {
+          model.contextWindow = contextWindow;
+        }
+      } catch (error) {
+        console.error("Cannot read Ollama metadata for " + name + ": " + error);
+      }
+
+      return model;
+    }
+
+    const models = await Promise.all(names.map(describeModel));
     const preferredModel = "qwen3.5:9b";
     const defaultModel = names.includes(preferredModel) ? preferredModel : names[0];
     const patch = [
@@ -42,7 +74,7 @@
               baseURL: "http://127.0.0.1:11434/v1",
               defaultContextWindow: 262144,
               defaultMaxTokens: 32768,
-              models: names.map((name) => ({ id: name, name })),
+              models,
             },
           },
         },
