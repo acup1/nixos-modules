@@ -5,13 +5,23 @@
       runtimeInputs = [
         pkgs.coreutils
         pkgs.curl
+        pkgs.systemd
       ];
       text = ''
         socket_path="''${CLASH_VERGE_SOCKET:-/run/user/$(id -u)/clash-verge-rev/verge-mihomo.sock}"
 
         if [[ ! -S "$socket_path" ]]; then
-          echo "Clash Verge Rev API socket not found: $socket_path" >&2
-          exit 1
+          systemctl --user restart 'app-clash\x2dverge@autostart.service'
+
+          for _ in $(seq 1 15); do
+            [[ -S "$socket_path" ]] && break
+            sleep 1
+          done
+
+          if [[ ! -S "$socket_path" ]]; then
+            echo "Clash Verge Rev API socket not found after restart: $socket_path" >&2
+            exit 1
+          fi
         fi
 
         curl \
