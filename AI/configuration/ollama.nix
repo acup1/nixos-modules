@@ -30,7 +30,7 @@ in {
     enable = true;
     package = ollama;
 
-    host = "127.0.0.1";
+    host = lib.mkDefault "127.0.0.1";
     port = 11434;
 
     user = "ollama";
