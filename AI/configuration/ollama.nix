@@ -38,7 +38,7 @@ in {
     home = "/var/lib/ollama";
     modelsDir = "/var/lib/ollama/models";
 
-    environmentVariables.OLLAMA_CONTEXT_LENGTH = "16000";
+    environmentVariables.OLLAMA_CONTEXT_LENGTH = "64000";
   };
 
   systemd.services.ollama.serviceConfig.DynamicUser = lib.mkForce false;
