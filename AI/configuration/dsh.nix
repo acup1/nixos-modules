@@ -165,6 +165,7 @@ in {
             pkgs.coreutils
             pkgs.git
             pkgs.ollama
+            pkgs.pnpm
           ])
           "/run/current-system/sw/bin"
         ]);
