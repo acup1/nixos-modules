@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     wget
+    curl
+    watch
     unzip
     fzf
     zsh
