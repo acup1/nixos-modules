@@ -14,6 +14,7 @@ in [
   (import (modulesRoot + "/terminal"))
   (import (modulesRoot + "/android"))
   (import (modulesRoot + "/dev"))
+  (import (modulesRoot + "/codex"))
   (import (modulesRoot + "/devops"))
   (import (modulesRoot + "/doc-redactors"))
   (import (modulesRoot + "/file-viewers"))
