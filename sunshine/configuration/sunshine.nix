@@ -1,10 +1,12 @@
 {
+  config,
   lib,
   pkgs,
   username,
   ...
 }: let
   gdctl = "${pkgs.mutter}/bin/gdctl";
+  nvidia = lib.elem "nvidia" config.services.xserver.videoDrivers;
 
   sunshineMutterRules = pkgs.runCommand "sunshine-mutter-udev-rules" {} ''
     install -Dm644 ${pkgs.mutter}/lib/udev/rules.d/61-mutter.rules \
@@ -84,8 +86,17 @@ in {
     # Виртуальный выход VKMS доступен через KMS и требует CAP_SYS_ADMIN.
     capSysAdmin = true;
 
+    # Без CUDA-пути Sunshine копирует KMS-кадр через Mesa в RAM,
+    # затем передаёт его аппаратному NVENC. Прямой импорт VKMS в NVIDIA
+    # через Vulkan/GL не обеспечивает чтение реальных кадров.
+    package = lib.mkIf nvidia (lib.mkDefault (pkgs.sunshine.override {
+      cudaSupport = false;
+    }));
+
     settings = {
       capture = "kms";
+      # Автовыбор пропускает VKMS для NVENC и выбирает неработающий Vulkan.
+      encoder = lib.mkIf nvidia (lib.mkDefault "nvenc");
       # gdctl оставляет Virtual-1 единственным активным выходом.
       output_name = "0";
       global_prep_cmd = builtins.toJSON [
