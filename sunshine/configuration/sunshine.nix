@@ -11,9 +11,10 @@
   sunshineNvenc = pkgs.symlinkJoin {
     name = "${sunshineNvencBase.name}-nvenc";
     paths = [ sunshineNvencBase ];
-    nativeBuildInputs = [ pkgs.makeWrapper ];
+    nativeBuildInputs = [ pkgs.makeBinaryWrapper ];
     # Capability-wrapper NixOS очищает LD_LIBRARY_PATH. Задаём путь
     # уже после него, перед запуском Sunshine и встроенного FFmpeg.
+    # Цель capability-wrapper должна оставаться ELF, а не shell-скриптом.
     postBuild = ''
       wrapProgram "$out/bin/sunshine" \
         --prefix LD_LIBRARY_PATH : /run/opengl-driver/lib
