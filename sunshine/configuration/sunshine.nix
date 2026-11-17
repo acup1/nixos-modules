@@ -7,6 +7,20 @@
 }: let
   gdctl = "${pkgs.mutter}/bin/gdctl";
   nvidia = lib.elem "nvidia" config.services.xserver.videoDrivers;
+  sunshineNvencBase = pkgs.sunshine.override { cudaSupport = false; };
+  sunshineNvenc = pkgs.symlinkJoin {
+    name = "${sunshineNvencBase.name}-nvenc";
+    paths = [ sunshineNvencBase ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    # Capability-wrapper NixOS очищает LD_LIBRARY_PATH. Задаём путь
+    # уже после него, перед запуском Sunshine и встроенного FFmpeg.
+    postBuild = ''
+      wrapProgram "$out/bin/sunshine" \
+        --prefix LD_LIBRARY_PATH : /run/opengl-driver/lib
+    '';
+    passthru.unwrapped = sunshineNvencBase;
+    inherit (sunshineNvencBase) meta;
+  };
 
   sunshineMutterRules = pkgs.runCommand "sunshine-mutter-udev-rules" {} ''
     install -Dm644 ${pkgs.mutter}/lib/udev/rules.d/61-mutter.rules \
@@ -64,6 +78,11 @@ in {
   # VKMS предоставляет GNOME виртуальный DRM-дисплей без HDMI-заглушки.
   boot.kernelModules = [ "vkms" ];
 
+  # Потоковые UDP-сокеты открываются только при подключении Moonlight.
+  # До этого ядро не должно отдавать их исходящим соединениям.
+  boot.kernel.sysctl."net.ipv4.ip_local_reserved_ports" =
+    lib.mkDefault "47984,47989-47990,47998-48000,48002,48010";
+
   # TAG-= очищает только CURRENT_TAGS, а Mutter проверяет все TAGS.
   # Подменяем 61-mutter.rules после пакета Mutter, не назначая VKMS
   # mutter-device-ignore и сохраняя остальные аппаратные правила.
@@ -89,9 +108,7 @@ in {
     # Без CUDA-пути Sunshine копирует KMS-кадр через Mesa в RAM,
     # затем передаёт его аппаратному NVENC. Прямой импорт VKMS в NVIDIA
     # через Vulkan/GL не обеспечивает чтение реальных кадров.
-    package = lib.mkIf nvidia (lib.mkDefault (pkgs.sunshine.override {
-      cudaSupport = false;
-    }));
+    package = lib.mkIf nvidia (lib.mkDefault sunshineNvenc);
 
     settings = {
       capture = "kms";
