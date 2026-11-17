@@ -89,6 +89,12 @@ in {
   # mutter-device-ignore и сохраняя остальные аппаратные правила.
   services.udev.packages = lib.mkAfter [ sunshineMutterRules ];
 
+  # GNOME иначе импортирует буфер NVIDIA прямо в VKMS. Mesa не может
+  # прочитать такой буфер через VKMS: кадр остаётся чёрным (GL 0x505).
+  # Mutter копирует готовый кадр в собственный dumb-буфер VKMS.
+  environment.sessionVariables.MUTTER_DEBUG_MULTI_GPU_FORCE_COPY_MODE =
+    lib.mkIf nvidia "primary-gpu-cpu";
+
   # GDM сразу запускает пользовательскую сессию GNOME.
   services.displayManager = {
     autoLogin = {
