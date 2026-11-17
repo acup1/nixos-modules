@@ -6,6 +6,13 @@
 }: let
   gdctl = "${pkgs.mutter}/bin/gdctl";
 
+  sunshineMutterRules = pkgs.runCommand "sunshine-mutter-udev-rules" {} ''
+    install -Dm644 ${pkgs.mutter}/lib/udev/rules.d/61-mutter.rules \
+      "$out/lib/udev/rules.d/61-mutter.rules"
+    sed -i '/vkms/ { /mutter-device-ignore/d; }' \
+      "$out/lib/udev/rules.d/61-mutter.rules"
+  '';
+
   sunshineSetMode = pkgs.writeShellScript "sunshine-set-mode" ''
     set -eu
     export LC_ALL=C
@@ -55,12 +62,10 @@ in {
   # VKMS предоставляет GNOME виртуальный DRM-дисплей без HDMI-заглушки.
   boot.kernelModules = [ "vkms" ];
 
-  # Mutter исключает VKMS в 61-mutter.rules. extraRules попадает в
-  # 99-local.rules и разрешает устройство для обоих вариантов шины ядра.
-  services.udev.extraRules = ''
-    ENV{ID_PATH}=="platform-vkms", TAG-="mutter-device-ignore"
-    ENV{DEVPATH}=="/devices/faux/vkms/drm/card[0-9]*", TAG-="mutter-device-ignore"
-  '';
+  # TAG-= очищает только CURRENT_TAGS, а Mutter проверяет все TAGS.
+  # Подменяем 61-mutter.rules после пакета Mutter, не назначая VKMS
+  # mutter-device-ignore и сохраняя остальные аппаратные правила.
+  services.udev.packages = lib.mkAfter [ sunshineMutterRules ];
 
   # GDM сразу запускает пользовательскую сессию GNOME.
   services.displayManager = {
