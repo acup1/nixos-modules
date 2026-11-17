@@ -1,5 +1,3 @@
 {lib, ...}: {
-  imports =
-    [ ../WM-DE/gnome/nixos.nix ]
-    ++ (lib.filesystem.listFilesRecursive ./configuration);
+  imports = lib.filesystem.listFilesRecursive ./configuration;
 }

@@ -1,25 +1,11 @@
 {
-  lib,
+  inputs,
   pkgs,
   username,
   ...
 }: let
-  gdctl = "${pkgs.mutter}/bin/gdctl";
-
-  sunshineSetMode = pkgs.writeShellScript "sunshine-set-mode" ''
-    set -eu
-    export LC_ALL=C
-
-    mode=$(${pkgs.coreutils}/bin/printf '%sx%s@%.3f' "$1" "$2" "$3")
-    ${gdctl} set --logical-monitor --primary --scale 1 \
-      --monitor Virtual-1 --mode "$mode"
-  '';
-
-  sunshineDefaultMode = pkgs.writeShellScript "sunshine-default-mode" ''
-    set -eu
-
-    ${sunshineSetMode} 1920 1080 60
-  '';
+  hostSystem = pkgs.stdenv.hostPlatform.system;
+  hyprland = inputs.hyprland.packages.${hostSystem}.hyprland;
 
   sunshineClientMode = pkgs.writeShellScript "sunshine-client-mode" ''
     set -eu
@@ -28,10 +14,15 @@
     stream_height="''${SUNSHINE_CLIENT_HEIGHT:-1080}"
     stream_fps="''${SUNSHINE_CLIENT_FPS:-60}"
 
-    if ! ${sunshineSetMode} "$stream_width" "$stream_height" "$stream_fps"; then
-      echo "VKMS mode unavailable; falling back to 1920x1080@60" >&2
-      ${sunshineDefaultMode}
-    fi
+    ${hyprland}/bin/hyprctl keyword monitor \
+      "SUNSHINE,''${stream_width}x''${stream_height}@''${stream_fps},0x0,1"
+  '';
+
+  sunshineDefaultMode = pkgs.writeShellScript "sunshine-default-mode" ''
+    set -eu
+
+    ${hyprland}/bin/hyprctl keyword monitor \
+      'SUNSHINE,1920x1080@60,0x0,1'
   '';
 
   sunshineHeadless = pkgs.writeShellScript "sunshine-headless" ''
@@ -39,7 +30,7 @@
 
     ready=0
     for attempt in $(${pkgs.coreutils}/bin/seq 1 50); do
-      if ${sunshineDefaultMode}; then
+      if ${hyprland}/bin/hyprctl monitors all >/dev/null 2>&1; then
         ready=1
         break
       fi
@@ -47,21 +38,31 @@
     done
 
     if [ "$ready" -ne 1 ]; then
-      echo "GNOME virtual display Virtual-1 is not ready" >&2
+      echo "Hyprland IPC is not ready" >&2
       exit 1
+    fi
+
+    if ! ${hyprland}/bin/hyprctl monitors all \
+      | ${pkgs.gnugrep}/bin/grep -q '^Monitor SUNSHINE '; then
+      ${hyprland}/bin/hyprctl output create headless SUNSHINE
+    fi
+
+    ${sunshineDefaultMode}
+
+    if ${hyprland}/bin/hyprctl monitors all \
+      | ${pkgs.gnugrep}/bin/grep -q '^Monitor HEADLESS-0 '; then
+      ${hyprland}/bin/hyprctl output remove HEADLESS-0
     fi
   '';
 in {
-  # VKMS предоставляет GNOME виртуальный DRM-дисплей без HDMI-заглушки.
-  boot.kernelModules = [ "vkms" ];
-
-  # GDM сразу запускает пользовательскую сессию GNOME.
+  # Для полностью headless-загрузки GDM сразу запускает пользовательскую
+  # сессию Hyprland, в которой создаётся виртуальный монитор SUNSHINE.
   services.displayManager = {
     autoLogin = {
       enable = true;
       user = username;
     };
-    defaultSession = lib.mkForce "gnome";
+    defaultSession = "hyprland";
   };
 
   services.sunshine = {
@@ -69,13 +70,13 @@ in {
     autoStart = true;
     openFirewall = true;
 
-    # Виртуальный выход VKMS доступен через KMS и требует CAP_SYS_ADMIN.
-    capSysAdmin = true;
+    # KMS не может захватить отключённый физический дисплей. WLR получает
+    # изображение виртуального выхода напрямую от Hyprland.
+    capSysAdmin = false;
 
     settings = {
-      capture = "kms";
-      # gdctl оставляет Virtual-1 единственным активным выходом.
-      output_name = "0";
+      capture = "wlr";
+      output_name = "SUNSHINE";
       global_prep_cmd = builtins.toJSON [
         {
           do = "${sunshineClientMode}";
@@ -87,10 +88,24 @@ in {
     };
   };
 
-  systemd.user.services.sunshine = {
-    # Не запускать Sunshine в пользовательской сессии самого GDM.
-    unitConfig.ConditionUser = username;
-    # ExecStartPre повторяется вместе с Sunshine при неготовой сессии GNOME.
-    serviceConfig.ExecStartPre = sunshineHeadless;
+  systemd.user.services = {
+    sunshine-headless = {
+      description = "Create a virtual Hyprland output for Sunshine";
+      before = ["sunshine.service"];
+      partOf = ["graphical-session.target"];
+      unitConfig.ConditionUser = username;
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = sunshineHeadless;
+        RemainAfterExit = true;
+      };
+    };
+
+    sunshine = {
+      # Не запускать Sunshine в пользовательской сессии самого GDM.
+      unitConfig.ConditionUser = username;
+      requires = ["sunshine-headless.service"];
+      after = ["sunshine-headless.service"];
+    };
   };
 }
