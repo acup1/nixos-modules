@@ -55,6 +55,13 @@ in {
   # VKMS предоставляет GNOME виртуальный DRM-дисплей без HDMI-заглушки.
   boot.kernelModules = [ "vkms" ];
 
+  # Mutter исключает VKMS в 61-mutter.rules. extraRules попадает в
+  # 99-local.rules и разрешает устройство для обоих вариантов шины ядра.
+  services.udev.extraRules = ''
+    ENV{ID_PATH}=="platform-vkms", TAG-="mutter-device-ignore"
+    ENV{DEVPATH}=="/devices/faux/vkms/drm/card[0-9]*", TAG-="mutter-device-ignore"
+  '';
+
   # GDM сразу запускает пользовательскую сессию GNOME.
   services.displayManager = {
     autoLogin = {
