@@ -1,23 +1,22 @@
 # Модуль `AI`
 
-* **Экспорт**: `nixos`
-* **Назначение**: Локальный запуск LLM через Ollama и агентный веб-интерфейс DeepSeek Harness.
+Экспортирует `nixos`. Запускает Ollama с CUDA и Hermes Agent с чатом в официальном веб-интерфейсе.
 
-## Структура
+- Ollama по умолчанию слушает `127.0.0.1:11434`, хранит модели в `/var/lib/ollama/models` и использует контекст 64 000 токенов.
+- Веб-интерфейс Hermes по умолчанию доступен на `http://127.0.0.1:5001`. Его запускает `hermes-backend.service`. Сессии Hermes хранятся в `/var/lib/hermes/.hermes`.
+- Hermes получает адрес и порт из `services.ollama`. Модель `qwen3.5:9b` должна быть загружена в Ollama. Другую установленную модель можно выбрать через `services.hermes-agent.settings.model.default`.
 
-* `default.nix` — точка входа модуля, экспортирует конфигурацию NixOS (`nixos = import ./nixos.nix;`).
-* `nixos.nix` — подключает системные настройки из каталога `configuration/`.
-* `configuration/ollama.nix` — запускает Ollama с CUDA на стандартном `127.0.0.1:11434`, хранит модели в `/var/lib/ollama/models` и задаёт контекст 16000 токенов.
-* `configuration/dsh.nix` — запускает DeepSeek Harness Web с Ollama-провайдером и моделью `qwen3.5:9b` по умолчанию. Каталог моделей строится из Ollama API при старте сервиса; после `ollama pull` достаточно перезапустить `dsh.service`.
-
-Ollama слушает только loopback. DSH по умолчанию использует свой штатный bind; адрес, порт, public URL, trusted hosts и открытие firewall настраиваются через `services.dsh-web`. Адрес Ollama берётся из `services.ollama`, без отдельного хардкода. DSH требует официальный Node.js 22.19.0 в `~/.local/opt/node-v22.19.0-linux-x64` и установленный в `~/.local` пакет `@deepseek-ai/dsh`.
+Для прокси с HTTPS задайте публичный URL и подключите файл с параметрами входа.
 
 ```nix
-services.dsh-web = {
-  host = "192.168.1.10";
+services.hermes-web = {
+  host = "127.0.0.1";
   port = 5001;
-  publicUrl = "https://dsh.example.org";
-  trustedHosts = ["192.168.1.10:5001" "dsh.example.org"];
-  openFirewall = true;
+  publicUrl = "https://hermes.example.org";
 };
+services.hermes-agent.environmentFiles = ["/etc/hermes/dashboard.env"];
 ```
+
+Hermes требует аутентификацию при внешнем bind или публичном URL. Храните параметры входа вне Nix store. Для публичного доступа настройте OIDC и TLS. Для прямого доступа из доверенной сети задайте локальный адрес в `services.hermes-web.host` и при необходимости включите `services.hermes-web.openFirewall`. [Настройка аутентификации Hermes](https://hermes-agent.nousresearch.com/docs/user-guide/features/web-dashboard#authentication)
+
+Старые `services.dsh-web.enable`, `host`, `port`, `publicUrl` и `openFirewall` временно работают как псевдонимы для `services.hermes-web`. Прокси может перейти на новые имена `host` и `port`. Вместо `trustedHosts` Hermes использует адрес привязки и `publicUrl`. Сессии DSH автоматически в Hermes не переносятся.
