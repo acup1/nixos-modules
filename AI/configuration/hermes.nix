@@ -18,31 +18,14 @@
     then "[${ollamaHost}]"
     else ollamaHost;
 in {
-  imports =
-    [hermes.nixosModules.default]
-    ++ map (name: lib.mkRenamedOptionModule ["services" "dsh-web" name] ["services" "hermes-web" name]) [
-      "enable"
-      "host"
-      "port"
-      "publicUrl"
-      "openFirewall"
-    ];
-
-  # Existing host selectors may still set this option. Hermes validates the
-  # request against its bind address and canonical public URL instead.
-  options.services.dsh-web.trustedHosts = lib.mkOption {
-    type = lib.types.listOf lib.types.str;
-    default = [];
-    visible = false;
-  };
+  imports = [hermes.nixosModules.default];
 
   options.services.hermes-web = {
     enable = lib.mkEnableOption "the Hermes Agent web dashboard" // {default = true;};
 
     host = lib.mkOption {
-      type = lib.types.nullOr lib.types.str;
+      type = lib.types.str;
       default = "127.0.0.1";
-      apply = host: if host == null then "127.0.0.1" else host;
       description = "Address for the Hermes dashboard to listen on.";
     };
 
@@ -61,40 +44,34 @@ in {
     openFirewall = lib.mkEnableOption "opening the Hermes dashboard TCP port in the firewall";
   };
 
-  config = lib.mkMerge [
-    {
-      warnings = lib.optional (config.services.dsh-web.trustedHosts != [])
-        "services.dsh-web.trustedHosts is obsolete. Configure services.hermes-web.publicUrl for the external dashboard address.";
-    }
-    (lib.mkIf cfg.enable {
-      services.hermes-agent = {
-        enable = true;
-        backend = {
-          mode = "dashboard";
-          inherit (cfg) host port;
-        };
-
-        # Hermes merges settings recursively in definition order.
-        settings = lib.mkBefore (
-          {
-            model = {
-              default = "qwen3.5:9b";
-              provider = "custom";
-              base_url = "http://${ollamaAuthority}:${toString ollama.port}/v1";
-            };
-          }
-          // lib.optionalAttrs (cfg.publicUrl != null) {
-            dashboard.public_url = cfg.publicUrl;
-          }
-        );
+  config = lib.mkIf cfg.enable {
+    services.hermes-agent = {
+      enable = true;
+      backend = {
+        mode = "dashboard";
+        inherit (cfg) host port;
       };
 
-      systemd.services.hermes-backend = lib.mkIf ollama.enable {
-        after = ["ollama.service"];
-        wants = ["ollama.service"];
-      };
+      # Hermes merges settings recursively in definition order.
+      settings = lib.mkBefore (
+        {
+          model = {
+            default = "qwen3.5:9b";
+            provider = "custom";
+            base_url = "http://${ollamaAuthority}:${toString ollama.port}/v1";
+          };
+        }
+        // lib.optionalAttrs (cfg.publicUrl != null) {
+          dashboard.public_url = cfg.publicUrl;
+        }
+      );
+    };
 
-      networking.firewall.allowedTCPPorts = lib.optional cfg.openFirewall cfg.port;
-    })
-  ];
+    systemd.services.hermes-backend = lib.mkIf ollama.enable {
+      after = ["ollama.service"];
+      wants = ["ollama.service"];
+    };
+
+    networking.firewall.allowedTCPPorts = lib.optional cfg.openFirewall cfg.port;
+  };
 }

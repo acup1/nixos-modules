@@ -1,3 +1,3 @@
 {lib, ...}: {
-  imports = lib.filesystem.listFilesRecursive ./configuration;
+  imports = [../codex/nixos.nix] ++ lib.filesystem.listFilesRecursive ./configuration;
 }

@@ -1,6 +1,6 @@
 # Модуль `AI`
 
-Экспортирует `nixos`. Запускает Ollama с CUDA и Hermes Agent с чатом в официальном веб-интерфейсе.
+Экспортирует `nixos`. Запускает Ollama с CUDA и Hermes Agent с чатом в официальном веб-интерфейсе. Подключает модуль `codex`, который добавляет Codex CLI в системный `PATH`.
 
 - Ollama по умолчанию слушает `127.0.0.1:11434`, хранит модели в `/var/lib/ollama/models` и использует контекст 64 000 токенов.
 - Веб-интерфейс Hermes по умолчанию доступен на `http://127.0.0.1:5001`. Его запускает `hermes-backend.service`. Сессии Hermes хранятся в `/var/lib/hermes/.hermes`.
@@ -18,5 +18,3 @@ services.hermes-agent.environmentFiles = ["/etc/hermes/dashboard.env"];
 ```
 
 Hermes требует аутентификацию при внешнем bind или публичном URL. Храните параметры входа вне Nix store. Для публичного доступа настройте OIDC и TLS. Для прямого доступа из доверенной сети задайте локальный адрес в `services.hermes-web.host` и при необходимости включите `services.hermes-web.openFirewall`. [Настройка аутентификации Hermes](https://hermes-agent.nousresearch.com/docs/user-guide/features/web-dashboard#authentication)
-
-Старые `services.dsh-web.enable`, `host`, `port`, `publicUrl` и `openFirewall` временно работают как псевдонимы для `services.hermes-web`. Прокси может перейти на новые имена `host` и `port`. Вместо `trustedHosts` Hermes использует адрес привязки и `publicUrl`. Сессии DSH автоматически в Hermes не переносятся.
