@@ -17,6 +17,7 @@
     if lib.hasInfix ":" ollamaHost
     then "[${ollamaHost}]"
     else ollamaHost;
+  ollamaUrl = "http://${ollamaAuthority}:${toString ollama.port}/v1";
 in {
   imports = [hermes.nixosModules.default];
 
@@ -57,8 +58,13 @@ in {
         {
           model = {
             default = "qwen3.5:9b";
-            provider = "custom";
-            base_url = "http://${ollamaAuthority}:${toString ollama.port}/v1";
+            provider = "ollama";
+            base_url = ollamaUrl;
+          };
+          providers.ollama = {
+            name = "Ollama";
+            base_url = ollamaUrl;
+            discover_models = true;
           };
         }
         // lib.optionalAttrs (cfg.publicUrl != null) {
