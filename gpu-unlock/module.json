@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "GPU Unlock",
+  "description": "Пакет и системная настройка модуля ядра GPU Unlock.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "gpu-unlock",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

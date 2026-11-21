@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Русская локализация",
+  "description": "Русская локаль UTF-8 и настройки системной консоли.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "ru-locale",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  environment.systemPackages = [pkgs.codex];
+  components.codex.packages = [pkgs.codex];
 }

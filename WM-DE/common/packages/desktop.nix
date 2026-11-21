@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+  components.common.packages = with pkgs; [
     cliphist
     fuzzel
     #wl-clipboard-rs

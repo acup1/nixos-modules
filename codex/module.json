@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "title": "OpenAI Codex CLI",
+  "description": "Терминальный клиент Codex для работы с кодом.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ],
+    "darwin": [
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "codex",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "codex",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

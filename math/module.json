@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Математика и радиотехника",
+  "description": "Калькулятор Qalculate!, численные вычисления GNU Octave и обработка сигналов GNU Radio.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "math",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

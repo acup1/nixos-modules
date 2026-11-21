@@ -1,5 +1,6 @@
 {lib, ...}: {
   imports =
-    lib.filesystem.listFilesRecursive ./configuration
+    [(import ../lib/component-packages.nix "vpn" "system")]
+    ++ lib.filesystem.listFilesRecursive ./configuration
     ++ lib.filesystem.listFilesRecursive ./packages;
 }

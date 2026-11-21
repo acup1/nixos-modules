@@ -1,4 +1,9 @@
-{config, inputs, ...}: {
+{config, specialArgs, ...}: let
+  fallback = (builtins.getFlake "path:${toString ../../inputs}").inputs;
+  inputs = {
+    dms = specialArgs.inputs.dms or fallback.dms;
+  };
+in {
   imports = [ inputs.dms.homeModules.dank-material-shell ];
   programs.dank-material-shell.enable = true;
 

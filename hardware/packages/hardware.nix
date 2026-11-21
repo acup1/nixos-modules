@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+  components.hardware.packages = with pkgs; [
     hal-hardware-analyzer
   ];
 }

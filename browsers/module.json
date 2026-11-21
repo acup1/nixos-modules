@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Веб-браузеры",
+  "description": "Google Chrome, Tor Browser и Zen Browser.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "browsers",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

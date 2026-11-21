@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Инструменты разработки",
+  "description": "Языки и компиляторы C/C++, Rust, Go, Python и Node.js, а также Arduino IDE.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "dev",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

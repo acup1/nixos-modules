@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "title": "GNOME",
+  "description": "Рабочий стол GNOME с общими настройками графической сессии и звука.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ],
+    "home": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "gnome",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "gnome",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "desktopManager",
+        "gnome",
+        "enable"
+      ],
+      "title": "Рабочий стол GNOME",
+      "description": "Добавляет GNOME к списку графических сессий.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}

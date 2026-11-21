@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "title": "Visual Studio Code",
+  "description": "VS Code с темой, расширением Vim и горячими клавишами.",
+  "layers": {
+    "home": [
+      "linux",
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "vscode",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "programs",
+        "vscode",
+        "profiles",
+        "default",
+        "userSettings",
+        "editor.tabSize"
+      ],
+      "title": "Ширина табуляции",
+      "description": "Число пробелов на уровень отступа в редакторе.",
+      "type": "integer",
+      "default": 2
+    },
+    {
+      "layer": "home",
+      "path": [
+        "programs",
+        "vscode",
+        "profiles",
+        "default",
+        "userSettings",
+        "editor.formatOnSave"
+      ],
+      "title": "Форматирование при сохранении",
+      "description": "Запускает форматтер при сохранении файла.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}

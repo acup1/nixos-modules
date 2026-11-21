@@ -1,10 +1,10 @@
 {lib, pkgs, ...}: let
-  hostSystem = pkgs.stdenv.hostPlatform.system;
+  inherit (pkgs.stdenv) hostPlatform;
   zen = builtins.getFlake "github:youwen5/zen-browser-flake";
-  zenPackage = zen.packages.${hostSystem}.default or (throw
-    "Package 'default' not found in the flake");
+  zenPackage = zen.packages.${hostPlatform.system}.default or null;
 in {
-  environment.systemPackages = [
+  components.browsers.packages = lib.optional
+    (hostPlatform.isLinux && zenPackage != null)
     (zenPackage.overrideAttrs (old: {
       # Zen loads AAC/H.264 decoders at runtime; keep a supported FFmpeg major.
       makeWrapperArgs = (old.makeWrapperArgs or []) ++ [
@@ -13,6 +13,5 @@ in {
         ":"
         (lib.makeLibraryPath [pkgs.ffmpeg_8])
       ];
-    }))
-  ];
+    }));
 }

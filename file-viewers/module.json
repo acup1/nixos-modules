@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Файлы и просмотр",
+  "description": "Файловый менеджер Nautilus, просмотр изображений и медиаплееры VLC и mpv.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "file-viewers",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

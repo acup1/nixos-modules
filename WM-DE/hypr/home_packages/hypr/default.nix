@@ -1,16 +1,20 @@
 {
+  lib,
   pkgs,
-  inputs,
+  specialArgs,
   ...
 }: let
-  hostSystem = pkgs.stdenv.hostPlatform.system;
-  hyprland = inputs.hyprland.packages.${hostSystem}.hyprland;
+  fallback = (builtins.getFlake "path:${toString ../../inputs}").inputs;
+  inputs = {
+    hyprland = specialArgs.inputs.hyprland or fallback.hyprland;
+    iio-hyprland = specialArgs.inputs.iio-hyprland or fallback.iio-hyprland;
+  };
+  inherit (pkgs.stdenv) hostPlatform;
+  hyprland = inputs.hyprland.packages.${hostPlatform.system}.hyprland or null;
+  iio = inputs.iio-hyprland.packages.${hostPlatform.system}.default or null;
 in {
-  home.packages = with pkgs; [
-    inputs.iio-hyprland.packages.${hostSystem}.default
-    # squeekboard
-  ];
-  wayland.windowManager.hyprland = {
+  components.hypr.packages = lib.optional (iio != null) iio;
+  wayland.windowManager.hyprland = lib.mkIf (hyprland != null && lib.meta.availableOn hostPlatform hyprland) {
     enable = true;
     package = hyprland;
     configType = "lua";
@@ -32,8 +36,8 @@ in {
     };
 
     plugins = [
-      # inputs.hyprgrass.packages.${hostSystem}.default
-      # inputs.Hyprspace.packages.${hostSystem}.Hyprspace
+      # inputs.hyprgrass.packages.${hostPlatform.system}.default
+      # inputs.Hyprspace.packages.${hostPlatform.system}.Hyprspace
     ];
   };
   # xdg.configFile."hypr".source = ./.config/hypr;

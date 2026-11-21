@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Печать",
+  "description": "Система печати CUPS и драйвер Fuji Xerox для x86 Linux.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "printing",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

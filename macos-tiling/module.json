@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "title": "Тайлинг окон macOS",
+  "description": "Автоматическая раскладка окон yabai и горячие клавиши skhd.",
+  "layers": {
+    "darwin": [
+      "darwin"
+    ],
+    "home": [
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "macos-tiling",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "macos-tiling",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "services",
+        "yabai",
+        "enable"
+      ],
+      "title": "Тайлинг yabai",
+      "description": "Запускает yabai для автоматической раскладки окон.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "services",
+        "skhd",
+        "enable"
+      ],
+      "title": "Горячие клавиши skhd",
+      "description": "Запускает skhd для переключения окон и рабочих пространств.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}

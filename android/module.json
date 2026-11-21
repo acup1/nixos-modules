@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "title": "Android и DroidCam",
+  "description": "Подсистема Android Waydroid и подключение телефона как веб-камеры.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "android",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "virtualisation",
+        "waydroid",
+        "enable"
+      ],
+      "title": "Подсистема Android",
+      "description": "Запускает сервис Waydroid для приложений Android.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "programs",
+        "droidcam",
+        "enable"
+      ],
+      "title": "Поддержка DroidCam",
+      "description": "Добавляет поддержку камеры телефона через DroidCam.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}

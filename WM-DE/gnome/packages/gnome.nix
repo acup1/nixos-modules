@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [ gnomeExtensions.screen-rotate ];
+  components.gnome.packages = with pkgs; [ gnomeExtensions.screen-rotate ];
 }

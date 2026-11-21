@@ -1,3 +1,3 @@
-{
-  home = import ./home.nix;
+import ../lib/component.nix {
+  home = ./home.nix;
 }

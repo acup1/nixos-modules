@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+  components.moonlight.packages = with pkgs; [
     moonlight-qt
   ];
 }

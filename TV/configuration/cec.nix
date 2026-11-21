@@ -14,5 +14,5 @@
     SUBSYSTEM=="tty", KERNEL=="ttyACM[0-9]*", ATTRS{idVendor}=="2548", ATTRS{idProduct}=="1001|1002", GROUP="cec", MODE="0660"
   '';
 
-  environment.systemPackages = [pkgs.libcec];
+  components.TV.packages = [pkgs.libcec];
 }

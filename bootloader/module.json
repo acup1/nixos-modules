@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Загрузчик GRUB",
+  "description": "Загрузчик GRUB для UEFI с темой Intervals.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "bootloader",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

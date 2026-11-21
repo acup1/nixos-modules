@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Circuit Artist",
+  "description": "Игра и симулятор цифровых схем, собираемый из исходного кода.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "circuit-artist",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

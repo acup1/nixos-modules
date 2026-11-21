@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "OBS Studio",
+  "description": "Запись экрана, создание трансляций и работа со сценами.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "multimedia",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

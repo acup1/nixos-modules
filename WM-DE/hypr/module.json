@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "title": "Hyprland",
+  "description": "Композитор Hyprland с пользовательскими сочетаниями клавиш и настройками Wayland.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ],
+    "home": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "hypr",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "hypr",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "programs",
+        "hyprland",
+        "xwayland",
+        "enable"
+      ],
+      "title": "XWayland",
+      "description": "Разрешает запуск приложений X11 в Hyprland.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}

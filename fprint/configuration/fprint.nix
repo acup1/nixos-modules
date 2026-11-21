@@ -22,7 +22,7 @@
     # "*".fprintAuth = true;
   };
 
-  environment.systemPackages = with pkgs; [fprintd];
+  components.fprint.packages = with pkgs; [fprintd];
   services.fprintd = {
     enable = true;
     tod = {

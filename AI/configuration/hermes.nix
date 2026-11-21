@@ -47,7 +47,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    environment.systemPackages = [config.services.hermes-agent.package];
+    components.AI.packages = [config.services.hermes-agent.package];
 
     services.hermes-agent = {
       enable = true;

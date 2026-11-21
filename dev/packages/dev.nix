@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+  components.dev.packages = with pkgs; [
     nodejs
     scdoc
 

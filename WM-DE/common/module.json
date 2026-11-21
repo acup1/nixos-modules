@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "title": "Общая среда рабочего стола",
+  "description": "Общие настройки графического входа, Wayland, звука, устройств ввода и утилит рабочего стола.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ],
+    "home": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "common",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

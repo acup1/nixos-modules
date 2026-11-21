@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Пользовательская среда macOS",
+  "description": "Настройки Ghostty, Zsh, btop и Yazi для macOS.",
+  "layers": {
+    "home": [
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "macos-home",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

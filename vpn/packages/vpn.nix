@@ -39,7 +39,7 @@
       '';
     };
 in {
-  environment.systemPackages = with pkgs; [
+  components.vpn.packages = with pkgs; [
     amnezia-vpn
     # hiddify-app
     # v2raya

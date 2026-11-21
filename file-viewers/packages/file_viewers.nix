@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+  components.file-viewers.packages = with pkgs; [
     nautilus
     # thunnar
 

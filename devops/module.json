@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "title": "DevOps и виртуализация",
+  "description": "Docker, Kubernetes, Terraform и инструменты для локальной виртуализации.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ],
+    "darwin": [
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "devops",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "devops",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "virtualisation",
+        "libvirtd",
+        "enable"
+      ],
+      "title": "Сервис libvirt",
+      "description": "Включает управление виртуальными машинами QEMU через libvirt.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "virtualisation",
+        "libvirtd",
+        "qemu",
+        "swtpm",
+        "enable"
+      ],
+      "title": "Виртуальный TPM",
+      "description": "Добавляет виртуальным машинам поддержку устройства TPM.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}

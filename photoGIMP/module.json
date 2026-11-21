@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "title": "PhotoGIMP",
+  "description": "Графический редактор GIMP 3 с темой и раскладкой PhotoGIMP.",
+  "layers": {
+    "home": [
+      "linux",
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "photoGIMP",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

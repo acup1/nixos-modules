@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "title": "Бинарный кеш Nix",
+  "description": "Сервер nix-serve для раздачи сборок Nix по сети.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "nix-serve",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "nix-serve",
+        "port"
+      ],
+      "title": "Порт кеша",
+      "description": "TCP-порт, на котором nix-serve принимает запросы.",
+      "type": "integer",
+      "default": 5000
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "nix-serve",
+        "bindAddress"
+      ],
+      "title": "Адрес кеша",
+      "description": "IP-адрес, на котором nix-serve принимает запросы.",
+      "type": "string",
+      "default": "0.0.0.0"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "nix-serve",
+        "openFirewall"
+      ],
+      "title": "Открыть порт кеша",
+      "description": "Разрешает входящие соединения на порт nix-serve.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}

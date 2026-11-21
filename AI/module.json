@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "title": "Локальный ИИ",
+  "description": "Сервисы локального ИИ Ollama и Hermes Agent с веб-панелью.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "AI",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "hermes-web",
+        "enable"
+      ],
+      "title": "Веб-панель Hermes",
+      "description": "Запускает локальную панель Hermes Agent.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "hermes-web",
+        "host"
+      ],
+      "title": "Адрес панели Hermes",
+      "description": "IP-адрес интерфейса, на котором панель принимает соединения.",
+      "type": "string",
+      "default": "127.0.0.1"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "hermes-web",
+        "port"
+      ],
+      "title": "Порт панели Hermes",
+      "description": "TCP-порт, на котором панель принимает соединения.",
+      "type": "integer",
+      "default": 5001
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "hermes-web",
+        "openFirewall"
+      ],
+      "title": "Открыть порт Hermes",
+      "description": "Разрешает входящие соединения на порт веб-панели в межсетевом экране.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "ollama",
+        "port"
+      ],
+      "title": "Порт Ollama",
+      "description": "Порт локального HTTP API Ollama.",
+      "type": "integer",
+      "default": 11434
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "ollama",
+        "host"
+      ],
+      "title": "Адрес Ollama",
+      "description": "IP-адрес, на котором Ollama принимает запросы.",
+      "type": "string",
+      "default": "127.0.0.1"
+    }
+  ]
+}

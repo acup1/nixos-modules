@@ -1,6 +1,7 @@
 {lib, ...}: {
   imports =
-    (lib.fileset.toList (
+    [(import ../../lib/component-packages.nix "common" "home")]
+    ++ (lib.fileset.toList (
       lib.fileset.fileFilter (file: file.name == "default.nix") ./home_packages
     ));
 }

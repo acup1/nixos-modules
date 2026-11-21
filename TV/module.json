@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Интерфейс для телевизора",
+  "description": "Plasma Bigscreen, звук через PipeWire и управление через HDMI CEC.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "TV",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

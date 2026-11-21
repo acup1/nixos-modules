@@ -1,3 +1,6 @@
 {lib, ...}: {
-  imports = [../codex/nixos.nix] ++ lib.filesystem.listFilesRecursive ./configuration;
+  imports = [
+      ../codex/nixos.nix
+      (import ../lib/component-packages.nix "AI" "system")
+    ] ++ lib.filesystem.listFilesRecursive ./configuration;
 }

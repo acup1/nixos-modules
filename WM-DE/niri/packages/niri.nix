@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [ iio-niri ];
+  components.niri.packages = with pkgs; [ iio-niri ];
 }

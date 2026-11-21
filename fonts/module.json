@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "title": "Системные шрифты",
+  "description": "Nerd Fonts, Noto CJK, MigMix и наборы шрифтов Microsoft.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "fonts",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "fonts",
+        "packages"
+      ],
+      "title": "Системные шрифты",
+      "description": "Выбирает пакеты шрифтов для системной регистрации.",
+      "type": "packages"
+    }
+  ]
+}

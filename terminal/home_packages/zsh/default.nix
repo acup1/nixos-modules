@@ -24,11 +24,10 @@ in {
       alias nixhomerebuild=${lib.escapeShellArg "home-manager switch --impure --flake ${homeFlake}"}
       alias nixcleanup="sudo nix-collect-garbage -d"
       alias nixfullrebuild="nixrebuild && nixhomerebuild && nixcleanup"
-      # ${pkgs.pokemon-colorscripts}/bin/pokemon-colorscripts -r -b
     '';
   };
 
-  home.packages = with pkgs; [
+  components.terminal.packages = with pkgs; [
     starship
     # pokemon-colorscripts
   ];

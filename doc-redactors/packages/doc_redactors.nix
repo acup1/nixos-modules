@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+  components.doc-redactors.packages = with pkgs; [
     #docs
     libreoffice-qt-stable
     wpsoffice-cn

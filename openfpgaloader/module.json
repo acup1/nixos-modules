@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Программатор FPGA",
+  "description": "openFPGALoader и правила udev для доступа к поддерживаемым платам.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "openfpgaloader",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

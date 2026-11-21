@@ -4,7 +4,7 @@
   inputs,
   ...
 }: {
-  home.packages = with pkgs; [
+  components.terminal.packages = with pkgs; [
     cava
   ];
   xdg.configFile."cava".source = ./.config/cava;

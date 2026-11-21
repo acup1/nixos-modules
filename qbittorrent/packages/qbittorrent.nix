@@ -1,3 +1,3 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [ qbittorrent ];
+  components.qbittorrent.packages = with pkgs; [ qbittorrent ];
 }

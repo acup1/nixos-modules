@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Мессенджеры",
+  "description": "Telegram Desktop, Discord и Rocket.Chat при поддержке платформой.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "messengers",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

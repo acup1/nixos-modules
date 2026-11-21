@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Вход по отпечатку пальца",
+  "description": "Сервис fprintd и настройки аутентификации PAM.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "fprint",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

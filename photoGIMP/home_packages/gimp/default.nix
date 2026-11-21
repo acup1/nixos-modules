@@ -13,7 +13,7 @@
     # ref = "master";  # or a branch/tag if you want
   };
 in {
-  home.packages = with pkgs; [gimp3];
+  components.photoGIMP.packages = with pkgs; [gimp3];
   #xdg.configFile."waybar".source = ./.config/waybar;
 
   home.activation.copyPhotoGIMPConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''

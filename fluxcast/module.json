@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "FluxCast",
+  "description": "Беспроводная трансляция рабочего стола через Miracast, DLNA и Chromecast.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "fluxcast",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

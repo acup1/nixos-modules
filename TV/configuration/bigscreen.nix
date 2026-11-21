@@ -29,27 +29,25 @@
     unitConfig.ConditionEnvironment = "!PLASMA_PLATFORM=mediacenter";
   };
 
-  environment = {
-    # The homescreen dynamically imports these QML plugins from the session.
-    systemPackages = with pkgs.kdePackages; [
-      plasma-bigscreen
-      plasma-nano
-      kdeconnect-kde
-      kirigami-addons
-      kitemmodels
-      layer-shell-qt
-    ];
-    plasma6.excludePackages = with pkgs.kdePackages; [
-      ark
-      elisa
-      gwenview
-      kate
-      khelpcenter
-      krdp
-      okular
-      plasma-browser-integration
-      plasma-workspace-wallpapers
-      spectacle
-    ];
-  };
+  # The homescreen dynamically imports these QML plugins from the session.
+  components.TV.packages = with pkgs.kdePackages; [
+    plasma-bigscreen
+    plasma-nano
+    kdeconnect-kde
+    kirigami-addons
+    kitemmodels
+    layer-shell-qt
+  ];
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    ark
+    elisa
+    gwenview
+    kate
+    khelpcenter
+    krdp
+    okular
+    plasma-browser-integration
+    plasma-workspace-wallpapers
+    spectacle
+  ];
 }

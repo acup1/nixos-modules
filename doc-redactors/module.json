@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Документы и офис",
+  "description": "Офисные приложения, Typst и LaTeX, инструменты PDF и Obsidian.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "doc-redactors",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

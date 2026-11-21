@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "title": "DriftWM",
+  "description": "Тайлинговый композитор DriftWM с порталом Wayland и автоматическим поворотом экрана.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ],
+    "home": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "drift",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "drift",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}
