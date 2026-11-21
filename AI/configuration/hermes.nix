@@ -46,6 +46,8 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    environment.systemPackages = [config.services.hermes-agent.package];
+
     services.hermes-agent = {
       enable = true;
       # Reclaim this profile if the dashboard started a detached gateway.
