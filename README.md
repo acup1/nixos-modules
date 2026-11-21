@@ -56,6 +56,7 @@ modules = [
 | **macos-tiling** | Darwin + Home | Тайлинг yabai и сочетания skhd | [macos-tiling/README.md](macos-tiling/README.md) |
 | **math** | NixOS | Математика и радио: Qalculate GTK, GNU Octave, GNU Radio | [math/README.md](math/README.md) |
 | **messengers** | NixOS | Мессенджеры: Telegram Desktop, Discord | [messengers/README.md](messengers/README.md) |
+| **minecraft-rust** | Darwin (Apple Silicon) | Minecraft Java Edition 26.3 на Rust, игровой клиент и лаунчер Horizon | [minecraft-rust/README.md](minecraft-rust/README.md) |
 | **moonlight** | NixOS + Darwin | Клиент игрового стриминга Moonlight | [moonlight/README.md](moonlight/README.md) |
 | **multimedia** | NixOS | Запись и стриминг экрана: OBS Studio | [multimedia/README.md](multimedia/README.md) |
 | **music** | Home | Музыкальный плеер Muffon | [music/README.md](music/README.md) |
