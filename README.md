@@ -23,6 +23,8 @@ modules = [
 
 Для Home Manager базовый flake передаёт целевую платформу через `extraSpecialArgs.system`, например `"aarch64-darwin"`. По ней компоненты рабочего стола выбирают подходящие импорты. Списки пакетов учитывают поддерживаемые платформы nixpkgs.
 
+Каталог установщика читает `module.json` из каталогов компонентов. Компоненты `nvf` и `WM-DE/{common,drift,hypr}` хранят версии своих внешних зависимостей в отдельных flakes. Хост может переопределить их через `inputs`.
+
 ## Сводная таблица модулей
 
 | Модуль | Тип | Краткое описание | Документация |
@@ -58,6 +60,7 @@ modules = [
 | **multimedia** | NixOS | Запись и стриминг экрана: OBS Studio | [multimedia/README.md](multimedia/README.md) |
 | **music** | Home | Музыкальный плеер Muffon | [music/README.md](music/README.md) |
 | **nix-serve** | NixOS | Локальный бинарный кэш-сервер Nix на порту 5000 | [nix-serve/README.md](nix-serve/README.md) |
+| **nixos-installer** | NixOS + Darwin | Готовый бинарник установщика и редактора конфигурации | [nixos-installer/README.md](nixos-installer/README.md) |
 | **nvf** | Home | Модульная конфигурация Neovim на базе фреймворка nvf | [nvf/README.md](nvf/README.md) |
 | **openfpgaloader** | NixOS | Программатор FPGA с правилами udev для отладочных плат | [openfpgaloader/README.md](openfpgaloader/README.md) |
 | **photoGIMP** | Home | GIMP 3 с темой и раскладкой PhotoGIMP (Photoshop UI) | [photoGIMP/README.md](photoGIMP/README.md) |
