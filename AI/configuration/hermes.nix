@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   # Hermes Agent v0.23.3.
@@ -50,6 +51,7 @@ in {
 
     services.hermes-agent = {
       enable = true;
+      extraPackages = [pkgs.codex];
       # Reclaim this profile if the dashboard started a detached gateway.
       extraArgs = lib.mkBefore ["run" "--replace"];
       backend = {
@@ -64,6 +66,7 @@ in {
             default = "qwen3.5:9b";
             provider = "ollama";
             base_url = ollamaUrl;
+            codex_bin = lib.getExe' pkgs.codex "codex";
           };
           providers.ollama = {
             name = "Ollama";
