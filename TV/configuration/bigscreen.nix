@@ -2,9 +2,7 @@
   pkgs,
   username,
   ...
-}: let
-  inherit (pkgs.kdePackages) plasma-bigscreen plasma-nano;
-in {
+}: {
   hardware.graphics.enable = true;
 
   services.desktopManager.plasma6 = {
@@ -15,7 +13,7 @@ in {
   services.displayManager = {
     sddm.enable = true;
     sddm.wayland.enable = true;
-    sessionPackages = [plasma-bigscreen];
+    sessionPackages = [pkgs.kdePackages.plasma-bigscreen];
     defaultSession = "plasma-bigscreen-wayland";
     autoLogin = {
       enable = true;
@@ -25,8 +23,22 @@ in {
 
   programs.kde-pim.enable = false;
 
+  # Bigscreen 6.8's splash times out during login. Start the TV shell directly.
+  systemd.user.services.plasma-ksplash = {
+    overrideStrategy = "asDropin";
+    unitConfig.ConditionEnvironment = "!PLASMA_PLATFORM=mediacenter";
+  };
+
   environment = {
-    systemPackages = [plasma-bigscreen plasma-nano];
+    # The homescreen dynamically imports these QML plugins from the session.
+    systemPackages = with pkgs.kdePackages; [
+      plasma-bigscreen
+      plasma-nano
+      kdeconnect-kde
+      kirigami-addons
+      kitemmodels
+      layer-shell-qt
+    ];
     plasma6.excludePackages = with pkgs.kdePackages; [
       ark
       elisa
