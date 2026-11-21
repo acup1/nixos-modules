@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "title": "Minecraft на Rust (Horizon)",
+  "description": "Игровой клиент Horizon для Minecraft Java Edition 26.3 и его лаунчер для Mac с Apple Silicon.",
+  "layers": { "darwin": ["darwin"] },
+  "options": [
+    {
+      "layer": "darwin",
+      "path": ["components", "minecraft-rust", "packages"],
+      "title": "Пакеты",
+      "description": "Пакеты, устанавливаемые модулем на macOS.",
+      "type": "packages"
+    }
+  ]
+}
