@@ -1,4 +1,4 @@
-{
-  nixos = import ./nixos.nix;
-  darwin = import ./darwin.nix;
+import ../lib/component.nix {
+  nixos = ./nixos.nix;
+  darwin = ./darwin.nix;
 }

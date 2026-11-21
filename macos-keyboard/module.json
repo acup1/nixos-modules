@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "title": "Клавиатура macOS",
+  "description": "Karabiner-Elements со знакомыми сочетаниями Linux и настройками переключения раскладки.",
+  "layers": {
+    "darwin": [
+      "darwin"
+    ],
+    "home": [
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "macos-keyboard",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "macos-keyboard",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

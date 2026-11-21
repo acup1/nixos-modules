@@ -4,8 +4,8 @@
   inputs,
   ...
 }: {
-  home.packages = with pkgs; [
+  components.terminal.packages = with pkgs; [
     btop
   ];
-  xdg.configFile."btop".source = ./.config/btop;
+  xdg.configFile."btop/btop.conf".source = ./.config/btop/btop.conf;
 }

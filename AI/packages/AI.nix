@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  environment.systemPackages = with pkgs;
+  components.AI.packages = with pkgs;
     [
       #lmstudio
       # ollama

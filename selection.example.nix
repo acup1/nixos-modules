@@ -1,7 +1,5 @@
-{...}: let
-  # Локальные модули читаются напрямую; для flake-команд нужен --impure.
-  modulesRoot = /home/acup/flakes/modules;
-in [
+# При копировании файла вне репозитория укажите путь к нему в modulesRoot.
+{modulesRoot ? ./., ...}: [
   (import (modulesRoot + "/base"))
   (import (modulesRoot + "/bootloader"))
   (import (modulesRoot + "/caelestia-shell"))
@@ -9,7 +7,6 @@ in [
   (import (modulesRoot + "/qbittorrent"))
   (import (modulesRoot + "/nix-serve"))
   (import (modulesRoot + "/sunshine"))
-  (import (modulesRoot + "/sunshine-frp"))
   (import (modulesRoot + "/moonlight"))
   (import (modulesRoot + "/terminal"))
   (import (modulesRoot + "/android"))
@@ -33,4 +30,5 @@ in [
   (import (modulesRoot + "/WM-DE/niri"))
   (import (modulesRoot + "/WM-DE/drift"))
   (import (modulesRoot + "/WM-DE/gnome"))
+  (import (modulesRoot + "/gnome-theming"))
 ]

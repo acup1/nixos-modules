@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+  components.openfpgaloader.packages = with pkgs; [
     openfpgaloader
   ];
 }

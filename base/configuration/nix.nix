@@ -1,8 +1,12 @@
 {
+  config,
+  lib,
   username,
   pkgs,
   ...
-}: {
+}: let
+  homeDirectory = config.users.users.${username}.home or "/home/${username}";
+in {
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.allowed-users = ["${username}"];
   nixpkgs.config.allowUnfree = true;
@@ -21,7 +25,7 @@
 
   system.userActivationScripts.fixRustupLld = {
     text = ''
-      for lld in /home/${username}/.rustup/toolchains/*/lib/rustlib/*/bin/gcc-ld/ld.lld; do
+      for lld in ${lib.escapeShellArg "${homeDirectory}/.rustup/toolchains"}/*/lib/rustlib/*/bin/gcc-ld/ld.lld; do
         if [ -f "$lld" ]; then
           cat << 'EOF' > "$lld"
 #!/usr/bin/env bash

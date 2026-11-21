@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = [
+  components.circuit-artist.packages = [
     (pkgs.callPackage ../package.nix {})
   ];
 }

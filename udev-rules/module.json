@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Правила udev",
+  "description": "Системные правила, которые регулируют доступ к локальным устройствам.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "udev-rules",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

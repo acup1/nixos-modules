@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Графика и САПР",
+  "description": "FreeCAD, Darktable и вспомогательные библиотеки OpenGL, Mesa и NVIDIA.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "graphics",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

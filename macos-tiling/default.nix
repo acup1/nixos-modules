@@ -1,4 +1,5 @@
-{
-  darwin = import ./darwin.nix;
-  home = import ./home.nix;
+import ../lib/component.nix {
+  darwin = ./darwin.nix;
+  home = ./home.nix;
+  homePlatform = "darwin";
 }

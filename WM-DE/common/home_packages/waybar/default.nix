@@ -1,11 +1,14 @@
 {
+  lib,
   pkgs,
   config,
   inputs,
   ...
 }: {
-  home.packages = with pkgs; [
+  components.common.packages = with pkgs; [
     waybar
   ];
-  xdg.configFile."waybar".source = ./.config/waybar;
+  xdg.configFile."waybar" = lib.mkIf (lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.waybar) {
+    source = ./.config/waybar;
+  };
 }

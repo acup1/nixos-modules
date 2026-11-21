@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "title": "KiCad",
+  "description": "Редактор схем и печатных плат KiCad.",
+  "layers": {
+    "home": [
+      "linux",
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "kicad",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

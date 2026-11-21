@@ -8,7 +8,9 @@
   configuredHome = config.users.users.${username}.home or null;
   homeDirectory = if configuredHome == null then "/Users/${username}" else toString configuredHome;
 in {
-  imports = lib.filesystem.listFilesRecursive ./packages;
+  imports =
+    [(import ../lib/component-packages.nix "devops" "system")]
+    ++ lib.filesystem.listFilesRecursive ./packages;
 
   launchd.user.agents.colima.serviceConfig = {
     ProgramArguments = [

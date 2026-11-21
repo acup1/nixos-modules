@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Диагностика оборудования",
+  "description": "Сбор сведений об оборудовании с HAL Hardware Analyzer.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "hardware",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+  components.hypr.packages = with pkgs; [
     hyprland
     grimblast
   ];

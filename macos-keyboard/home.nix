@@ -200,6 +200,8 @@
     ];
   });
 in {
+  imports = [(import ../lib/component-packages.nix "macos-keyboard" "home")];
+
   home.activation.disableMacOSInputSourceShortcuts = lib.hm.dag.entryAfter ["writeBoundary"] ''
     symbolic_hotkeys="$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
 

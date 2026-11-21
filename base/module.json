@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "title": "Базовая система NixOS",
+  "description": "Настраивает Nix, кеши, сеть, SSH и Zsh, добавляет базовые утилиты.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "base",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "openssh",
+        "enable"
+      ],
+      "title": "Сервер SSH",
+      "description": "Запускает OpenSSH для удалённого доступа.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "networking",
+        "networkmanager",
+        "enable"
+      ],
+      "title": "NetworkManager",
+      "description": "Управляет сетевыми подключениями через NetworkManager.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}

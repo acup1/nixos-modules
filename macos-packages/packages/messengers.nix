@@ -1,4 +1,4 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+  components.macos-packages.packages = with pkgs; [
   ];
 }

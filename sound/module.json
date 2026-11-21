@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Звук и воспроизведение",
+  "description": "Пакеты PipeWire и Playerctl для работы со звуком и плеерами.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "sound",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

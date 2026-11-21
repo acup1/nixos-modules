@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "title": "Базовая система macOS",
+  "description": "Настройки nix-darwin, Touch ID для sudo, Homebrew и утилита MiddleClick.",
+  "layers": {
+    "darwin": [
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "macos-base",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "security",
+        "pam",
+        "services",
+        "sudo_local",
+        "touchIdAuth"
+      ],
+      "title": "Touch ID для sudo",
+      "description": "Разрешает подтверждать sudo с помощью Touch ID.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}

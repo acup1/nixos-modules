@@ -1,3 +1,5 @@
 {lib, ...}: {
-  imports = lib.filesystem.listFilesRecursive ./configuration;
+  imports =
+    [(import ../lib/component-packages.nix "macos-base" "system")]
+    ++ lib.filesystem.listFilesRecursive ./configuration;
 }

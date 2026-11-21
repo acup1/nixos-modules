@@ -87,6 +87,8 @@
     /usr/bin/osascript -e 'display dialog "Mod (left Command)" & return & return & "Arrows: focus" & return & "Ctrl + H/J/K/L or arrows: move" & return & "1..9: space" & return & "Shift + 1..9: move to space" & return & "Page Down/Page Up: next/previous space" & return & "F: maximize" & return & "F14: floating/tiling" with title "yabai shortcuts" buttons {"OK"} default button "OK"'
   '';
 in {
+  imports = [(import ../lib/component-packages.nix "macos-tiling" "home")];
+
   services.skhd = {
     enable = true;
     package = pkgs.skhd;

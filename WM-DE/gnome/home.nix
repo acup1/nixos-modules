@@ -1,3 +1,6 @@
 {...}: {
-  imports = [ ../common/home.nix ];
+  imports = [
+    ../common/home.nix
+    (import ../../lib/component-packages.nix "gnome" "home")
+  ];
 }

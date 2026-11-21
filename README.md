@@ -1,10 +1,27 @@
 # Документация модулей системы (`modules/`)
 
-В этом каталоге расположены модули компонентов системы и пользовательского окружения. Каждый модуль автономен и может предоставлять часть для NixOS (`nixos = import ./nixos.nix;`) и/или часть для Home Manager (`home = import ./home.nix;`).
+## Настройка в `config.nix`
 
-Подключение модулей осуществляется через список в `/home/acup/flakes/modules.nix` (и `~/.config/nix/modules.nix`). Подробная документация по каждому модулю находится в файле `README.md` внутри соответствующей директории.
+Добавляйте компоненты в `modules`. Обычный импорт выбирает настройки по умолчанию. Метод `withConfig` принимает `enable` и модули настроек для `nixos`, `darwin` и `home`. Хост выбирает нужную системную часть и отдельно применяет Home Manager.
 
----
+```nix
+modules = [
+  (import (modulesRoot + "/base"))
+  ((import (modulesRoot + "/devops")).withConfig {
+    nixos = { lib, pkgs, ... }: {
+      components.devops.packages = lib.mkForce [ pkgs.kubectl pkgs.terraform ];
+      virtualisation.libvirtd.enable = lib.mkForce false;
+    };
+    darwin = { pkgs, ... }: {
+      components.devops.packages = [ pkgs.jq ];
+    };
+  })
+];
+```
+
+В каждой части `components.<имя каталога>.packages` управляет пакетами этого компонента. Список дополняет поставляемый набор, а `lib.mkForce` заменяет его. Для приложений, установленных самой службой или программой Home Manager, используйте её собственные опции. Параметр `enable = false;` исключает компонент из этого места в списке. Если другой компонент явно импортирует его как зависимость, этот импорт продолжает действовать.
+
+Для Home Manager базовый flake передаёт целевую платформу через `extraSpecialArgs.system`, например `"aarch64-darwin"`. По ней компоненты рабочего стола выбирают подходящие импорты. Списки пакетов учитывают поддерживаемые платформы nixpkgs.
 
 ## Сводная таблица модулей
 
@@ -19,16 +36,22 @@
 | **circuit-artist** | NixOS | Логическая игра-симулятор цифровых схем Circuit Artist | [circuit-artist/README.md](circuit-artist/README.md) |
 | **codex** | NixOS + Darwin | OpenAI Codex CLI | [codex/README.md](codex/README.md) |
 | **dev** | NixOS | Языки и компиляторы: C/C++, Rust, Go, Python, Node.js, Arduino | [dev/README.md](dev/README.md) |
-| **devops** | NixOS | Контейнеризация и виртуализация: Docker, Kubernetes, QEMU, libvirtd, Terraform | [devops/README.md](devops/README.md) |
+| **devops** | NixOS + Darwin | Контейнеризация и виртуализация: Docker, Kubernetes, QEMU, libvirtd, Terraform | [devops/README.md](devops/README.md) |
 | **doc-redactors** | NixOS | Офис и документы: LibreOffice, WPS Office, Typst, LaTeX, PDF-утилиты, Obsidian | [doc-redactors/README.md](doc-redactors/README.md) |
 | **file-viewers** | NixOS | Файловый менеджер Nautilus, просмотрщик картинок qimgv, плееры VLC и mpv | [file-viewers/README.md](file-viewers/README.md) |
 | **fluxcast** | NixOS | Утилита трансляции Fluxcast (локальная сборка из исходников) | [fluxcast/README.md](fluxcast/README.md) |
 | **fonts** | NixOS | Системные шрифты (MS Core Fonts, Noto CJK, MigMix) и Nerd Fonts | [fonts/README.md](fonts/README.md) |
 | **fprint** | NixOS | Аутентификация по отпечатку пальца через PAM и fprintd | [fprint/README.md](fprint/README.md) |
 | **games** | NixOS | Игры: Wine Wayland, Bottles, Sudoku, Steam с пробросом портов | [games/README.md](games/README.md) |
+| **gnome-theming** | Home | Расширения GNOME Shell для панели, дока и рабочего стола | [gnome-theming/README.md](gnome-theming/README.md) |
 | **graphics** | NixOS | САПР и графика: FreeCAD, Darktable, библиотеки OpenGL/Nvidia/Mesa | [graphics/README.md](graphics/README.md) |
 | **hardware** | NixOS | Диагностика оборудования (HAL Hardware Analyzer) | [hardware/README.md](hardware/README.md) |
 | **kicad** | Home | САПР печатных плат KiCad | [kicad/README.md](kicad/README.md) |
+| **macos-base** | Darwin | Базовые настройки macOS | [macos-base/default.nix](macos-base/default.nix) |
+| **macos-home** | Home | Пользовательские программы macOS | [macos-home/default.nix](macos-home/default.nix) |
+| **macos-keyboard** | Darwin + Home | Клавиатурные сочетания Karabiner | [macos-keyboard/README.md](macos-keyboard/README.md) |
+| **macos-packages** | Darwin | Программы и шрифты macOS | [macos-packages/default.nix](macos-packages/default.nix) |
+| **macos-tiling** | Darwin + Home | Тайлинг yabai и сочетания skhd | [macos-tiling/README.md](macos-tiling/README.md) |
 | **math** | NixOS | Математика и радио: Qalculate GTK, GNU Octave, GNU Radio | [math/README.md](math/README.md) |
 | **messengers** | NixOS | Мессенджеры: Telegram Desktop, Discord | [messengers/README.md](messengers/README.md) |
 | **moonlight** | NixOS + Darwin | Клиент игрового стриминга Moonlight | [moonlight/README.md](moonlight/README.md) |

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "title": "Neovim с nvf",
+  "description": "Конфигурация Neovim со встроенными плагинами и инструментами разработки.",
+  "layers": {
+    "home": [
+      "linux",
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "nvf",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "programs",
+        "nvf",
+        "enable"
+      ],
+      "title": "Конфигурация Neovim",
+      "description": "Включает сборку и установку Neovim через nvf.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}

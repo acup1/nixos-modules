@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Caelestia Shell",
+  "description": "Панель и оболочка Wayland из проекта Caelestia.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "caelestia-shell",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

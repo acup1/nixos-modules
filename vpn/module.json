@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "title": "VPN и прокси",
+  "description": "Amnezia VPN и Clash Verge с поддержкой TUN.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "vpn",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "programs",
+        "clash-verge",
+        "tunMode"
+      ],
+      "title": "TUN в Clash Verge",
+      "description": "Включает маршрутизацию приложений через виртуальный интерфейс TUN.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "programs",
+        "clash-verge",
+        "autoStart"
+      ],
+      "title": "Автозапуск Clash Verge",
+      "description": "Запускает интерфейс Clash Verge при входе пользователя.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "programs",
+        "amnezia-vpn",
+        "enable"
+      ],
+      "title": "Amnezia VPN",
+      "description": "Включает интеграцию клиента Amnezia VPN.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}

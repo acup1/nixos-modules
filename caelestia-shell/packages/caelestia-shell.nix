@@ -1,12 +1,11 @@
 {
-  config,
+  lib,
   pkgs,
-  inputs,
   ...
 }: let
+  inherit (pkgs.stdenv) hostPlatform;
   caelestia-shell = builtins.getFlake "github:caelestia-dots/shell";
+  shellPackage = caelestia-shell.packages.${hostPlatform.system}.default or null;
 in {
-  environment.systemPackages = with pkgs; [
-    (caelestia-shell.packages.${system}.default or (throw "Package 'default' not found in the flake"))
-  ];
+  components.caelestia-shell.packages = lib.optional (hostPlatform.isLinux && shellPackage != null) shellPackage;
 }

@@ -1,11 +1,13 @@
 {
   inputs,
+  lib,
   pkgs,
   username,
   ...
 }: let
-  hostSystem = pkgs.stdenv.hostPlatform.system;
-  hyprland = inputs.hyprland.packages.${hostSystem}.hyprland;
+  inherit (pkgs.stdenv) hostPlatform;
+  hyprland = inputs.hyprland.packages.${hostPlatform.system}.hyprland or null;
+  available = hyprland != null && lib.meta.availableOn hostPlatform hyprland;
 
   sunshineClientMode = pkgs.writeShellScript "sunshine-client-mode" ''
     set -eu
@@ -54,7 +56,7 @@
       ${hyprland}/bin/hyprctl output remove HEADLESS-0
     fi
   '';
-in {
+in lib.mkIf available {
   # Для полностью headless-загрузки GDM сразу запускает пользовательскую
   # сессию Hyprland, в которой создаётся виртуальный монитор SUNSHINE.
   services.displayManager = {

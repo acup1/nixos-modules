@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "title": "Локальный ИИ",
+  "description": "Раздел для дополнительных приложений локального ИИ.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "AI",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

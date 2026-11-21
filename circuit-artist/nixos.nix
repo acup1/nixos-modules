@@ -1,4 +1,5 @@
 {lib, ...}: {
   imports =
-    lib.filesystem.listFilesRecursive ./packages;
+    [(import ../lib/component-packages.nix "circuit-artist" "system")]
+    ++ lib.filesystem.listFilesRecursive ./packages;
 }

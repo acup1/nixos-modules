@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "title": "Игры и Wine",
+  "description": "Игровой набор Wine, Bottles, GNOME Sudoku и Steam для совместимых платформ.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "games",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "programs",
+        "steam",
+        "enable"
+      ],
+      "title": "Steam",
+      "description": "Включает интеграцию Steam на x86_64 Linux.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "programs",
+        "steam",
+        "remotePlay",
+        "openFirewall"
+      ],
+      "title": "Доступ Steam Remote Play",
+      "description": "Разрешает входящие соединения для удалённой игры.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "programs",
+        "steam",
+        "dedicatedServer",
+        "openFirewall"
+      ],
+      "title": "Доступ игровых серверов",
+      "description": "Открывает порт выделенных серверов Steam.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}

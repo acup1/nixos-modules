@@ -1,4 +1,6 @@
 {...}: {
+  imports = [(import ../lib/component-packages.nix "macos-keyboard" "system")];
+
   homebrew.casks = ["karabiner-elements"];
 
   system.defaults.CustomUserPreferences."com.apple.HIToolbox" = {

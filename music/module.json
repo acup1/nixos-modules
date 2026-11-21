@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "title": "Музыка Muffon",
+  "description": "Музыкальный плеер Muffon для совместимых платформ.",
+  "layers": {
+    "home": [
+      "linux",
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "music",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

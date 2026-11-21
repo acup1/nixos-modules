@@ -1,4 +1,4 @@
-{config, lib, pkgs, ...}: let
+{options, lib, pkgs, ...}: let
   localColorways = pkgs.vscode-utils.buildVscodeExtension {
     pname = "acup-local-colorways";
     version = "1.0.0";
@@ -170,8 +170,8 @@ in {
           command = "workbench.action.focusActiveEditorGroup";
           when = "terminalFocus && !terminalFindVisible && !terminalSuggestWidgetVisible";
         }
-      ] ++ lib.optionals (pkgs.stdenv.hostPlatform.isDarwin && config.home.activation ? installKarabinerConfig) [
-        # The macos-keyboard activation installs Karabiner's Linux-style GUI shortcuts.
+      ] ++ lib.optionals (pkgs.stdenv.hostPlatform.isDarwin && options ? components.macos-keyboard.packages) [
+        # macos-keyboard installs Karabiner's Linux-style GUI shortcuts.
         # Convert them back to control characters inside VS Code's terminal.
         (terminalSequence "cmd+a" (builtins.fromJSON ''"\u0001"''))
         (terminalSequence "cmd+b" (builtins.fromJSON ''"\u0002"''))

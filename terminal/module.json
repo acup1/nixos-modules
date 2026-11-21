@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "title": "Терминал и командная строка",
+  "description": "Ghostty или Alacritty, утилиты CLI и настройки Zsh, Yazi, btop и Cava.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ],
+    "home": [
+      "linux",
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "terminal",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "terminal",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

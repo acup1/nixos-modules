@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+  components.multimedia.packages = with pkgs; [
     obs-studio
   ];
 }

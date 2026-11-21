@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "title": "Расширения GNOME Shell",
+  "description": "Расширения для дока, панели, индикаторов и значков рабочего стола.",
+  "layers": {
+    "home": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "gnome-theming",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "programs",
+        "gnome-shell",
+        "enable"
+      ],
+      "title": "Интеграция GNOME Shell",
+      "description": "Управляет установленными расширениями GNOME Shell через Home Manager.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}

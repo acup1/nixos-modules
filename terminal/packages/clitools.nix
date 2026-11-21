@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  environment.systemPackages = with pkgs; [
+  components.terminal.packages = with pkgs; [
     comma
 
     linuxKernel.packages.linux_zen.cpupower

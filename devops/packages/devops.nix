@@ -1,5 +1,5 @@
 {lib, pkgs, ...}: {
-  environment.systemPackages =
+  components.devops.packages =
     (with pkgs; [
       docker
       docker-compose

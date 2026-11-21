@@ -1,6 +1,6 @@
 { pkgs, ... }: {
 
-  environment.systemPackages = with pkgs; [
+  components.browsers.packages = with pkgs; [
     google-chrome
     tor-browser
   ];

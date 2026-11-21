@@ -70,6 +70,8 @@
     ${yabai} -m space "$space" --balance
   '';
 in {
+  imports = [(import ../lib/component-packages.nix "macos-tiling" "system")];
+
   services.yabai = {
     enable = true;
     package = pkgs.yabai;

@@ -1,3 +1,3 @@
-{
-  nixos = import ./nixos.nix;
+import ../lib/component.nix {
+  nixos = ./nixos.nix;
 }

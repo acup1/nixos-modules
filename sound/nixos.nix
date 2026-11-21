@@ -1,3 +1,5 @@
 {lib, ...}: {
-  imports = lib.filesystem.listFilesRecursive ./packages;
+  imports =
+    [(import ../lib/component-packages.nix "sound" "system")]
+    ++ lib.filesystem.listFilesRecursive ./packages;
 }

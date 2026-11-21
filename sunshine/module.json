@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "title": "Sunshine",
+  "description": "Сервер игрового стриминга с виртуальным монитором для клиента Moonlight.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ],
+    "home": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "sunshine",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "sunshine",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "sunshine",
+        "autoStart"
+      ],
+      "title": "Автозапуск Sunshine",
+      "description": "Запускает сервер стриминга при входе пользователя.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "sunshine",
+        "openFirewall"
+      ],
+      "title": "Открыть порты Sunshine",
+      "description": "Разрешает входящий трафик игрового стриминга.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}

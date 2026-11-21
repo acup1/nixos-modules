@@ -26,5 +26,5 @@ in {
     '';
   };
 
-  home.packages = [pkgs.starship];
+  components.macos-home.packages = [pkgs.starship];
 }

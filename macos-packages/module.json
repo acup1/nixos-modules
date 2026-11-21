@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "title": "Программы и шрифты macOS",
+  "description": "Терминальные и офисные программы, инструменты разработки, Zen Browser и шрифты.",
+  "layers": {
+    "darwin": [
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "macos-packages",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "fonts",
+        "packages"
+      ],
+      "title": "Системные шрифты",
+      "description": "Выбирает пакеты шрифтов для системной регистрации.",
+      "type": "packages"
+    }
+  ]
+}

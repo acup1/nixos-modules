@@ -1,3 +1,3 @@
-{
-  darwin = import ./darwin.nix;
+import ../lib/component.nix {
+  darwin = ./darwin.nix;
 }

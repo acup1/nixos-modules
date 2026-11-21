@@ -13,16 +13,16 @@
     # ref = "master";  # or a branch/tag if you want
   };
 in {
-  home.packages = with pkgs; [gimp3];
+  components.photoGIMP.packages = with pkgs; [gimp3];
   #xdg.configFile."waybar".source = ./.config/waybar;
 
   home.activation.copyPhotoGIMPConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    target="$HOME/.config/GIMP"
+    target=${lib.escapeShellArg "${config.xdg.configHome}/GIMP"}
     if [ -L "$target" ]; then
-      rm "$target"
+      run rm "$target"
     fi
-    mkdir -p "$target"
-    cp -rL ${lib.escapeShellArg "${repo.outPath}/.config/GIMP/."} "$target/"
-    chmod -R u+rwX "$target"
+    run mkdir -p "$target"
+    run cp -rL ${lib.escapeShellArg "${repo.outPath}/.config/GIMP/."} "$target/"
+    run chmod -R u+rwX "$target"
   '';
 }
