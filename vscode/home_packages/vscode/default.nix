@@ -1,4 +1,4 @@
-{lib, pkgs, ...}: let
+{config, lib, pkgs, ...}: let
   localColorways = pkgs.vscode-utils.buildVscodeExtension {
     pname = "acup-local-colorways";
     version = "1.0.0";
@@ -46,11 +46,10 @@ in {
     package = pkgs.vscode;
 
     profiles.default = {
-      extensions = [
-        pkgs.vscode-extensions.vscodevim.vim
-        codexExtension
-        localColorways
-      ];
+      extensions =
+        [pkgs.vscode-extensions.vscodevim.vim]
+        ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") codexExtension
+        ++ [localColorways];
 
       userSettings = {
         "workbench.colorTheme" = "Ocean High Contrast";
@@ -171,8 +170,8 @@ in {
           command = "workbench.action.focusActiveEditorGroup";
           when = "terminalFocus && !terminalFindVisible && !terminalSuggestWidgetVisible";
         }
-
-        # Karabiner turns Linux Ctrl shortcuts into Cmd shortcuts in GUI apps.
+      ] ++ lib.optionals (pkgs.stdenv.hostPlatform.isDarwin && config.home.activation ? installKarabinerConfig) [
+        # The macos-keyboard activation installs Karabiner's Linux-style GUI shortcuts.
         # Convert them back to control characters inside VS Code's terminal.
         (terminalSequence "cmd+a" (builtins.fromJSON ''"\u0001"''))
         (terminalSequence "cmd+b" (builtins.fromJSON ''"\u0002"''))

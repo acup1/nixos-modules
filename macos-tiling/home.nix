@@ -7,7 +7,19 @@
   yabai = lib.getExe pkgs.yabai;
   jq = lib.getExe pkgs.jq;
   skhd = lib.getExe pkgs.skhd;
-  ghosttyApp = "${config.home.homeDirectory}/Applications/Home Manager Apps/Ghostty.app";
+  inherit (config.targets.darwin) copyApps linkApps;
+  applicationsDirectory =
+    if copyApps.enable
+    then copyApps.directory
+    else if linkApps.enable
+    then linkApps.directory
+    else null;
+  openGhostty =
+    if applicationsDirectory == null
+    then "/usr/bin/open -na Ghostty"
+    else let
+      ghosttyApp = lib.escapeShellArg "${config.home.homeDirectory}/${applicationsDirectory}/Ghostty.app";
+    in "if [ -d ${ghosttyApp} ]; then /usr/bin/open -na ${ghosttyApp}; else /usr/bin/open -na Ghostty; fi";
 
   closeWindowUnderMouse = pkgs.writeShellScript "yabai-close-window-under-mouse" ''
     target="$(${yabai} -m query --windows --window mouse 2>/dev/null)" || exit 0
@@ -72,7 +84,7 @@
   '';
 
   hotkeyHelp = pkgs.writeShellScript "yabai-hotkeys" ''
-    /usr/bin/osascript -e 'display dialog "Mod (physical Option)" & return & return & "Arrows: focus" & return & "Ctrl + H/J/K/L or arrows: move" & return & "1..9: space" & return & "Shift + 1..9: move to space" & return & "Page Down/Page Up: next/previous space" & return & "F: maximize" & return & "V: floating/tiling" with title "yabai shortcuts" buttons {"OK"} default button "OK"'
+    /usr/bin/osascript -e 'display dialog "Mod (left Command)" & return & return & "Arrows: focus" & return & "Ctrl + H/J/K/L or arrows: move" & return & "1..9: space" & return & "Shift + 1..9: move to space" & return & "Page Down/Page Up: next/previous space" & return & "F: maximize" & return & "F14: floating/tiling" with title "yabai shortcuts" buttons {"OK"} default button "OK"'
   '';
 in {
   services.skhd = {
@@ -170,7 +182,7 @@ in {
 
       # Applications and system actions.
       f13          : ${closeWindowUnderMouse}
-      lcmd - q      : /usr/bin/open -na '${ghosttyApp}'
+      lcmd - q      : ${openGhostty}
       lcmd - x      : ${skhd} -k 'f19'
       lcmd - o      : /usr/bin/open '/System/Applications/Mission Control.app'
       lcmd + shift - k : osascript -e 'set currentVolume to output volume of (get volume settings)' -e 'set volume output volume (currentVolume - 5)'

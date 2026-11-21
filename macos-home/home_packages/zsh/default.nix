@@ -1,9 +1,12 @@
 {
+  lib,
   pkgs,
   username,
   flakeDir,
   ...
-}: {
+}: let
+  flakePath = toString flakeDir;
+in {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -12,16 +15,16 @@
 
     initContent = ''
       ${builtins.readFile ./.zshrc}
-      alias nixrebuild="sudo darwin-rebuild switch --impure --flake ${flakeDir}"
-      alias nixhomerebuild="home-manager switch --impure --flake ${flakeDir}#${username}"
+      nixrebuild() {
+        sudo darwin-rebuild switch --impure --flake ${lib.escapeShellArg flakePath}
+      }
+      nixhomerebuild() {
+        home-manager switch --impure --flake ${lib.escapeShellArg "${flakePath}#${username}"}
+      }
       alias nixcleanup="sudo nix-collect-garbage -d"
       alias nixfullrebuild="nixrebuild && nixhomerebuild && nixcleanup"
-      # ${pkgs.pokemon-colorscripts}/bin/pokemon-colorscripts -r -b
     '';
   };
 
-  home.packages = with pkgs; [
-    starship
-    # pokemon-colorscripts
-  ];
+  home.packages = [pkgs.starship];
 }

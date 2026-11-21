@@ -1,9 +1,13 @@
 {
+  config,
   lib,
   pkgs,
   username,
   ...
-}: {
+}: let
+  configuredHome = config.users.users.${username}.home or null;
+  homeDirectory = if configuredHome == null then "/Users/${username}" else toString configuredHome;
+in {
   imports = lib.filesystem.listFilesRecursive ./packages;
 
   launchd.user.agents.colima.serviceConfig = {
@@ -18,8 +22,8 @@
       "--mount-type"
       "virtiofs"
     ];
-    EnvironmentVariables.HOME = "/Users/${username}";
-    WorkingDirectory = "/Users/${username}";
+    EnvironmentVariables.HOME = homeDirectory;
+    WorkingDirectory = homeDirectory;
     RunAtLoad = true;
     KeepAlive = true;
     ProcessType = "Interactive";
