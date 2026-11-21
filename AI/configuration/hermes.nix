@@ -48,6 +48,8 @@ in {
   config = lib.mkIf cfg.enable {
     services.hermes-agent = {
       enable = true;
+      # Reclaim this profile if the dashboard started a detached gateway.
+      extraArgs = lib.mkBefore ["run" "--replace"];
       backend = {
         mode = "dashboard";
         inherit (cfg) host port;
@@ -73,9 +75,9 @@ in {
       );
     };
 
-    systemd.services.hermes-backend = lib.mkIf ollama.enable {
-      after = ["ollama.service"];
-      wants = ["ollama.service"];
+    systemd.services.hermes-backend = {
+      after = ["hermes-agent.service"] ++ lib.optional ollama.enable "ollama.service";
+      wants = lib.optional ollama.enable "ollama.service";
     };
 
     networking.firewall.allowedTCPPorts = lib.optional cfg.openFirewall cfg.port;

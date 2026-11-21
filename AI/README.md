@@ -19,3 +19,5 @@ services.hermes-agent.environmentFiles = ["/etc/hermes/dashboard.env"];
 ```
 
 Hermes требует аутентификацию при внешнем bind или публичном URL. Храните параметры входа вне Nix store. Для публичного доступа настройте OIDC и TLS. Для прямого доступа из доверенной сети задайте локальный адрес в `services.hermes-web.host` и при необходимости включите `services.hermes-web.openFirewall`. [Настройка аутентификации Hermes](https://hermes-agent.nousresearch.com/docs/user-guide/features/web-dashboard#authentication)
+
+Каналы мессенджеров задаются в `services.hermes-agent.settings.platforms`, а их учётные данные хранятся в файлах из `services.hermes-agent.environmentFiles`. Панель показывает состояние каналов, а изменения в управляемой NixOS-конфигурации вступают в силу после `nh os switch`. Шлюз работает как системная служба `hermes-agent.service`. Для ручного перезапуска используйте `sudo systemctl restart hermes-agent.service`. [Настройка Hermes на NixOS](https://hermes-agent.nousresearch.com/docs/getting-started/nix-setup)
