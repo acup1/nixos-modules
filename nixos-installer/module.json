@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "title": "Установщик и конфигуратор Nix",
+  "description": "Терминальный установщик для выбора модулей, настройки компонентов и подготовки конфигурации NixOS или macOS.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ],
+    "darwin": [
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "nixos-installer",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "nixos-installer",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    }
+  ]
+}

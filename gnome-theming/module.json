@@ -30,6 +30,26 @@
       "description": "Управляет установленными расширениями GNOME Shell через Home Manager.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "gnome-theming",
+        "extensions"
+      ],
+      "title": "Расширения GNOME Shell",
+      "description": "Имена пакетов из gnomeExtensions, которые Home Manager установит и включит.",
+      "type": "string_list",
+      "default": [
+        "appindicator",
+        "blur-my-shell",
+        "dash-to-dock",
+        "desktop-icons-ng-ding",
+        "desktop-clock",
+        "rounded-corners",
+        "tray-icons-reloaded"
+      ]
     }
   ]
 }
