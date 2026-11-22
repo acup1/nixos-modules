@@ -74,6 +74,7 @@ modules = [
 | **hardware** | NixOS + Darwin | Диагностика оборудования (HAL Hardware Analyzer) | [hardware/README.md](hardware/README.md) |
 | **k3s** | NixOS | Сервер компактного Kubernetes и настройки интерфейсов сети кластера. | [k3s/README.md](k3s/README.md) |
 | **kicad** | Darwin + Home | САПР печатных плат и опциональный MCP для просмотра проектов и проверок. | [kicad/README.md](kicad/README.md) |
+| **lazarus** | NixOS | Среда разработки Free Pascal с интерфейсом Qt 6 | [lazarus/default.nix](lazarus/default.nix) |
 | **macos-base** | Darwin | Базовые настройки macOS | [macos-base/default.nix](macos-base/default.nix) |
 | **macos-home** | Home (macOS) | Совместимость с прежним набором настроек терминала macOS | [macos-home/default.nix](macos-home/default.nix) |
 | **macos-keyboard** | Darwin + Home (macOS) | Клавиатурные сочетания Karabiner | [macos-keyboard/README.md](macos-keyboard/README.md) |
