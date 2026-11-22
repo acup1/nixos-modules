@@ -6,19 +6,19 @@
 
 | Приложение | Назначение | Выпуск |
 | --- | --- | --- |
-| ArtCraft Launcher | Менеджер приложений | [0.3.2](https://github.com/storytold/craft-launcher/releases/tag/v0.3.2) |
-| PhotoCraft | Растровая графика и PSD | [0.7.0](https://github.com/storytold/photocraft/releases/tag/v0.7.0) |
-| VectorCraft | Векторная графика | [0.9.0](https://github.com/storytold/vectorcraft/releases/tag/v0.9.0) |
-| FilmCraft | Монтаж видео | [0.6.0](https://github.com/storytold/filmcraft/releases/tag/v0.6.0) |
-| LightCraft | Обработка фотографий и RAW | [0.6.0](https://github.com/storytold/lightcraft/releases/tag/v0.6.0) |
-| PdfCraft | Просмотр и редактирование PDF | [0.6.0](https://github.com/storytold/pdfcraft/releases/tag/v0.6.0) |
-| EffectCraft | Анимация и композитинг | [0.8.0](https://github.com/storytold/effectcraft/releases/tag/v0.8.0) |
-| DesignCraft | Вёрстка публикаций | [0.6.0](https://github.com/storytold/designcraft/releases/tag/v0.6.0) |
-| WordCraft | Текстовые документы | [0.8.0](https://github.com/storytold/wordcraft/releases/tag/v0.8.0) |
-| SoundCraft | Работа со звуком | [0.5.0](https://github.com/storytold/soundcraft/releases/tag/v0.5.0) |
-| DeckCraft | Презентации | [0.5.0](https://github.com/storytold/deckcraft/releases/tag/v0.5.0) |
-| CADCraft | САПР и черчение | [0.5.0](https://github.com/storytold/cadcraft/releases/tag/v0.5.0) |
-| GridCraft | Электронные таблицы | [0.5.0](https://github.com/storytold/gridcraft/releases/tag/v0.5.0) |
+| ArtCraft Launcher | Менеджер приложений | [0.19.2](https://github.com/storytold/craft-launcher/releases/tag/v0.19.2) |
+| PhotoCraft | Растровая графика и PSD | [0.23.1](https://github.com/storytold/photocraft/releases/tag/v0.23.1) |
+| VectorCraft | Векторная графика | [0.24.1](https://github.com/storytold/vectorcraft/releases/tag/v0.24.1) |
+| FilmCraft | Монтаж видео | [0.20.1](https://github.com/storytold/filmcraft/releases/tag/v0.20.1) |
+| LightCraft | Обработка фотографий и RAW | [0.21.1](https://github.com/storytold/lightcraft/releases/tag/v0.21.1) |
+| PdfCraft | Просмотр и редактирование PDF | [0.21.1](https://github.com/storytold/pdfcraft/releases/tag/v0.21.1) |
+| EffectCraft | Анимация и композитинг | [0.24.1](https://github.com/storytold/effectcraft/releases/tag/v0.24.1) |
+| DesignCraft | Вёрстка публикаций | [0.20.1](https://github.com/storytold/designcraft/releases/tag/v0.20.1) |
+| WordCraft | Текстовые документы | [0.18.1](https://github.com/storytold/wordcraft/releases/tag/v0.18.1) |
+| SoundCraft | Работа со звуком | [0.20.1](https://github.com/storytold/soundcraft/releases/tag/v0.20.1) |
+| DeckCraft | Презентации | [0.18.1](https://github.com/storytold/deckcraft/releases/tag/v0.18.1) |
+| CADCraft | САПР и черчение | [0.20.1](https://github.com/storytold/cadcraft/releases/tag/v0.20.1) |
+| GridCraft | Электронные таблицы | [0.19.1](https://github.com/storytold/gridcraft/releases/tag/v0.19.1) |
 
 ## Использование
 
