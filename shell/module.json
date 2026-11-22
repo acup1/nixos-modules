@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "title": "Командные оболочки",
+  "description": "Bash, Zsh и подсказка Starship.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ],
+    "darwin": [
+      "darwin"
+    ],
+    "home": [
+      "linux",
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "shell",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Дополняет или заменяет стандартный список пакетов компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "shell",
+        "enabledPackages",
+        "zsh"
+      ],
+      "title": "Zsh",
+      "description": "Подключает Zsh в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "shell",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Дополняет или заменяет стандартный список пакетов компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "shell",
+        "enabledPackages",
+        "zsh"
+      ],
+      "title": "Zsh",
+      "description": "Подключает Zsh в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "shell",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Дополняет или заменяет стандартный список пакетов компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "shell",
+        "enabledPackages",
+        "bash"
+      ],
+      "title": "Bash",
+      "description": "Подключает Bash в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "shell",
+        "enabledPackages",
+        "zsh"
+      ],
+      "title": "Zsh",
+      "description": "Подключает Zsh в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "shell",
+        "enabledPackages",
+        "starship"
+      ],
+      "title": "Starship",
+      "description": "Подключает Starship в этом компоненте.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}

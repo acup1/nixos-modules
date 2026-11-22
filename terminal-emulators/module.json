@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "title": "Эмуляторы терминала",
+  "description": "Alacritty и Ghostty с настройками окна и оформления.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ],
+    "darwin": [
+      "darwin"
+    ],
+    "home": [
+      "linux",
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "terminal-emulators",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Дополняет или заменяет стандартный список пакетов компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "terminal-emulators",
+        "enabledPackages",
+        "alacritty"
+      ],
+      "title": "Alacritty",
+      "description": "Подключает Alacritty в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "terminal-emulators",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Дополняет или заменяет стандартный список пакетов компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "terminal-emulators",
+        "enabledPackages",
+        "alacritty"
+      ],
+      "title": "Alacritty",
+      "description": "Подключает Alacritty в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "terminal-emulators",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Дополняет или заменяет стандартный список пакетов компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "terminal-emulators",
+        "enabledPackages",
+        "alacritty"
+      ],
+      "title": "Alacritty",
+      "description": "Подключает Alacritty в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "terminal-emulators",
+        "enabledPackages",
+        "ghostty"
+      ],
+      "title": "Ghostty",
+      "description": "Подключает Ghostty в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "terminal-emulators",
+        "enabledPackages",
+        "nerd-fonts-code-new-roman"
+      ],
+      "title": "nerd-fonts-code-new-roman",
+      "description": "Подключает nerd-fonts-code-new-roman в этом компоненте.",
+      "type": "bool",
+      "default": true,
+      "platforms": [
+        "linux"
+      ]
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "terminal-emulators",
+        "enabledPackages",
+        "nerd-fonts-symbols-only"
+      ],
+      "title": "nerd-fonts-symbols-only",
+      "description": "Подключает nerd-fonts-symbols-only в этом компоненте.",
+      "type": "bool",
+      "default": true,
+      "platforms": [
+        "linux"
+      ]
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "terminal-emulators",
+        "showWindowDecorations"
+      ],
+      "title": "Рамки и заголовки окон",
+      "description": "Применяет выбранное оформление окна к Ghostty и Alacritty. Без переопределения сохраняет оформление каждой платформы.",
+      "type": "bool"
+    }
+  ]
+}

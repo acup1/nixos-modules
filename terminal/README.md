@@ -1,19 +1,16 @@
 # Модуль `terminal`
 
-* **Экспорт**: `nixos` + `home`
-* **Назначение**: Терминальная экосистема, CLI-утилиты, эмуляторы терминала и конфигурация Zsh.
+Этот компонент сохраняет прежние импорты `nixos` и `home` и настройки
+`components.terminal`. В новых селекторах можно выбирать
+`terminal-emulators`, `shell` и `cli-tools` по отдельности.
 
-## Структура
+| Что настраивает прежний переключатель | Новый компонент |
+| --- | --- |
+| Alacritty, Ghostty и шрифты Ghostty | `terminal-emulators` |
+| Zsh и Starship | `shell` |
+| btop, Cava, Yazi и системные CLI-утилиты | `cli-tools` |
 
-* `default.nix` — экспортирует `nixos` и `home`.
-* `nixos.nix` — подключает `packages/`.
-* `home.nix` — подключает модули из `home_packages/`.
-* `packages/`:
-  * `clitools.nix` — системные утилиты: `fzf`, `ripgrep`, `bat`, `fd`, `eza`, `fastfetch`, `tldr`, `jq`, `starship`.
-  * `terminal.nix` — эмулятор терминала `alacritty`.
-* `home_packages/`:
-  * `btop/` — системный монитор с кастомной темой.
-  * `cava/` — терминальный анализатор аудиоспектра.
-  * `ghostty/` — современный терминал с аппаратным рендерингом Ghostty.
-  * `yazi/` — быстрый асинхронный файловый менеджер с темой Kanagawa, плагинами и горячими клавишами.
-  * `zsh/` — файл `.zshrc`, алиасы и функции управления сборками (`nixrebuild`).
+Переключатели используют прежние имена пакетов в
+`components.<имя компонента>.enabledPackages`. Новая настройка
+`components.terminal-emulators.showWindowDecorations` управляет рамками окон
+в слое Home Manager.

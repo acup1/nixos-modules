@@ -1,0 +1,494 @@
+{
+  "schemaVersion": 1,
+  "title": "Утилиты командной строки",
+  "description": "Yazi, btop, Cava и системные CLI-утилиты для Linux и macOS.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ],
+    "darwin": [
+      "darwin"
+    ],
+    "home": [
+      "linux",
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Дополняет или заменяет стандартный список пакетов компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "p7zip"
+      ],
+      "title": "p7zip",
+      "description": "Подключает p7zip в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "wget"
+      ],
+      "title": "wget",
+      "description": "Подключает wget в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "curl"
+      ],
+      "title": "curl",
+      "description": "Подключает curl в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "watch"
+      ],
+      "title": "watch",
+      "description": "Подключает watch в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "unzip"
+      ],
+      "title": "unzip",
+      "description": "Подключает unzip в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "fzf"
+      ],
+      "title": "fzf",
+      "description": "Подключает fzf в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "git"
+      ],
+      "title": "git",
+      "description": "Подключает git в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "sshfs"
+      ],
+      "title": "sshfs",
+      "description": "Подключает sshfs в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "bat"
+      ],
+      "title": "bat",
+      "description": "Подключает bat в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "zellij"
+      ],
+      "title": "zellij",
+      "description": "Подключает zellij в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "fastfetch"
+      ],
+      "title": "fastfetch",
+      "description": "Подключает fastfetch в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "cmatrix"
+      ],
+      "title": "cmatrix",
+      "description": "Подключает cmatrix в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "pipes-rs"
+      ],
+      "title": "pipes-rs",
+      "description": "Подключает pipes-rs в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "comma"
+      ],
+      "title": "comma",
+      "description": "Подключает comma в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "yq"
+      ],
+      "title": "yq",
+      "description": "Подключает yq в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "cpupower"
+      ],
+      "title": "cpupower",
+      "description": "Подключает cpupower в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "cli-tools",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Дополняет или заменяет стандартный список пакетов компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "p7zip"
+      ],
+      "title": "p7zip",
+      "description": "Подключает p7zip в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "wget"
+      ],
+      "title": "wget",
+      "description": "Подключает wget в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "curl"
+      ],
+      "title": "curl",
+      "description": "Подключает curl в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "watch"
+      ],
+      "title": "watch",
+      "description": "Подключает watch в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "unzip"
+      ],
+      "title": "unzip",
+      "description": "Подключает unzip в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "fzf"
+      ],
+      "title": "fzf",
+      "description": "Подключает fzf в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "git"
+      ],
+      "title": "git",
+      "description": "Подключает git в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "sshfs"
+      ],
+      "title": "sshfs",
+      "description": "Подключает sshfs в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "bat"
+      ],
+      "title": "bat",
+      "description": "Подключает bat в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "zellij"
+      ],
+      "title": "zellij",
+      "description": "Подключает zellij в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "fastfetch"
+      ],
+      "title": "fastfetch",
+      "description": "Подключает fastfetch в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "cmatrix"
+      ],
+      "title": "cmatrix",
+      "description": "Подключает cmatrix в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "pipes-rs"
+      ],
+      "title": "pipes-rs",
+      "description": "Подключает pipes-rs в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "comma"
+      ],
+      "title": "comma",
+      "description": "Подключает comma в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "yq"
+      ],
+      "title": "yq",
+      "description": "Подключает yq в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "cli-tools",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Дополняет или заменяет стандартный список пакетов компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "btop"
+      ],
+      "title": "btop",
+      "description": "Подключает btop в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "cava"
+      ],
+      "title": "Cava",
+      "description": "Подключает Cava в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "yazi"
+      ],
+      "title": "Yazi",
+      "description": "Подключает Yazi в этом компоненте.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}

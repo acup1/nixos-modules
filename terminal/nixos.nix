@@ -1,5 +1,13 @@
-{lib, ...}: {
-  imports =
-    [(import ../lib/component-packages.nix "terminal" "system")]
-    ++ lib.filesystem.listFilesRecursive ./packages;
+{
+  imports = [
+    ../terminal-emulators/system-module.nix
+    ../cli-tools/linux-module.nix
+    (import ./compatibility.nix "terminal" "system" [
+      {name = "terminal-emulators"; ids = ["alacritty"];}
+      {
+        name = "cli-tools";
+        ids = ["comma" "curl" "watch" "cpupower" "sshfs" "cmatrix" "pipes-rs"];
+      }
+    ])
+  ];
 }
