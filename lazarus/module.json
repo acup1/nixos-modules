@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "title": "Lazarus",
+  "description": "Среда разработки Free Pascal с интерфейсом Qt 6.",
+  "layers": {
+    "nixos": ["linux"]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": ["components", "lazarus", "enabledPackages", "lazarus-qt6"],
+      "title": "Lazarus Qt 6",
+      "description": "Устанавливает Lazarus с интерфейсом Qt 6.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}
