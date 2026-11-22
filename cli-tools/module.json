@@ -452,6 +452,45 @@
       "type": "packages"
     },
     {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "btop"
+      ],
+      "title": "btop",
+      "description": "Устанавливает btop в системный профиль NixOS.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "cava"
+      ],
+      "title": "Cava",
+      "description": "Устанавливает Cava в системный профиль NixOS.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "cli-tools",
+        "enabledPackages",
+        "yazi"
+      ],
+      "title": "Yazi",
+      "description": "Устанавливает Yazi в системный профиль NixOS.",
+      "type": "bool",
+      "default": true
+    },
+    {
       "layer": "home",
       "path": [
         "components",
