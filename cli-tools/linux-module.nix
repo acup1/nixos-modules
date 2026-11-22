@@ -7,6 +7,9 @@ in {
   imports = [
     (import ../terminal/profile.nix "cli-tools" "system")
     (import ../lib/package-options.nix "cli-tools" (with pkgs; [
+      {id = "btop"; package = btop;}
+      {id = "cava"; package = cava;}
+      {id = "yazi"; package = yazi;}
       {id = "comma"; package = comma;}
       {id = "curl"; package = curl;}
       {id = "watch"; package = watch;}

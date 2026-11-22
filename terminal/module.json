@@ -116,6 +116,45 @@
       "default": true
     },
     {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "terminal",
+        "enabledPackages",
+        "btop"
+      ],
+      "title": "btop",
+      "description": "Устанавливает btop в системный профиль NixOS.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "terminal",
+        "enabledPackages",
+        "cava"
+      ],
+      "title": "Cava",
+      "description": "Устанавливает Cava в системный профиль NixOS.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "terminal",
+        "enabledPackages",
+        "yazi"
+      ],
+      "title": "Yazi",
+      "description": "Устанавливает Yazi в системный профиль NixOS.",
+      "type": "bool",
+      "default": true
+    },
+    {
       "layer": "home",
       "path": [
         "components",

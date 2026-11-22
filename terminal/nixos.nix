@@ -6,7 +6,7 @@
       {name = "terminal-emulators"; ids = ["alacritty"];}
       {
         name = "cli-tools";
-        ids = ["comma" "curl" "watch" "cpupower" "sshfs" "cmatrix" "pipes-rs"];
+        ids = ["btop" "cava" "yazi" "comma" "curl" "watch" "cpupower" "sshfs" "cmatrix" "pipes-rs"];
       }
     ])
   ];
