@@ -1,0 +1,45 @@
+{
+  "nodes": {
+    "niri": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1793091370,
+        "narHash": "sha256-PM8tinYBMFRZfRkOiRZPbgBdDK0tMlsqpeupa2b8CcU=",
+        "owner": "niri-wm",
+        "repo": "niri",
+        "rev": "fcbc971cf49a987b1e8d5ff1d64da6b1f61a1787",
+        "type": "github"
+      },
+      "original": {
+        "owner": "niri-wm",
+        "repo": "niri",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1785110946,
+        "narHash": "sha256-WWuWxmXKzGZWryswWlijP3Mjp6aGy4Ngmeil5nGMMjk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d3498f786f97ac0bded21b34bae0bf3809b45aa3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "niri": "niri"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

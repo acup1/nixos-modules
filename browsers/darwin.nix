@@ -1,4 +1,5 @@
-{inputs, lib, pkgs, ...}: let
+{config, lib, pkgs, specialArgs, ...}: let
+  inputs = specialArgs.inputs or (config._module.args.inputs or {});
   cask = import ../lib/darwin-cask.nix lib;
 in {
   imports = [

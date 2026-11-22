@@ -4,8 +4,14 @@
   darwin ? null,
   home ? null,
   homePlatform ? null,
+  inputFlake ? null,
 } @ component: let
-  layers = builtins.removeAttrs component ["homePlatform"];
+  layers = builtins.removeAttrs component ["homePlatform" "inputFlake"];
+
+  localInputs =
+    if inputFlake == null then {} else {
+      inputs = (builtins.getFlake "path:${toString inputFlake}").inputs;
+    };
 
   withConfig = {
     enable ? true,
@@ -24,7 +30,7 @@
     };
   in
     if enable
-    then builtins.mapAttrs configureLayer layers // {
+    then builtins.mapAttrs configureLayer layers // localInputs // {
       # Lets selectors customize an existing import without duplicating its settings.
       _componentPath = builtins.dirOf (toString layers.${builtins.head (builtins.attrNames layers)});
     }

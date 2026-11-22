@@ -15,4 +15,4 @@
 
 Для Google Chrome на NixOS разрешите несвободный пакет `google-chrome` в настройках nixpkgs.
 
-На Mac с Apple Silicon Zen используется по умолчанию. Модуль использует `inputs.zen-browser` из конфигурации хоста, если он задан, либо закреплённую версию Zen. На macOS Google Chrome и Tor Browser можно включить через `components.browsers.enabledPackages.google-chrome` и `components.browsers.enabledPackages.tor-browser`. Для них модуль использует casks Homebrew.
+На Mac с Apple Silicon Zen используется по умолчанию. Версия Zen и её зависимости закреплены в `inputs/flake.lock` этого модуля. Явно заданный хостом `inputs.zen-browser` по-прежнему переопределяет источник. На macOS Google Chrome и Tor Browser можно включить через `components.browsers.enabledPackages.google-chrome` и `components.browsers.enabledPackages.tor-browser`. Для них модуль использует casks Homebrew.
