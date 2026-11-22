@@ -36,58 +36,70 @@ modules = [
 
 `showWindowDecorations` управляет оформлением окон Ghostty и Alacritty. Значение `true` включает декорации. Пользовательские настройки применяются через Home Manager.
 
-Для своего каталога укажите `moduleSources = [ modulesRoot /absolute/path/to/private-modules ];` в селекторе хоста. Каждый компонент каталога содержит `default.nix` и `module.json`. Установщик показывает компоненты для выбранной платформы, в том числе из локальных директорий без Git.
+Для своего каталога укажите `moduleSources = [ modulesRoot /absolute/path/to/private-modules ];` в селекторе хоста. Каждый компонент каталога содержит `default.nix` и `module.json`. Установщик показывает весь каталог и отмечает недоступные для целевой системы компоненты и настройки. Локальные каталоги могут работать без Git.
+
+Старые конфигурации могут по-прежнему импортировать `macos-packages`. В каталоге установщика этот компонент заменён тематическими модулями.
+
+Для новых конфигураций наборы macOS выбираются по назначению, например `browsers`, `dev`, `fonts` или `cli-tools`. Прежний путь `macos-packages/default.nix` поддерживает существующие ручные импорты.
 
 ## Сводная таблица модулей
 
-| Модуль | Тип | Краткое описание | Документация |
+| Модуль | Слои | Краткое описание | Документация |
 | :--- | :--- | :--- | :--- |
-| **AI** | NixOS | Локальный ИИ (заготовки для Ollama и LM Studio) | [AI/README.md](AI/README.md) |
+| **AI** | NixOS + Home (macOS) | Ollama и Codex CLI. Панель Hermes Agent доступна на Linux и Mac с Apple Silicon. | [AI/README.md](AI/README.md) |
 | **android** | NixOS | Подсистема Android (Waydroid) и вебкамера через телефон (DroidCam) | [android/README.md](android/README.md) |
-| **base** | NixOS | Базовая система: сеть, Nix, кэши, NH, SSH, локаль, Zsh | [base/README.md](base/README.md) |
+| **artcraft** | NixOS (x86_64-linux) | Набор приложений ArtCraft для графики, монтажа, звука и документов. Доступен на x86_64 Linux. | [artcraft/README.md](artcraft/README.md) |
+| **base** | NixOS + Darwin | Базовые CLI-утилиты. Настройка системной инфраструктуры входит в слой NixOS. | [base/README.md](base/README.md) |
 | **bootloader** | NixOS | GRUB UEFI загрузчик с кастомной темой Intervals и поддержкой aarch64 | [bootloader/README.md](bootloader/README.md) |
 | **browsers** | NixOS + Darwin | Веб-браузеры: Google Chrome, Tor Browser, Zen Browser | [browsers/README.md](browsers/README.md) |
 | **caelestia-shell** | NixOS | Оболочка Caelestia Shell из внешнего Flake | [caelestia-shell/README.md](caelestia-shell/README.md) |
 | **circuit-artist** | NixOS | Логическая игра-симулятор цифровых схем Circuit Artist | [circuit-artist/README.md](circuit-artist/README.md) |
+| **cli-tools** | NixOS + Darwin + Home | CLI-утилиты и настройки Yazi и btop | [cli-tools/default.nix](cli-tools/default.nix) |
 | **codex** | NixOS + Darwin | OpenAI Codex CLI | [codex/README.md](codex/README.md) |
 | **dev** | NixOS + Darwin | Языки и компиляторы: C/C++, Rust, Go, Python, Node.js, Arduino | [dev/README.md](dev/README.md) |
 | **devops** | NixOS + Darwin | Контейнеризация и виртуализация: Docker, Kubernetes, QEMU, libvirtd, Terraform | [devops/README.md](devops/README.md) |
 | **doc-redactors** | NixOS + Darwin | Офис и документы: LibreOffice, WPS Office, Typst, LaTeX, PDF-утилиты, Obsidian | [doc-redactors/README.md](doc-redactors/README.md) |
-| **file-viewers** | NixOS | Файловый менеджер Nautilus, просмотрщик картинок qimgv, плееры VLC и mpv | [file-viewers/README.md](file-viewers/README.md) |
+| **file-viewers** | NixOS + Darwin | Плееры VLC и mpv. На Linux также доступны Nautilus и qimgv. | [file-viewers/README.md](file-viewers/README.md) |
 | **fluxcast** | NixOS | Утилита трансляции Fluxcast (локальная сборка из исходников) | [fluxcast/README.md](fluxcast/README.md) |
 | **fonts** | NixOS + Darwin | Системные шрифты (MS Core Fonts, Noto CJK, MigMix) и Nerd Fonts | [fonts/README.md](fonts/README.md) |
 | **fprint** | NixOS | Аутентификация по отпечатку пальца через PAM и fprintd | [fprint/README.md](fprint/README.md) |
-| **games** | NixOS | Игры: Wine Wayland, Bottles, Sudoku, Steam с пробросом портов | [games/README.md](games/README.md) |
-| **gnome-theming** | Home | Расширения GNOME Shell для панели, дока и рабочего стола | [gnome-theming/README.md](gnome-theming/README.md) |
-| **graphics** | NixOS | САПР и графика: FreeCAD, Darktable, библиотеки OpenGL/Nvidia/Mesa | [graphics/README.md](graphics/README.md) |
+| **games** | NixOS + Darwin | Steam и Sudoku. Wine с Wayland и Bottles доступны на Linux x86_64. | [games/README.md](games/README.md) |
+| **gnome-theming** | Home (Linux) | Расширения GNOME Shell для панели, дока и рабочего стола | [gnome-theming/README.md](gnome-theming/README.md) |
+| **gpu-unlock** | NixOS (x86_64-linux) | Пакет и системная настройка модуля ядра GPU Unlock. | [gpu-unlock/default.nix](gpu-unlock/default.nix) |
+| **graphics** | NixOS + Darwin | FreeCAD, Darktable и Coin3D. Дополнительные графические библиотеки входят в слой NixOS. | [graphics/README.md](graphics/README.md) |
 | **hardware** | NixOS | Диагностика оборудования (HAL Hardware Analyzer) | [hardware/README.md](hardware/README.md) |
-| **kicad** | Home | САПР печатных плат KiCad | [kicad/README.md](kicad/README.md) |
+| **k3s** | NixOS | Сервер компактного Kubernetes и настройки интерфейсов сети кластера. | [k3s/README.md](k3s/README.md) |
+| **kicad** | Darwin + Home | САПР печатных плат и опциональный MCP для просмотра проектов и проверок. | [kicad/README.md](kicad/README.md) |
 | **macos-base** | Darwin | Базовые настройки macOS | [macos-base/default.nix](macos-base/default.nix) |
-| **macos-home** | Home | Совместимость с прежним набором настроек терминала macOS | [macos-home/default.nix](macos-home/default.nix) |
-| **macos-keyboard** | Darwin + Home | Клавиатурные сочетания Karabiner | [macos-keyboard/README.md](macos-keyboard/README.md) |
-| **macos-packages** | Darwin | Совместимость с прежним набором программ и шрифтов macOS | [macos-packages/default.nix](macos-packages/default.nix) |
-| **macos-tiling** | Darwin + Home | Тайлинг yabai и сочетания skhd | [macos-tiling/README.md](macos-tiling/README.md) |
-| **math** | NixOS | Математика и радио: Qalculate GTK, GNU Octave, GNU Radio | [math/README.md](math/README.md) |
-| **messengers** | NixOS | Мессенджеры: Telegram Desktop, Discord | [messengers/README.md](messengers/README.md) |
-| **minecraft-rust** | Darwin (Apple Silicon) | Minecraft Java Edition 26.3 на Rust, игровой клиент и лаунчер Horizon | [minecraft-rust/README.md](minecraft-rust/README.md) |
+| **macos-home** | Home (macOS) | Совместимость с прежним набором настроек терминала macOS | [macos-home/default.nix](macos-home/default.nix) |
+| **macos-keyboard** | Darwin + Home (macOS) | Клавиатурные сочетания Karabiner | [macos-keyboard/README.md](macos-keyboard/README.md) |
+| **macos-tiling** | Darwin + Home (macOS) | Тайлинг yabai и сочетания skhd | [macos-tiling/README.md](macos-tiling/README.md) |
+| **math** | NixOS + Darwin | Qalculate! GTK, GNU Octave и GNU Radio. | [math/README.md](math/README.md) |
+| **messengers** | NixOS + Darwin | Telegram Desktop, Discord и Rocket.Chat. | [messengers/README.md](messengers/README.md) |
+| **minecraft-rust** | Darwin (aarch64-darwin) | Minecraft Java Edition 26.3 на Rust, игровой клиент и лаунчер Horizon | [minecraft-rust/README.md](minecraft-rust/README.md) |
 | **moonlight** | NixOS + Darwin | Клиент игрового стриминга Moonlight | [moonlight/README.md](moonlight/README.md) |
-| **multimedia** | NixOS | Запись и стриминг экрана: OBS Studio | [multimedia/README.md](multimedia/README.md) |
-| **music** | Home | Музыкальный плеер Muffon | [music/README.md](music/README.md) |
+| **multimedia** | NixOS + Darwin | OBS Studio для записи и трансляции экрана. | [multimedia/README.md](multimedia/README.md) |
+| **music** | Home (x86_64-linux) | Музыкальный плеер Muffon | [music/README.md](music/README.md) |
 | **nix-serve** | NixOS | Локальный бинарный кэш-сервер Nix на порту 5000 | [nix-serve/README.md](nix-serve/README.md) |
 | **nixos-installer** | NixOS + Darwin | Готовый бинарник установщика и редактора конфигурации | [nixos-installer/README.md](nixos-installer/README.md) |
-| **nvf** | Home | Модульная конфигурация Neovim на базе фреймворка nvf | [nvf/README.md](nvf/README.md) |
-| **openfpgaloader** | NixOS | Программатор FPGA с правилами udev для отладочных плат | [openfpgaloader/README.md](openfpgaloader/README.md) |
-| **photoGIMP** | Home | GIMP 3 с темой и раскладкой PhotoGIMP (Photoshop UI) | [photoGIMP/README.md](photoGIMP/README.md) |
+| **nvf** | Home | Конфигурация Neovim с выбором темы и прозрачного фона. | [nvf/README.md](nvf/README.md) |
+| **openfpgaloader** | NixOS + Darwin | Программатор FPGA. Правила udev применяются на NixOS. | [openfpgaloader/README.md](openfpgaloader/README.md) |
+| **photoGIMP** | Home (Linux) | GIMP 3 с темой и раскладкой PhotoGIMP (Photoshop UI) | [photoGIMP/README.md](photoGIMP/README.md) |
 | **printing** | NixOS + Darwin | Печать: пакеты CUPS и драйвер fxlinuxprint | [printing/README.md](printing/README.md) |
-| **qbittorrent** | NixOS | Торрент-клиент qBittorrent | [qbittorrent/README.md](qbittorrent/README.md) |
+| **qbittorrent** | NixOS + Darwin | Торрент-клиент qBittorrent | [qbittorrent/README.md](qbittorrent/README.md) |
 | **ru-locale** | NixOS | Русская локализация (`ru_RU.UTF-8`) и системная консоль | [ru-locale/README.md](ru-locale/README.md) |
+| **shell** | NixOS + Darwin + Home | Zsh и приглашение Starship | [shell/default.nix](shell/default.nix) |
 | **sound** | NixOS | Звук: Pipewire и утилита управления воспроизведением Playerctl | [sound/README.md](sound/README.md) |
-| **sunshine** | NixOS + Home | Сервер игрового стриминга Sunshine, скрипты виртуального монитора | [sunshine/README.md](sunshine/README.md) |
-| **cli-tools** | NixOS + Darwin + Home | CLI-утилиты и настройки Yazi и btop | [cli-tools](cli-tools/default.nix) |
-| **shell** | NixOS + Darwin + Home | Zsh и приглашение Starship | [shell](shell/default.nix) |
-| **terminal-emulators** | NixOS + Darwin + Home | Ghostty, Alacritty и декорации окон | [terminal-emulators](terminal-emulators/default.nix) |
+| **sunshine** | NixOS + Darwin (aarch64-darwin) + Home (Linux) | Сервер игрового стриминга. Виртуальный монитор и автозапуск Hyprland входят в слой Linux. | [sunshine/README.md](sunshine/README.md) |
 | **terminal** | NixOS + Home | CLI утилиты, терминал Ghostty/Alacritty, конфиги btop, cava, yazi, zsh | [terminal/README.md](terminal/README.md) |
+| **terminal-emulators** | NixOS + Darwin + Home | Ghostty, Alacritty и декорации окон | [terminal-emulators/default.nix](terminal-emulators/default.nix) |
+| **TV** | NixOS | Plasma Bigscreen, звук через PipeWire и управление через HDMI CEC. | [TV/default.nix](TV/default.nix) |
 | **udev-rules** | NixOS | Дополнительные системные правила udev | [udev-rules/README.md](udev-rules/README.md) |
-| **vpn** | NixOS | VPN и прокси: Amnezia VPN, Clash Verge с TUN-режимом | [vpn/README.md](vpn/README.md) |
-| **vscode** | Home | Редактор VS Code с кастомной темой acup, Vim-режимом и расширениями | [vscode/README.md](vscode/README.md) |
-| **WM-DE** | NixOS + Home | Оконные менеджеры (Hyprland, Niri, DriftWM, GNOME) и общий слой `common` | [WM-DE/README.md](WM-DE/README.md) |
+| **vpn** | NixOS + Darwin | Amnezia VPN и Clash Verge Rev. Слой NixOS включает настройки TUN. | [vpn/README.md](vpn/README.md) |
+| **vscode** | Home | Visual Studio Code с выбором темы, настройками Vim, расширениями и MCP. | [vscode/README.md](vscode/README.md) |
+| **wireshark** | NixOS + Darwin + Home | Анализ сетевых записей, доступ к захвату без sudo и локальный MCP. | [wireshark/README.md](wireshark/README.md) |
+| **WM-DE/common** | NixOS + Home (Linux) | Общие настройки графического входа, Wayland, звука, устройств ввода и утилит рабочего стола. | [WM-DE/common/default.nix](WM-DE/common/default.nix) |
+| **WM-DE/drift** | NixOS + Home (Linux) | Тайлинговый композитор DriftWM с порталом Wayland и автоматическим поворотом экрана. | [WM-DE/drift/default.nix](WM-DE/drift/default.nix) |
+| **WM-DE/gnome** | NixOS + Home (Linux) | Рабочий стол GNOME с общими настройками графической сессии и звука. | [WM-DE/gnome/default.nix](WM-DE/gnome/default.nix) |
+| **WM-DE/hypr** | NixOS + Home (Linux) | Композитор Hyprland с пользовательскими сочетаниями клавиш и настройками Wayland. | [WM-DE/hypr/default.nix](WM-DE/hypr/default.nix) |
+| **WM-DE/niri** | NixOS + Home (Linux) | Композитор Niri с прокручиваемой раскладкой окон и пользовательскими настройками. | [WM-DE/niri/default.nix](WM-DE/niri/default.nix) |

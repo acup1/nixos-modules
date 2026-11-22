@@ -1,1 +1,1 @@
-pkgs: builtins.filter (pkgs.lib.meta.availableOn pkgs.stdenv.hostPlatform)
+pkgs: builtins.filter (import ./package-supported.nix pkgs)

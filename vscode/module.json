@@ -62,6 +62,79 @@
       "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "vscode",
+        "theme"
+      ],
+      "title": "Цветовая тема",
+      "description": "Темы из Local Colorways и стандартные контрастные темы VS Code. Когда Local Colorways отключён, его темы заменяются на стандартную контрастную тему.",
+      "type": "string",
+      "choices": [
+        "Ocean",
+        "Ocean High Contrast",
+        "High Contrast",
+        "Montana",
+        "Harbor",
+        "Nocturne",
+        "Orchid",
+        "Fern",
+        "Ember",
+        "Sandstone",
+        "Aurora",
+        "Lagoon",
+        "Graphite",
+        "Default High Contrast",
+        "Default High Contrast Light"
+      ],
+      "default": "Ocean High Contrast"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "vscode",
+        "enabledPackages",
+        "vim"
+      ],
+      "title": "VSCodeVim",
+      "description": "Устанавливает расширение Vim и включает его настройки и привязки клавиш.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "vscode",
+        "enabledPackages",
+        "codex"
+      ],
+      "title": "OpenAI Codex",
+      "description": "Устанавливает расширение Codex. Оно включено по умолчанию на Mac с Apple Silicon.",
+      "type": "bool",
+      "systems": [
+        "aarch64-darwin",
+        "x86_64-darwin",
+        "aarch64-linux",
+        "x86_64-linux"
+      ]
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "vscode",
+        "enabledPackages",
+        "local-colorways"
+      ],
+      "title": "Local Colorways",
+      "description": "Устанавливает набор локальных цветовых тем VS Code.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

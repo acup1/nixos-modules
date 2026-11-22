@@ -1,8 +1,11 @@
 {
   "schemaVersion": 1,
   "title": "KiCad",
-  "description": "Редактор схем и печатных плат KiCad.",
+  "description": "Редактор схем и печатных плат KiCad с опциональным MCP для чтения проектов и проверки схем.",
   "layers": {
+    "darwin": [
+      "darwin"
+    ],
     "home": [
       "linux",
       "darwin"
@@ -29,9 +32,62 @@
         "kicad"
       ],
       "title": "KiCad",
-      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "description": "Устанавливает пакет KiCad из nixpkgs на Linux.",
       "type": "bool",
-      "default": true
+      "default": true,
+      "platforms": [
+        "linux"
+      ]
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "kicad",
+        "enabledPackages",
+        "kicad"
+      ],
+      "title": "KiCad",
+      "description": "Подключает официальное приложение KiCad в macOS через Homebrew.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "kicad",
+        "mcp",
+        "enable"
+      ],
+      "title": "KiCad MCP",
+      "description": "Регистрирует локальный stdio-сервер для просмотра проектов KiCad и запуска проверок DRC и ERC при наличии kicad-cli.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "kicad",
+        "mcp",
+        "projectsDirectory"
+      ],
+      "title": "Каталог проектов KiCad MCP",
+      "description": "Абсолютный путь к каталогу с проектами. По умолчанию используется рабочий каталог клиента.",
+      "type": "string"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "kicad",
+        "mcp",
+        "cliExecutable"
+      ],
+      "title": "Путь к kicad-cli",
+      "description": "Абсолютный путь к установленному kicad-cli. По умолчанию используется пакет nixpkgs в Linux или приложение KiCad в /Applications в macOS.",
+      "type": "string"
     }
   ]
 }

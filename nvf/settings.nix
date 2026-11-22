@@ -6,6 +6,23 @@ nvf: {
 }: let
   inherit (nvf.lib.nvim.dag) entryAnywhere entryAfter;
   inherit (lib.generators) mkLuaInline;
+  themePresets = [
+    "onedark/darker"
+    "onedark/dark"
+    "onedark/cool"
+    "onedark/deep"
+    "onedark/warm"
+    "onedark/warmer"
+    "catppuccin/mocha"
+    "catppuccin/latte"
+    "catppuccin/frappe"
+    "catppuccin/macchiato"
+    "tokyonight/moon"
+    "tokyonight/storm"
+    "tokyonight/night"
+    "tokyonight/day"
+  ];
+  theme = lib.splitString "/" config.components.nvf.theme;
   openCommand =
     if pkgs.stdenv.hostPlatform.isDarwin
     then "open"
@@ -14,13 +31,20 @@ in {
   imports = [
     nvf.homeManagerModules.default
   ];
-  programs.nvf = lib.mkIf (config.components.nvf.enabledPackages.neovim or true) {
+  options.components.nvf.theme = lib.mkOption {
+    type = lib.types.enum themePresets;
+    default = "onedark/darker";
+    description = "Neovim colorscheme and style from the nvf theme presets.";
+  };
+
+  config.programs.nvf = lib.mkIf (config.components.nvf.enabledPackages.neovim or true) {
     enable = true;
     settings.vim = {
       theme = {
         enable = true;
-        name = "onedark";
-        style = "darker";
+        # Override nvf's mkDefault values while allowing native settings to take precedence.
+        name = lib.mkOverride 900 (lib.head theme);
+        style = lib.mkOverride 900 (lib.last theme);
         transparent = true;
       };
       ui.borders.enable = true;

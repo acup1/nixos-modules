@@ -5,6 +5,9 @@
   "layers": {
     "nixos": [
       "linux"
+    ],
+    "darwin": [
+      "darwin"
     ]
   },
   "options": [
@@ -29,6 +32,30 @@
       ],
       "title": "openfpgaloader",
       "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "openfpgaloader",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "openfpgaloader",
+        "enabledPackages",
+        "openfpgaloader"
+      ],
+      "title": "openfpgaloader",
+      "description": "Устанавливает утилиту для программирования ПЛИС. Правила udev применяются на Linux.",
       "type": "bool",
       "default": true
     }

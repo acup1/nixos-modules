@@ -5,6 +5,9 @@
   "layers": {
     "nixos": [
       "linux"
+    ],
+    "darwin": [
+      "darwin"
     ]
   },
   "options": [
@@ -29,6 +32,30 @@
       ],
       "title": "obs-studio",
       "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "multimedia",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "multimedia",
+        "enabledPackages",
+        "obs-studio"
+      ],
+      "title": "obs-studio",
+      "description": "Устанавливает приложение через Homebrew Cask (obs).",
       "type": "bool",
       "default": true
     }

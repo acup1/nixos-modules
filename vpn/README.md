@@ -1,6 +1,6 @@
 # Модуль `vpn`
 
-* **Экспорт**: `nixos`
+* **Экспорт**: `nixos`, `darwin`
 * **Назначение**: Клиенты виртуальных частных сетей и прокси-соединений.
 
 ## Структура
@@ -12,3 +12,5 @@
   * Включение `programs.amnezia-vpn.enable = true`.
 * `packages/vpn.nix`:
   * Установка пакетов `amnezia-vpn` и `clash-verge-rev`.
+
+На macOS Clash Verge Rev устанавливается через Homebrew Cask. Cask Amnezia VPN поставляет пакет x86_64, поэтому переключатель доступен на Intel Mac. Настройки TUN и автозапуск из модуля NixOS остаются в Linux.

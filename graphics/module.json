@@ -5,6 +5,9 @@
   "layers": {
     "nixos": [
       "linux"
+    ],
+    "darwin": [
+      "darwin"
     ]
   },
   "options": [
@@ -96,6 +99,56 @@
       "description": "Подключает nvidia-x11 в этом компоненте.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "graphics",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "graphics",
+        "enabledPackages",
+        "darktable"
+      ],
+      "title": "darktable",
+      "description": "Подключает darktable в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "graphics",
+        "enabledPackages",
+        "coin3d"
+      ],
+      "title": "coin3d",
+      "description": "Подключает coin3d в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "path": [
+        "components",
+        "graphics",
+        "enabledPackages",
+        "freecad"
+      ],
+      "title": "FreeCAD",
+      "type": "bool",
+      "default": true,
+      "layer": "darwin",
+      "description": "Устанавливает приложение через Homebrew Cask (freecad)."
     }
   ]
 }

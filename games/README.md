@@ -1,6 +1,6 @@
 # Модуль `games`
 
-* **Экспорт**: `nixos`
+* **Экспорт**: `nixos`, `darwin`
 * **Назначение**: Игры, запуск Windows-приложений и игровой клиент Steam.
 
 ## Структура
@@ -14,3 +14,5 @@
   * Сборка Wine с нативной поддержкой Wayland (`wineWow64Packages.waylandFull`).
   * Менеджер префиксов Bottles.
   * Головоломка GNOME Sudoku.
+
+На macOS доступны GNOME Sudoku из nixpkgs и Steam через Homebrew Cask. Wine с Wayland, Bottles и настройка межсетевого экрана Steam остаются в NixOS.

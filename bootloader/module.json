@@ -56,7 +56,8 @@
       "title": "Эмуляция aarch64 через QEMU",
       "description": "Подключает Эмуляция aarch64 через QEMU в этом компоненте.",
       "type": "bool",
-      "default": true
+      "default": true,
+      "systems": ["x86_64-linux"]
     }
   ]
 }

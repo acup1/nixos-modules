@@ -1,10 +1,13 @@
 {
   "schemaVersion": 1,
   "title": "Локальный ИИ",
-  "description": "Раздел для дополнительных приложений локального ИИ.",
+  "description": "Локальные модели Ollama, Codex CLI и Hermes Agent с веб-панелью на поддерживаемых системах.",
   "layers": {
     "nixos": [
       "linux"
+    ],
+    "home": [
+      "darwin"
     ]
   },
   "options": [
@@ -18,6 +21,226 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "hermes-web",
+        "enable"
+      ],
+      "title": "Веб-панель Hermes",
+      "description": "Запускает локальную панель Hermes Agent.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "hermes-web",
+        "host"
+      ],
+      "title": "Адрес панели Hermes",
+      "description": "IP-адрес интерфейса, на котором панель принимает соединения.",
+      "type": "string",
+      "default": "127.0.0.1"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "hermes-web",
+        "port"
+      ],
+      "title": "Порт панели Hermes",
+      "description": "TCP-порт, на котором панель принимает соединения.",
+      "type": "integer",
+      "default": 5001
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "hermes-web",
+        "openFirewall"
+      ],
+      "title": "Открыть порт Hermes",
+      "description": "Разрешает входящие соединения на порт веб-панели в межсетевом экране.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "ollama",
+        "port"
+      ],
+      "title": "Порт Ollama",
+      "description": "Порт локального HTTP API Ollama.",
+      "type": "integer",
+      "default": 11434
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "ollama",
+        "host"
+      ],
+      "title": "Адрес Ollama",
+      "description": "IP-адрес, на котором Ollama принимает запросы.",
+      "type": "string",
+      "default": "127.0.0.1"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "AI",
+        "enabledPackages",
+        "codex"
+      ],
+      "title": "Codex CLI",
+      "description": "Подключает терминальный клиент для работы с кодом.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "AI",
+        "enabledPackages",
+        "hermes-agent"
+      ],
+      "title": "Hermes Agent",
+      "description": "Включает Hermes Agent, веб-панель и её параметры сети.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "AI",
+        "enabledPackages",
+        "ollama"
+      ],
+      "title": "Ollama",
+      "description": "Запускает локальный API моделей и включает интеграцию с Hermes.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "AI",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "AI",
+        "enabledPackages",
+        "codex"
+      ],
+      "title": "Codex CLI",
+      "description": "Подключает терминальный клиент для работы с кодом.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "AI",
+        "enabledPackages",
+        "hermes-agent"
+      ],
+      "title": "Hermes Agent",
+      "description": "Запускает Hermes Agent и его локальную веб-панель после входа пользователя на Apple Silicon.",
+      "type": "bool",
+      "default": true,
+      "systems": [
+        "aarch64-darwin"
+      ]
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "AI",
+        "enabledPackages",
+        "ollama"
+      ],
+      "title": "Ollama",
+      "description": "Запускает локальный API моделей Ollama через launchd после входа пользователя.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "services",
+        "ollama",
+        "host"
+      ],
+      "title": "Адрес Ollama",
+      "description": "IP-адрес, на котором Ollama принимает запросы.",
+      "type": "string",
+      "default": "127.0.0.1"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "services",
+        "hermes-agent",
+        "backend",
+        "host"
+      ],
+      "title": "Адрес панели Hermes",
+      "description": "IP-адрес интерфейса, на котором панель принимает соединения.",
+      "type": "string",
+      "default": "127.0.0.1",
+      "systems": [
+        "aarch64-darwin"
+      ]
+    },
+    {
+      "layer": "home",
+      "path": [
+        "services",
+        "ollama",
+        "port"
+      ],
+      "title": "Порт Ollama",
+      "description": "Порт локального HTTP API Ollama.",
+      "type": "integer",
+      "default": 11434
+    },
+    {
+      "layer": "home",
+      "path": [
+        "services",
+        "hermes-agent",
+        "backend",
+        "port"
+      ],
+      "title": "Порт панели Hermes",
+      "description": "TCP-порт, на котором панель принимает соединения.",
+      "type": "integer",
+      "default": 5001,
+      "systems": [
+        "aarch64-darwin"
+      ]
     }
   ]
 }

@@ -5,6 +5,9 @@
   "layers": {
     "nixos": [
       "linux"
+    ],
+    "darwin": [
+      "darwin"
     ]
   },
   "options": [
@@ -78,6 +81,46 @@
       ],
       "title": "Clash Verge Rev",
       "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "vpn",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "vpn",
+        "enabledPackages",
+        "amnezia-vpn"
+      ],
+      "title": "Amnezia VPN",
+      "description": "Устанавливает приложение через Homebrew Cask (amneziavpn).",
+      "type": "bool",
+      "default": true,
+      "systems": [
+        "x86_64-darwin"
+      ]
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "vpn",
+        "enabledPackages",
+        "clash-verge-rev"
+      ],
+      "title": "Clash Verge Rev",
+      "description": "Устанавливает приложение через Homebrew Cask (clash-verge-rev).",
       "type": "bool",
       "default": true
     }

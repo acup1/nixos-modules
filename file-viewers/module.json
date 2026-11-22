@@ -5,6 +5,9 @@
   "layers": {
     "nixos": [
       "linux"
+    ],
+    "darwin": [
+      "darwin"
     ]
   },
   "options": [
@@ -68,6 +71,43 @@
       ],
       "title": "vlc",
       "description": "Подключает vlc в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "file-viewers",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "file-viewers",
+        "enabledPackages",
+        "mpv"
+      ],
+      "title": "mpv",
+      "description": "Подключает mpv в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "file-viewers",
+        "enabledPackages",
+        "vlc"
+      ],
+      "title": "vlc",
+      "description": "Устанавливает приложение через Homebrew Cask (vlc).",
       "type": "bool",
       "default": true
     }

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "title": "Кластер K3s",
+  "description": "Сервер компактного Kubernetes и настройки интерфейсов сети кластера.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "k3s",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "services",
+        "k3s",
+        "role"
+      ],
+      "title": "Роль K3s",
+      "description": "Задаёт роль узла: server или agent.",
+      "type": "string",
+      "default": "server"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "networking",
+        "firewall",
+        "trustedInterfaces"
+      ],
+      "title": "Доверенные интерфейсы",
+      "description": "Интерфейсы контейнерной сети, которым разрешён входящий трафик.",
+      "type": "string_list",
+      "default": [
+        "cni0",
+        "flannel.1"
+      ]
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "k3s",
+        "enabledPackages",
+        "k3s"
+      ],
+      "title": "K3s",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    }
+  ]
+}
