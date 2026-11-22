@@ -24,6 +24,7 @@
   libxrandr,
   libxrender,
   libxcb,
+  zenity,
 }: {
   pname,
   version,
@@ -83,9 +84,10 @@ in stdenvNoCC.mkDerivation {
   '';
 
   postFixup = ''
-    # Apps dlopen graphics, windowing, and audio libraries at runtime (winit, egui, cpal, ash/vulkan).
+    # Release binaries load graphics, audio, and file-dialog libraries at runtime.
     runtimeLibs="${lib.makeLibraryPath [
       alsa-lib
+      (lib.getLib dbus)
       libGL
       libglvnd
       libxkbcommon
@@ -104,7 +106,8 @@ in stdenvNoCC.mkDerivation {
     for bin in "$out"/bin/*; do
       if [ -f "$bin" ] && [ -x "$bin" ]; then
         wrapProgram "$bin" \
-          --prefix LD_LIBRARY_PATH : "$runtimeLibs"
+          --prefix LD_LIBRARY_PATH : "$runtimeLibs" \
+          --prefix PATH : "${lib.makeBinPath [ zenity ]}"
       fi
     done
   '';
