@@ -18,7 +18,11 @@ modules = [
 
 Для Home Manager базовый flake передаёт целевую платформу через `extraSpecialArgs.system`, например `"aarch64-darwin"`. По ней компоненты рабочего стола выбирают подходящие импорты. Списки пакетов учитывают поддерживаемые платформы nixpkgs.
 
-Каталог установщика читает `module.json` из каталогов компонентов. Компоненты `nvf` и `WM-DE/{common,drift,hypr}` хранят версии своих внешних зависимостей в отдельных flakes. Хост может переопределить их через `inputs`.
+Каталог установщика читает `module.json` из каталогов компонентов. Компоненты `nvf` и `WM-DE/{common,drift,hypr}` используют собственные flakes для внешних зависимостей.
+
+Закрепления Zen для macOS, nix-matlab, WinApps и Niri находятся в `browsers/inputs`, `math/inputs`, `devops/inputs` и `WM-DE/niri/inputs` соответственно. Эти зависимости доступны в `config.nix` через поле `inputs` импортированного компонента, например `(import (modulesRoot + "/math")).inputs.nix-matlab`. Обновить один источник можно из корня каталога командой `nix flake update zen-browser --flake ./browsers/inputs`.
+
+На macOS модуль `browsers` использует свой Zen по умолчанию. Источники nix-matlab, WinApps и upstream Niri доступны для пользовательских настроек. Модуль `WM-DE/niri` по умолчанию устанавливает Niri из nixpkgs.
 
 ## Терминал и локальные каталоги
 

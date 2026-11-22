@@ -1,4 +1,5 @@
-{inputs, lib, options, pkgs, ...}: let
+{config, lib, options, pkgs, specialArgs, ...}: let
+  inputs = specialArgs.inputs or (config._module.args.inputs or {});
   cliIds = [
     "wget" "curl" "watch" "unzip" "fzf" "git" "sshfs" "bat"
     "zellij" "fastfetch" "cmatrix" "pipes-rs" "comma" "yq" "p7zip"
