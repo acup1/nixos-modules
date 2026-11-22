@@ -5,6 +5,9 @@
   "layers": {
     "nixos": [
       "linux"
+    ],
+    "darwin": [
+      "darwin"
     ]
   },
   "options": [
@@ -130,6 +133,131 @@
       ],
       "title": "vista-fonts",
       "description": "Подключает vista-fonts в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "fonts",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "fonts",
+        "packages"
+      ],
+      "title": "Системные шрифты",
+      "description": "Выбирает пакеты шрифтов для системной регистрации.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "fonts",
+        "enabledPackages",
+        "corefonts"
+      ],
+      "title": "Microsoft Core Fonts",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "fonts",
+        "enabledPackages",
+        "vista-fonts"
+      ],
+      "title": "Microsoft Vista Fonts",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "fonts",
+        "enabledPackages",
+        "nerd-fonts.code-new-roman"
+      ],
+      "title": "Code New Roman Nerd Font",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "fonts",
+        "enabledPackages",
+        "nerd-fonts.jetbrains-mono"
+      ],
+      "title": "JetBrains Mono Nerd Font",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "fonts",
+        "enabledPackages",
+        "nerd-fonts.symbols-only"
+      ],
+      "title": "Nerd Fonts Symbols",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "fonts",
+        "enabledPackages",
+        "noto-fonts-cjk-sans"
+      ],
+      "title": "Noto Sans CJK",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "fonts",
+        "enabledPackages",
+        "noto-fonts-cjk-serif"
+      ],
+      "title": "Noto Serif CJK",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "fonts",
+        "enabledPackages",
+        "migmix"
+      ],
+      "title": "MigMix",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
       "type": "bool",
       "default": true
     }

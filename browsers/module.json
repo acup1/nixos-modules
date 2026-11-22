@@ -5,6 +5,9 @@
   "layers": {
     "nixos": [
       "linux"
+    ],
+    "darwin": [
+      "darwin"
     ]
   },
   "options": [
@@ -55,6 +58,30 @@
       ],
       "title": "Zen Browser",
       "description": "Подключает Zen Browser в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "browsers",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "browsers",
+        "enabledPackages",
+        "zen-browser"
+      ],
+      "title": "Zen Browser",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
       "type": "bool",
       "default": true
     }

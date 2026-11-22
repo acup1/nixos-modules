@@ -3,7 +3,7 @@ component: entries: {config, lib, pkgs, ...}: let
 
   declare = entry: lib.nameValuePair entry.id (lib.mkOption {
     type = lib.types.bool;
-    default = true;
+    default = entry.default or true;
     description = entry.description or "Enable ${entry.id} in the ${component} component.";
   });
 
