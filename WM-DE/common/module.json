@@ -8,6 +8,9 @@
     ],
     "home": [
       "linux"
+    ],
+    "darwin": [
+      "darwin"
     ]
   },
   "options": [
@@ -396,6 +399,65 @@
       "description": "Подключает waylandkb в этом компоненте.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "xclip"
+      ],
+      "title": "xclip",
+      "description": "Работает с буфером X11 в сессии XQuartz.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "orchis-theme"
+      ],
+      "title": "orchis-theme",
+      "description": "Установить ресурсы темы для приложений GTK.",
+      "type": "bool",
+      "default": false,
+      "systems": [
+        "aarch64-darwin"
+      ]
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "xorg-server"
+      ],
+      "title": "X11 (XQuartz)",
+      "description": "Установить XQuartz для приложений X11.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "opentabletdriver"
+      ],
+      "title": "OpenTabletDriver",
+      "description": "Устанавливает официальное приложение OpenTabletDriver для macOS.",
+      "type": "bool",
+      "default": false,
+      "systems": [
+        "aarch64-darwin",
+        "x86_64-darwin"
+      ]
     }
   ]
 }

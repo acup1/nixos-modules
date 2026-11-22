@@ -149,6 +149,19 @@
       "default": true,
       "layer": "darwin",
       "description": "Устанавливает приложение через Homebrew Cask (freecad)."
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "graphics",
+        "enabledPackages",
+        "libglvnd"
+      ],
+      "title": "libglvnd",
+      "description": "Установить libglvnd из nixpkgs.",
+      "type": "bool",
+      "default": false
     }
   ]
 }

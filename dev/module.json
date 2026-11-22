@@ -34,7 +34,9 @@
       "description": "Подключает arduino-ide в этом компоненте.",
       "type": "bool",
       "default": true,
-      "systems": ["x86_64-linux"]
+      "systems": [
+        "x86_64-linux"
+      ]
     },
     {
       "layer": "nixos",
@@ -319,6 +321,71 @@
       "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "arduino-ide"
+      ],
+      "title": "Arduino IDE",
+      "description": "Устанавливает Arduino IDE через Homebrew.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "gcc"
+      ],
+      "title": "GCC",
+      "description": "Устанавливает компилятор GCC.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "libgccjit"
+      ],
+      "title": "libgccjit",
+      "description": "Устанавливает библиотеку GCC для компиляции JIT.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "rustup"
+      ],
+      "title": "Rustup",
+      "description": "Устанавливает менеджер версий Rust.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "scdoc"
+      ],
+      "title": "scdoc",
+      "description": "Устанавливает генератор справочных страниц.",
+      "type": "bool",
+      "default": false
     }
   ]
 }

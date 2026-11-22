@@ -8,7 +8,11 @@
       "darwin"
     ]
   },
-  "systems": ["x86_64-linux"],
+  "systems": [
+    "x86_64-linux",
+    "aarch64-darwin",
+    "x86_64-darwin"
+  ],
   "options": [
     {
       "layer": "home",
@@ -30,12 +34,12 @@
         "muffon"
       ],
       "title": "Muffon",
-      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "description": "Устанавливает Muffon. На macOS используется официальная сборка приложения.",
       "type": "bool",
       "default": true,
-      "platforms": [
-        "linux"
-      ]
+      "defaultsByPlatform": {
+        "darwin": false
+      }
     }
   ]
 }

@@ -5,6 +5,9 @@
   "layers": {
     "nixos": [
       "linux"
+    ],
+    "darwin": [
+      "darwin"
     ]
   },
   "options": [
@@ -122,6 +125,35 @@
       "description": "Подключает plasma-nano в этом компоненте.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "TV",
+        "enabledPackages",
+        "libcec"
+      ],
+      "title": "libcec",
+      "description": "Установить инструменты HDMI-CEC для поддерживаемого USB-адаптера.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "TV",
+        "enabledPackages",
+        "kdeconnect-kde"
+      ],
+      "title": "KDE Connect",
+      "description": "Устанавливает стабильный KDE Connect через Homebrew. Требует Apple Silicon и macOS 13 или новее.",
+      "type": "bool",
+      "default": false,
+      "systems": [
+        "aarch64-darwin"
+      ]
     }
   ]
 }

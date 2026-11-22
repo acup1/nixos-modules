@@ -103,13 +103,9 @@
         "enabledPackages",
         "amnezia-vpn"
       ],
-      "title": "Amnezia VPN",
-      "description": "Устанавливает приложение через Homebrew Cask (amneziavpn).",
-      "type": "bool",
-      "default": true,
-      "systems": [
-        "x86_64-darwin"
-      ]
+      "title": "Amnezia VPN · Rosetta 2 на Apple Silicon",
+      "description": "Устанавливает клиент через Homebrew. Требует macOS 14 или новее, а на Apple Silicon также установленную Rosetta 2. На Intel включён по умолчанию.",
+      "type": "bool"
     },
     {
       "layer": "darwin",

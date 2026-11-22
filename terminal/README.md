@@ -14,3 +14,5 @@
 `components.<имя компонента>.enabledPackages`. Новая настройка
 `components.terminal-emulators.showWindowDecorations` управляет рамками окон
 в слое Home Manager.
+
+Старый импорт также позволяет по отдельности включить Alacritty и совместимые системные CLI-пакеты на macOS.

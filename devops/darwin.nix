@@ -9,7 +9,13 @@
   homeDirectory = if configuredHome == null then "/Users/${username}" else toString configuredHome;
 in {
   imports =
-    [(import ../lib/component-packages.nix "devops" "system")]
+    [
+      (import ../lib/component-packages.nix "devops" "system")
+      (import ../lib/package-options.nix "devops" [
+        {id = "libvirt"; package = pkgs.libvirt or null; default = false;}
+        {id = "swtpm"; package = pkgs.swtpm or null; default = false;}
+      ])
+    ]
     ++ lib.filesystem.listFilesRecursive ./packages;
 
   config = lib.mkIf config.components.devops.enabledPackages.colima {

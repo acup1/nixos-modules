@@ -99,7 +99,9 @@
       "description": "Подключает wpsoffice-cn в этом компоненте.",
       "type": "bool",
       "default": true,
-      "systems": ["x86_64-linux"]
+      "systems": [
+        "x86_64-linux"
+      ]
     },
     {
       "layer": "nixos",
@@ -176,6 +178,71 @@
       "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "doc-redactors",
+        "enabledPackages",
+        "libreoffice-qt-stable"
+      ],
+      "title": "LibreOffice",
+      "description": "Устанавливает приложение LibreOffice для macOS через Homebrew.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "doc-redactors",
+        "enabledPackages",
+        "pdfarranger"
+      ],
+      "title": "PDF Arranger",
+      "description": "Устанавливает инструмент перестановки и обрезки страниц PDF.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "doc-redactors",
+        "enabledPackages",
+        "wpsoffice-cn"
+      ],
+      "title": "WPS Office",
+      "description": "Устанавливает китайское издание WPS Office.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "doc-redactors",
+        "enabledPackages",
+        "xournalpp"
+      ],
+      "title": "Xournal++",
+      "description": "Устанавливает редактор рукописных заметок и аннотаций PDF.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "doc-redactors",
+        "enabledPackages",
+        "zathura"
+      ],
+      "title": "Zathura",
+      "description": "Устанавливает просмотрщик документов Zathura.",
+      "type": "bool",
+      "default": false
     }
   ]
 }

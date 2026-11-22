@@ -3,8 +3,12 @@
   "title": "PhotoGIMP",
   "description": "Графический редактор GIMP 3 с темой и раскладкой PhotoGIMP.",
   "layers": {
+    "darwin": [
+      "darwin"
+    ],
     "home": [
-      "linux"
+      "linux",
+      "darwin"
     ]
   },
   "options": [
@@ -27,10 +31,26 @@
         "enabledPackages",
         "gimp3"
       ],
-      "title": "GIMP 3",
-      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "title": "GIMP 3 + PhotoGIMP",
+      "description": "Применяет раскладку PhotoGIMP. В NixOS также устанавливает GIMP 3.",
       "type": "bool",
-      "default": true
+      "default": true,
+      "defaultsByPlatform": {
+        "darwin": false
+      }
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "photoGIMP",
+        "enabledPackages",
+        "gimp3"
+      ],
+      "title": "GIMP 3 + PhotoGIMP",
+      "description": "Устанавливает GIMP через Homebrew и применяет раскладку PhotoGIMP.",
+      "type": "bool",
+      "default": false
     }
   ]
 }

@@ -305,6 +305,58 @@
       "description": "Подключает minikube в этом компоненте.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "libvirt"
+      ],
+      "title": "libvirt",
+      "description": "Устанавливает библиотеку и команды libvirt для macOS.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "qemu"
+      ],
+      "title": "QEMU",
+      "description": "Устанавливает QEMU для macOS.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "swtpm"
+      ],
+      "title": "swtpm",
+      "description": "Устанавливает программный эмулятор TPM.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "virt-manager"
+      ],
+      "title": "Virtual Machine Manager",
+      "description": "Устанавливает графический клиент libvirt.",
+      "type": "bool",
+      "default": false
     }
   ]
 }

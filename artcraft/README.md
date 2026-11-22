@@ -1,24 +1,32 @@
 # ArtCraft Applications Suite
 
-Модуль для установки полного набора творческих и офисных приложений от команды [ArtCraft](https://getartcraft.com/apps) (Storytold), написанных с нуля на чистом Rust:
+Модуль устанавливает готовые бинарные выпуски [ArtCraft](https://getartcraft.com/apps) из GitHub Releases. Сборка распаковывает проверенные по SHA-256 архивы. На NixOS она настраивает загрузчик и пути библиотек ELF. На macOS она сохраняет оригинальные подписанные `.app` и отдельно устанавливает выпущенные авторами CLI.
 
-1. **ArtCraft Launcher** (`artcraft-launcher`) — лаунчер и менеджер приложений
-2. **PhotoCraft** (`photocraft`, `photocraft-cli`) — растровый графический редактор и работа с PSD/слоями
-3. **VectorCraft** (`vectorcraft`, `vectorcraft-cli`) — векторная иллюстрация и графика
-4. **FilmCraft** (`filmcraft`, `filmcraft-cli`) — нелинейный видеоредактор
-5. **LightCraft** (`lightcraft`, `lightcraft-cli`) — неразрушающая обработка фото и RAW
-6. **PdfCraft** (`pdfcraft`, `pdfcraft-cli`) — просмотр и редактирование PDF
-7. **EffectCraft** (`effectcraft`, `effectcraft-cli`) — анимация, моушн-дизайн и композитинг
-8. **DesignCraft** (`designcraft`, `designcraft-cli`) — верстка страниц и публикаций
-9. **WordCraft** (`wordcraft`, `wordcraft-cli`) — текстовый процессор
-10. **SoundCraft** (`soundcraft`, `soundcraft-cli`) — цифровая звуковая рабочая станция (DAW)
-11. **DeckCraft** (`deckcraft`, `deckcraft-cli`) — презентации и слайды
-12. **CADCraft** (`cadcraft`, `cadcraft-cli`) — САПР / CAD моделирование и черчение
-13. **GridCraft** (`gridcraft`, `gridcraft-cli`) — электронные таблицы
+Доступны NixOS `x86_64-linux` и `aarch64-linux`, а также macOS `x86_64-darwin` и `aarch64-darwin`. macOS-архивы универсальные. Для лаунчера доступна команда `artcraft-launcher`. Остальные пакеты предоставляют приложение и одноимённую команду с суффиксом `-cli`.
+
+| Приложение | Назначение | Выпуск |
+| --- | --- | --- |
+| ArtCraft Launcher | Менеджер приложений | [0.3.2](https://github.com/storytold/craft-launcher/releases/tag/v0.3.2) |
+| PhotoCraft | Растровая графика и PSD | [0.7.0](https://github.com/storytold/photocraft/releases/tag/v0.7.0) |
+| VectorCraft | Векторная графика | [0.9.0](https://github.com/storytold/vectorcraft/releases/tag/v0.9.0) |
+| FilmCraft | Монтаж видео | [0.6.0](https://github.com/storytold/filmcraft/releases/tag/v0.6.0) |
+| LightCraft | Обработка фотографий и RAW | [0.6.0](https://github.com/storytold/lightcraft/releases/tag/v0.6.0) |
+| PdfCraft | Просмотр и редактирование PDF | [0.6.0](https://github.com/storytold/pdfcraft/releases/tag/v0.6.0) |
+| EffectCraft | Анимация и композитинг | [0.8.0](https://github.com/storytold/effectcraft/releases/tag/v0.8.0) |
+| DesignCraft | Вёрстка публикаций | [0.6.0](https://github.com/storytold/designcraft/releases/tag/v0.6.0) |
+| WordCraft | Текстовые документы | [0.5.0](https://github.com/storytold/wordcraft/releases/tag/v0.5.0) |
+| SoundCraft | Работа со звуком | [0.5.0](https://github.com/storytold/soundcraft/releases/tag/v0.5.0) |
+| DeckCraft | Презентации | [0.5.0](https://github.com/storytold/deckcraft/releases/tag/v0.5.0) |
+| CADCraft | САПР и черчение | [0.5.0](https://github.com/storytold/cadcraft/releases/tag/v0.5.0) |
+| GridCraft | Электронные таблицы | [0.5.0](https://github.com/storytold/gridcraft/releases/tag/v0.5.0) |
 
 ## Использование
 
-Подключите модуль в `modules.nix`:
+Добавьте `(import (modulesRoot + "/artcraft"))` в список `modules` файла `config.nix`. Параметры `components.artcraft.enabledPackages` позволяют отключить приложения в соответствующем слое.
+
 ```nix
-(import (modulesRoot + "/artcraft"))
+((import (modulesRoot + "/artcraft")).withConfig {
+  nixos.components.artcraft.enabledPackages.filmcraft = false;
+  darwin.components.artcraft.enabledPackages.filmcraft = false;
+})
 ```

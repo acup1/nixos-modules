@@ -13,4 +13,4 @@
 * `packages/vpn.nix`:
   * Установка пакетов `amnezia-vpn` и `clash-verge-rev`.
 
-На macOS Clash Verge Rev устанавливается через Homebrew Cask. Cask Amnezia VPN поставляет пакет x86_64, поэтому переключатель доступен на Intel Mac. Настройки TUN и автозапуск из модуля NixOS остаются в Linux.
+На macOS оба клиента устанавливаются через Homebrew Cask. Amnezia VPN требует macOS 14 или новее. На Intel Mac клиент включён по умолчанию. На Apple Silicon его можно включить при наличии Rosetta 2. Настройки TUN и автозапуск из модуля NixOS относятся к Linux.

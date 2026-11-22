@@ -1,6 +1,7 @@
 {
   lib,
   stdenv,
+  stdenvNoCC,
   fetchurl,
   autoPatchelfHook,
   makeWrapper,
@@ -26,23 +27,23 @@
 }: {
   pname,
   version,
-  repoName ? pname,
-  archivePrefix ? "${pname}-${version}-linux-x86_64",
-  tarName ? "${archivePrefix}.tar.gz",
+  releaseUrl,
   hash,
-  description ? "ArtCraft application",
-  metaName ? pname,
-}:
-stdenv.mkDerivation rec {
+  description,
+}: let
+  archivePrefix = "${pname}-${version}-linux-${stdenv.hostPlatform.parsed.cpu.name}";
+in stdenvNoCC.mkDerivation {
   inherit pname version;
 
   src = fetchurl {
-    url = "https://github.com/storytold/${repoName}/releases/download/v${version}/${tarName}";
+    url = "${releaseUrl}/${archivePrefix}.tar.gz";
     inherit hash;
   };
 
-  # Source archive contains a top-level directory like "${archivePrefix}"
   sourceRoot = archivePrefix;
+  dontConfigure = true;
+  dontBuild = true;
+  dontStrip = true;
 
   nativeBuildInputs = [
     autoPatchelfHook
@@ -71,9 +72,6 @@ stdenv.mkDerivation rec {
     libxrender
     libxcb
   ];
-
-  # Allow missing optional libraries that winit / egui dlopen conditionally
-  autoPatchelfIgnoreMissingDeps = true;
 
   installPhase = ''
     runHook preInstall
@@ -114,8 +112,9 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     inherit description;
     homepage = "https://getartcraft.com/apps";
-    license = licenses.mit;
-    platforms = [ "x86_64-linux" ];
-    mainProgram = metaName;
+    license = with licenses; [ mit asl20 ];
+    platforms = [ "x86_64-linux" "aarch64-linux" ];
+    mainProgram = pname;
+    sourceProvenance = [ sourceTypes.binaryNativeCode ];
   };
 }

@@ -2,6 +2,7 @@
   cask = import ../lib/darwin-cask.nix lib;
 in {
   imports = [
+    (import ../lib/named-packages.nix "graphics" {names = ["libglvnd"]; default = false;})
     (import ../lib/component-packages.nix "graphics" "system")
     (import ../lib/darwin-package-options.nix "graphics" [
       {id = "darktable"; package = pkgs.darktable or null;}
