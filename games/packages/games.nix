@@ -1,11 +1,9 @@
-{lib, pkgs, ...}: let
+{pkgs, ...}: let
   inherit (pkgs.stdenv) hostPlatform;
 in {
-  components.games.packages = with pkgs; [
-    wineWow64Packages.waylandFull
-
-    gnome-sudoku
-  ]
-  # Nixpkgs' Bottles wrapper uses the i686 package set.
-  ++ lib.optional (hostPlatform.isLinux && hostPlatform.isx86) bottles;
+  imports = [(import ../../lib/package-options.nix "games" (with pkgs; [
+    {id = "wine-wayland"; package = wineWow64Packages.waylandFull;}
+    {id = "gnome-sudoku"; package = gnome-sudoku;}
+    {id = "bottles"; package = bottles; available = hostPlatform.isLinux && hostPlatform.isx86;}
+  ]))];
 }

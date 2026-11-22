@@ -1,11 +1,7 @@
-{
-  pkgs,
-  config,
-  inputs,
-  ...
-}: {
-  components.terminal.packages = with pkgs; [
-    btop
+{pkgs, ...}: {
+  imports = [
+    (import ../../../lib/package-options.nix "terminal" [
+      { id = "btop"; package = pkgs.btop; definitions = { xdg.configFile."btop/btop.conf".source = ./.config/btop/btop.conf; }; }
+    ])
   ];
-  xdg.configFile."btop/btop.conf".source = ./.config/btop/btop.conf;
 }

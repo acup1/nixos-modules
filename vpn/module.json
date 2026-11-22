@@ -54,6 +54,32 @@
       "description": "Включает интеграцию клиента Amnezia VPN.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "vpn",
+        "enabledPackages",
+        "amnezia-vpn"
+      ],
+      "title": "Amnezia VPN",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "vpn",
+        "enabledPackages",
+        "clash-verge-rev"
+      ],
+      "title": "Clash Verge Rev",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

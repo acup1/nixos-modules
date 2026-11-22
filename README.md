@@ -8,18 +8,13 @@
 modules = [
   (import (modulesRoot + "/base"))
   ((import (modulesRoot + "/devops")).withConfig {
-    nixos = { lib, pkgs, ... }: {
-      components.devops.packages = lib.mkForce [ pkgs.kubectl pkgs.terraform ];
-      virtualisation.libvirtd.enable = lib.mkForce false;
-    };
-    darwin = { pkgs, ... }: {
-      components.devops.packages = [ pkgs.jq ];
-    };
+    nixos.components.devops.enabledPackages.terraform = false;
+    darwin.components.devops.enabledPackages.colima = false;
   })
 ];
 ```
 
-В каждой части `components.<имя каталога>.packages` управляет пакетами этого компонента. Список дополняет поставляемый набор, а `lib.mkForce` заменяет его. Для приложений, установленных самой службой или программой Home Manager, используйте её собственные опции. Параметр `enable = false;` исключает компонент из этого места в списке. Если другой компонент явно импортирует его как зависимость, этот импорт продолжает действовать.
+Укажите `components.<компонент>.enabledPackages.<пакет> = false;` в нужном слое, чтобы исключить пакет и его сервисы из этого компонента. Например, отключение Colima в `devops` убирает пакет и его launchd-агент. Доступные имена перечислены в `module.json` компонента. Установщик записывает выбор для всех применимых слоёв в `config.nix`. Если тот же пакет нужен другому компоненту, тот может его установить. Для своих дополнительных пакетов можно по-прежнему использовать `components.<компонент>.packages`.
 
 Для Home Manager базовый flake передаёт целевую платформу через `extraSpecialArgs.system`, например `"aarch64-darwin"`. По ней компоненты рабочего стола выбирают подходящие импорты. Списки пакетов учитывают поддерживаемые платформы nixpkgs.
 

@@ -1,8 +1,11 @@
 {
+  config,
   lib,
   pkgs,
   ...
 }: let
+  enabled = config.components.macos-tiling.enabledPackages.yabai
+    && lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.yabai;
   yabai = lib.getExe pkgs.yabai;
   jq = lib.getExe pkgs.jq;
 
@@ -70,9 +73,12 @@
     ${yabai} -m space "$space" --balance
   '';
 in {
-  imports = [(import ../lib/component-packages.nix "macos-tiling" "system")];
+  imports = [
+    (import ../lib/component-packages.nix "macos-tiling" "system")
+    (import ../lib/package-options.nix "macos-tiling" [{id = "yabai";}])
+  ];
 
-  services.yabai = {
+  services.yabai = lib.mkIf enabled {
     enable = true;
     package = pkgs.yabai;
     enableScriptingAddition = false;
@@ -140,7 +146,7 @@ in {
     '';
   };
 
-  system.defaults = {
+  system.defaults = lib.mkIf enabled {
     NSGlobalDomain.AppleSpacesSwitchOnActivate = false;
     dock.mru-spaces = false;
     dock.persistent-apps = [ ];

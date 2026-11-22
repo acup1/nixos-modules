@@ -1,3 +1,5 @@
 {pkgs, ...}: {
-  components.niri.packages = with pkgs; [ iio-niri ];
+  imports = [(import ../../../lib/package-options.nix "niri" (with pkgs; [
+    {id = "iio-niri"; package = iio-niri;}
+  ]))];
 }

@@ -32,6 +32,370 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "brightnessctl"
+      ],
+      "title": "brightnessctl",
+      "description": "Подключает brightnessctl в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "cliphist"
+      ],
+      "title": "cliphist",
+      "description": "Подключает cliphist в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "fuzzel"
+      ],
+      "title": "fuzzel",
+      "description": "Подключает fuzzel в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "gdm"
+      ],
+      "title": "GNOME Display Manager",
+      "description": "Подключает GNOME Display Manager в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "grim"
+      ],
+      "title": "grim",
+      "description": "Подключает grim в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "iio-sensor-proxy"
+      ],
+      "title": "iio-sensor-proxy",
+      "description": "Подключает iio-sensor-proxy в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "libgbm"
+      ],
+      "title": "libgbm",
+      "description": "Подключает libgbm в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "maliit-keyboard"
+      ],
+      "title": "maliit-keyboard",
+      "description": "Подключает maliit-keyboard в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "networkmanagerapplet"
+      ],
+      "title": "networkmanagerapplet",
+      "description": "Подключает networkmanagerapplet в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "opentabletdriver"
+      ],
+      "title": "opentabletdriver",
+      "description": "Подключает opentabletdriver в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "pass-secret-service"
+      ],
+      "title": "pass-secret-service",
+      "description": "Подключает pass-secret-service в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "pipewire"
+      ],
+      "title": "PipeWire",
+      "description": "Подключает PipeWire в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "power-profiles-daemon"
+      ],
+      "title": "power-profiles-daemon",
+      "description": "Подключает power-profiles-daemon в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "slurp"
+      ],
+      "title": "slurp",
+      "description": "Подключает slurp в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "upower"
+      ],
+      "title": "upower",
+      "description": "Подключает upower в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "wacom"
+      ],
+      "title": "wacom",
+      "description": "Подключает wacom в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "wl-clipboard"
+      ],
+      "title": "wl-clipboard",
+      "description": "Подключает wl-clipboard в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "wl-clipboard-x11"
+      ],
+      "title": "wl-clipboard-x11",
+      "description": "Подключает wl-clipboard-x11 в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "xclip"
+      ],
+      "title": "xclip",
+      "description": "Подключает xclip в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "xdg-desktop-portal-gtk"
+      ],
+      "title": "xdg-desktop-portal-gtk",
+      "description": "Подключает xdg-desktop-portal-gtk в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "xorg-server"
+      ],
+      "title": "xorg-server",
+      "description": "Подключает xorg-server в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "xwayland-satellite"
+      ],
+      "title": "xwayland-satellite",
+      "description": "Подключает xwayland-satellite в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "bibata-cursors"
+      ],
+      "title": "bibata-cursors",
+      "description": "Подключает bibata-cursors в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "dank-material-shell"
+      ],
+      "title": "DankMaterialShell",
+      "description": "Включает оболочку Wayland и её пользовательские файлы.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "orchis-theme"
+      ],
+      "title": "orchis-theme",
+      "description": "Подключает orchis-theme в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "tela-icon-theme"
+      ],
+      "title": "tela-icon-theme",
+      "description": "Подключает tela-icon-theme в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "waybar"
+      ],
+      "title": "waybar",
+      "description": "Устанавливает Waybar и добавляет его пользовательские файлы.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "common",
+        "enabledPackages",
+        "waylandkb"
+      ],
+      "title": "waylandkb",
+      "description": "Подключает waylandkb в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

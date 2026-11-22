@@ -1,6 +1,8 @@
 {pkgs, lib, ...}: let
-  artcraftPackages = pkgs.callPackage ../packages.nix {};
+  packages = import ../packages.nix {inherit pkgs;};
 in {
-  components.artcraft.packages = lib.optionals (pkgs.stdenv.hostPlatform.system == "x86_64-linux")
-    (lib.filter lib.isDerivation (builtins.attrValues artcraftPackages));
+  imports = [(import ../../lib/package-options.nix "artcraft" (lib.mapAttrsToList (id: package: {
+    inherit id package;
+    available = pkgs.stdenv.hostPlatform.system == "x86_64-linux";
+  }) packages))];
 }

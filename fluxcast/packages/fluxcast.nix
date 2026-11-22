@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  components.fluxcast.packages = [
-    (pkgs.callPackage ../package.nix {})
-  ];
+  imports = [(import ../../lib/package-options.nix "fluxcast" (with pkgs; [
+    {id = "fluxcast"; package = (pkgs.callPackage ../package.nix {});}
+  ]))];
 }

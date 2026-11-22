@@ -33,6 +33,191 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "terminal",
+        "enabledPackages",
+        "alacritty"
+      ],
+      "title": "alacritty",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "terminal",
+        "enabledPackages",
+        "comma"
+      ],
+      "title": "comma",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "terminal",
+        "enabledPackages",
+        "cpupower"
+      ],
+      "title": "cpupower",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "terminal",
+        "enabledPackages",
+        "sshfs"
+      ],
+      "title": "sshfs",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "terminal",
+        "enabledPackages",
+        "cmatrix"
+      ],
+      "title": "cmatrix",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "terminal",
+        "enabledPackages",
+        "pipes-rs"
+      ],
+      "title": "pipes-rs",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "terminal",
+        "enabledPackages",
+        "btop"
+      ],
+      "title": "btop",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "terminal",
+        "enabledPackages",
+        "cava"
+      ],
+      "title": "Cava",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "terminal",
+        "enabledPackages",
+        "yazi"
+      ],
+      "title": "Yazi",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "terminal",
+        "enabledPackages",
+        "ghostty"
+      ],
+      "title": "Ghostty",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true,
+      "platforms": [
+        "linux"
+      ]
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "terminal",
+        "enabledPackages",
+        "nerd-fonts-code-new-roman"
+      ],
+      "title": "Code New Roman Nerd Font",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "terminal",
+        "enabledPackages",
+        "nerd-fonts-symbols-only"
+      ],
+      "title": "Nerd Fonts Symbols",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "terminal",
+        "enabledPackages",
+        "zsh"
+      ],
+      "title": "Zsh",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "terminal",
+        "enabledPackages",
+        "starship"
+      ],
+      "title": "Starship",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   lib,
   pkgs,
@@ -56,7 +57,11 @@
       ${hyprland}/bin/hyprctl output remove HEADLESS-0
     fi
   '';
-in lib.mkIf available {
+in lib.mkIf (
+  config.components.sunshine.enabledPackages.sunshine
+  && lib.meta.availableOn hostPlatform pkgs.sunshine
+  && available
+) {
   # Для полностью headless-загрузки GDM сразу запускает пользовательскую
   # сессию Hyprland, в которой создаётся виртуальный монитор SUNSHINE.
   services.displayManager = {

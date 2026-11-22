@@ -2,7 +2,6 @@
   lib,
   pkgs,
   config,
-  inputs,
   ...
 }: let
   # repo = builtins.fetchGit { url = "https://github.com/Diolinux/PhotoGIMP"; };
@@ -13,16 +12,19 @@
     # ref = "master";  # or a branch/tag if you want
   };
 in {
-  components.photoGIMP.packages = with pkgs; [gimp3];
-  #xdg.configFile."waybar".source = ./.config/waybar;
-
-  home.activation.copyPhotoGIMPConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    target=${lib.escapeShellArg "${config.xdg.configHome}/GIMP"}
-    if [ -L "$target" ]; then
-      run rm "$target"
-    fi
-    run mkdir -p "$target"
-    run cp -rL ${lib.escapeShellArg "${repo.outPath}/.config/GIMP/."} "$target/"
-    run chmod -R u+rwX "$target"
-  '';
+  imports = [
+    (import ../../../lib/package-options.nix "photoGIMP" [{
+      id = "gimp3";
+      package = pkgs.gimp3;
+      definitions.home.activation.copyPhotoGIMPConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
+        target=${lib.escapeShellArg "${config.xdg.configHome}/GIMP"}
+        if [ -L "$target" ]; then
+          run rm "$target"
+        fi
+        run mkdir -p "$target"
+        run cp -rL ${lib.escapeShellArg "${repo.outPath}/.config/GIMP/."} "$target/"
+        run chmod -R u+rwX "$target"
+      '';
+    }])
+  ];
 }

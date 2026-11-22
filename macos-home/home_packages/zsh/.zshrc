@@ -48,5 +48,3 @@ export SHELL=zsh
 # source $HOME/.secrets.sh
 export PATH="$HOME/.local/bin:/opt/homebrew/bin:$PATH"
 [ -f "$HOME/.skillstore/.env" ] && source "$HOME/.skillstore/.env"
-
-eval "$(starship init zsh)"

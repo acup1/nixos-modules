@@ -58,6 +58,253 @@
       "description": "Добавляет виртуальным машинам поддержку устройства TPM.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "docker"
+      ],
+      "title": "docker",
+      "description": "Подключает docker в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "docker-compose"
+      ],
+      "title": "docker-compose",
+      "description": "Подключает docker-compose в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "kubectl"
+      ],
+      "title": "kubectl",
+      "description": "Подключает kubectl в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "libvirt"
+      ],
+      "title": "Сервис libvirt",
+      "description": "Запускает управление виртуальными машинами при включённой поддержке QEMU.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "qemu"
+      ],
+      "title": "qemu",
+      "description": "Подключает qemu в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "swtpm"
+      ],
+      "title": "Виртуальный TPM",
+      "description": "Подключает виртуальное устройство TPM к настройкам libvirt.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "terraform"
+      ],
+      "title": "terraform",
+      "description": "Подключает terraform в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "terragrunt"
+      ],
+      "title": "terragrunt",
+      "description": "Подключает terragrunt в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "virt-manager"
+      ],
+      "title": "virt-manager",
+      "description": "Подключает virt-manager в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "colima"
+      ],
+      "title": "colima",
+      "description": "Подключает colima в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "docker"
+      ],
+      "title": "docker",
+      "description": "Подключает docker в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "docker-compose"
+      ],
+      "title": "docker-compose",
+      "description": "Подключает docker-compose в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "kubectl"
+      ],
+      "title": "kubectl",
+      "description": "Подключает kubectl в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "kubernetes-helm"
+      ],
+      "title": "kubernetes-helm",
+      "description": "Подключает kubernetes-helm в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "minikube"
+      ],
+      "title": "minikube",
+      "description": "Подключает minikube в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "terraform"
+      ],
+      "title": "terraform",
+      "description": "Подключает terraform в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "terragrunt"
+      ],
+      "title": "terragrunt",
+      "description": "Подключает terragrunt в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "kubernetes-helm"
+      ],
+      "title": "kubernetes-helm",
+      "description": "Подключает kubernetes-helm в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "devops",
+        "enabledPackages",
+        "minikube"
+      ],
+      "title": "minikube",
+      "description": "Подключает minikube в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

@@ -1,11 +1,7 @@
-{
-  pkgs,
-  config,
-  inputs,
-  ...
-}: {
-  components.terminal.packages = with pkgs; [
-    yazi
+{pkgs, ...}: {
+  imports = [
+    (import ../../../lib/package-options.nix "terminal" [
+      { id = "yazi"; package = pkgs.yazi; definitions = { xdg.configFile."yazi".source = ./.config/yazi; }; }
+    ])
   ];
-  xdg.configFile."yazi".source = ./.config/yazi;
 }

@@ -1,11 +1,7 @@
-{
-  pkgs,
-  config,
-  inputs,
-  ...
-}: {
-  components.music.packages = with pkgs; [
-    muffon
+{pkgs, ...}: {
+  imports = [
+    (import ../../../lib/package-options.nix "music" [
+      { id = "muffon"; package = pkgs.muffon; }
+    ])
   ];
-  # xdg.configFile."ghostty".source = ./.config/ghostty;
 }

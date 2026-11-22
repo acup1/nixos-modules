@@ -1,5 +1,7 @@
 {pkgs, ...}: {
-  components.terminal.packages = with pkgs; [
-    alacritty
+  imports = [
+    (import ../../lib/package-options.nix "terminal" [
+      { id = "alacritty"; package = pkgs.alacritty; }
+    ])
   ];
 }

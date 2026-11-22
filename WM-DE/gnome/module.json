@@ -45,6 +45,32 @@
       "description": "Добавляет GNOME к списку графических сессий.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "gnome",
+        "enabledPackages",
+        "gnome-shell"
+      ],
+      "title": "Рабочий стол GNOME",
+      "description": "Подключает Рабочий стол GNOME в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "gnome",
+        "enabledPackages",
+        "screen-rotate"
+      ],
+      "title": "screen-rotate",
+      "description": "Подключает screen-rotate в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

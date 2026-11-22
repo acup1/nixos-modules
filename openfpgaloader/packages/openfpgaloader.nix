@@ -1,6 +1,7 @@
 {pkgs, ...}: {
-  components.openfpgaloader.packages = with pkgs; [
-    openfpgaloader
+  imports = [
+    (import ../../lib/package-options.nix "openfpgaloader" [
+      { id = "openfpgaloader"; package = pkgs.openfpgaloader; }
+    ])
   ];
 }
-

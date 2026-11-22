@@ -18,6 +18,175 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "arduino-ide"
+      ],
+      "title": "arduino-ide",
+      "description": "Подключает arduino-ide в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "cargo"
+      ],
+      "title": "cargo",
+      "description": "Подключает cargo в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "clang"
+      ],
+      "title": "clang",
+      "description": "Подключает clang в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "cling"
+      ],
+      "title": "cling",
+      "description": "Подключает cling в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "gcc"
+      ],
+      "title": "gcc",
+      "description": "Подключает gcc в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "gnumake"
+      ],
+      "title": "gnumake",
+      "description": "Подключает gnumake в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "go"
+      ],
+      "title": "go",
+      "description": "Подключает go в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "libgccjit"
+      ],
+      "title": "libgccjit",
+      "description": "Подключает libgccjit в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "nodejs"
+      ],
+      "title": "nodejs",
+      "description": "Подключает nodejs в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "python3"
+      ],
+      "title": "python3",
+      "description": "Подключает python3 в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "rustc"
+      ],
+      "title": "rustc",
+      "description": "Подключает rustc в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "rustup"
+      ],
+      "title": "rustup",
+      "description": "Подключает rustup в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "dev",
+        "enabledPackages",
+        "scdoc"
+      ],
+      "title": "scdoc",
+      "description": "Подключает scdoc в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

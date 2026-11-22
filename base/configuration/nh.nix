@@ -38,11 +38,15 @@ let
       ln -s ${lib.getExe nhWrapper} "$out/bin/nh"
     '';
   };
-in
-{
-  programs.nh = {
-    enable = true;
-    flake = flakeDir;
-    package = nhWithLocalModules;
-  };
+in {
+  imports = [(import ../../lib/package-options.nix "base" [{
+    id = "nh";
+    definitions = {
+      programs.nh = {
+        enable = true;
+        flake = flakeDir;
+        package = nhWithLocalModules;
+      };
+    };
+  }])];
 }

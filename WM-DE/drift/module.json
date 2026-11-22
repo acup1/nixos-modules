@@ -32,6 +32,45 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "drift",
+        "enabledPackages",
+        "driftwm"
+      ],
+      "title": "DriftWM",
+      "description": "Подключает сессию DriftWM и настройки её запуска.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "drift",
+        "enabledPackages",
+        "driftwm"
+      ],
+      "title": "DriftWM",
+      "description": "Подключает сессию DriftWM и настройки её запуска.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "drift",
+        "enabledPackages",
+        "driftwm-autorotate"
+      ],
+      "title": "Автоповорот экрана DriftWM",
+      "description": "Запускает службу поворота встроенного дисплея в DriftWM.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

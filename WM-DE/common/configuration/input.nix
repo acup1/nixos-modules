@@ -1,15 +1,16 @@
 {...}: {
-  services.xserver.wacom.enable = true; # или убедись что libinput активен
-  hardware.opentabletdriver.enable = true; # альтернатива — OpenTabletDriver
-
-  services.xserver = {
-    enable = true;
-    xkb = {
-      layout = "us,ru";
-      variant = "";
-    };
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  imports = [(import ../../../lib/package-options.nix "common" [
+    {id = "wacom"; definitions.services.xserver.wacom.enable = true;}
+    {id = "opentabletdriver"; definitions.hardware.opentabletdriver.enable = true;}
+    {
+      id = "xorg-server";
+      definitions.services.xserver = {
+        enable = true;
+        xkb = {
+          layout = "us,ru";
+          variant = "";
+        };
+      };
+    }
+  ])];
 }

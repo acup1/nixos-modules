@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   specialArgs,
   ...
@@ -10,5 +9,8 @@
   };
   package = inputs.waylandkb.packages.${pkgs.stdenv.hostPlatform.system}.default or null;
 in {
-  components.common.packages = lib.optional (package != null) package;
+  imports = [(import ../../../../lib/package-options.nix "common" [{
+    id = "waylandkb";
+    inherit package;
+  }])];
 }

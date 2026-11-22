@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -116,6 +117,7 @@
     "slash"
   ];
 
+  enabled = config.components.macos-keyboard.enabledPackages.karabiner-elements;
   karabinerConfig = pkgs.writeText "karabiner.json" (builtins.toJSON {
     global = {
       check_for_updates_on_startup = false;
@@ -200,9 +202,12 @@
     ];
   });
 in {
-  imports = [(import ../lib/component-packages.nix "macos-keyboard" "home")];
+  imports = [
+    (import ../lib/component-packages.nix "macos-keyboard" "home")
+    (import ../lib/package-options.nix "macos-keyboard" [{id = "karabiner-elements";}])
+  ];
 
-  home.activation.disableMacOSInputSourceShortcuts = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.disableMacOSInputSourceShortcuts = lib.mkIf enabled (lib.hm.dag.entryAfter ["writeBoundary"] ''
     symbolic_hotkeys="$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
 
     $DRY_RUN_CMD /usr/bin/defaults write com.apple.HIToolbox AppleFnUsageType -int 0
@@ -234,10 +239,10 @@ in {
       $DRY_RUN_CMD /usr/bin/killall cfprefsd 2>/dev/null || true
       $DRY_RUN_CMD /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
     fi
-  '';
+  '');
 
-  home.activation.installKarabinerConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.installKarabinerConfig = lib.mkIf enabled (lib.hm.dag.entryAfter ["writeBoundary"] ''
     $DRY_RUN_CMD install -d -m 700 "$HOME/.config/karabiner"
     $DRY_RUN_CMD install -m 600 ${karabinerConfig} "$HOME/.config/karabiner/karabiner.json"
-  '';
+  '');
 }

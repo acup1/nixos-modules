@@ -1,6 +1,6 @@
 {pkgs, ...}: {
-  components.hypr.packages = with pkgs; [
-    hyprland
-    grimblast
-  ];
+  imports = [(import ../../../lib/package-options.nix "hypr" (with pkgs; [
+    {id = "hyprland"; package = hyprland;}
+    {id = "grimblast"; package = grimblast;}
+  ]))];
 }

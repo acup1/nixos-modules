@@ -18,6 +18,45 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "bootloader",
+        "enabledPackages",
+        "grub"
+      ],
+      "title": "GRUB",
+      "description": "Настраивает загрузчик GRUB для UEFI. Если выключить GRUB, понадобится другой загрузчик.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "bootloader",
+        "enabledPackages",
+        "intervals-grub-theme"
+      ],
+      "title": "Тема GRUB Intervals",
+      "description": "Подключает Тема GRUB Intervals в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "bootloader",
+        "enabledPackages",
+        "qemu-aarch64"
+      ],
+      "title": "Эмуляция aarch64 через QEMU",
+      "description": "Подключает Эмуляция aarch64 через QEMU в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

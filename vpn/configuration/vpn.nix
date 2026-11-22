@@ -1,12 +1,15 @@
-{pkgs, ...}: {
-  programs.clash-verge = {
+{config, lib, pkgs, ...}: let
+  enabled = config.components.vpn.enabledPackages;
+  available = lib.meta.availableOn pkgs.stdenv.hostPlatform;
+in {
+  programs.clash-verge = lib.mkIf (enabled.clash-verge-rev && available pkgs.clash-verge-rev) {
     enable = true;
     serviceMode = true;
     tunMode = true;
     autoStart = true;
   };
   # networking.firewall.trustedInterfaces = ["Mihomo"];
-  programs.amnezia-vpn.enable = true;
+  programs.amnezia-vpn.enable = lib.mkIf (enabled.amnezia-vpn && available pkgs.amnezia-vpn) true;
   # services.flclash.enable = true;
   # services.v2raya.enable = true;
   # programs.throne.enable = true;

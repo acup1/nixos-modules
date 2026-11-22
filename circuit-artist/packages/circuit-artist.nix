@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  components.circuit-artist.packages = [
-    (pkgs.callPackage ../package.nix {})
-  ];
+  imports = [(import ../../lib/package-options.nix "circuit-artist" (with pkgs; [
+    {id = "circuit-artist"; package = (pkgs.callPackage ../package.nix {});}
+  ]))];
 }

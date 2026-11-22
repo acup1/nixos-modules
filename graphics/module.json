@@ -18,6 +18,84 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "graphics",
+        "enabledPackages",
+        "coin3d"
+      ],
+      "title": "coin3d",
+      "description": "Подключает coin3d в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "graphics",
+        "enabledPackages",
+        "darktable"
+      ],
+      "title": "darktable",
+      "description": "Подключает darktable в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "graphics",
+        "enabledPackages",
+        "freecad-wayland"
+      ],
+      "title": "freecad-wayland",
+      "description": "Подключает freecad-wayland в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "graphics",
+        "enabledPackages",
+        "libglvnd"
+      ],
+      "title": "libglvnd",
+      "description": "Подключает libglvnd в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "graphics",
+        "enabledPackages",
+        "mesa-demos"
+      ],
+      "title": "mesa-demos",
+      "description": "Подключает mesa-demos в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "graphics",
+        "enabledPackages",
+        "nvidia-x11"
+      ],
+      "title": "nvidia-x11",
+      "description": "Подключает nvidia-x11 в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

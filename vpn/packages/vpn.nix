@@ -1,9 +1,9 @@
 {pkgs, ...}: {
-  components.vpn.packages = with pkgs; [
-    amnezia-vpn
+  imports = [(import ../../lib/package-options.nix "vpn" [
+    {id = "amnezia-vpn"; package = pkgs.amnezia-vpn;}
     # hiddify-app
     # v2raya
-    clash-verge-rev
+    {id = "clash-verge-rev"; package = pkgs.clash-verge-rev;}
     # flclash
-  ];
+  ])];
 }
