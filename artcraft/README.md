@@ -14,7 +14,7 @@
 | PdfCraft | Просмотр и редактирование PDF | [0.6.0](https://github.com/storytold/pdfcraft/releases/tag/v0.6.0) |
 | EffectCraft | Анимация и композитинг | [0.8.0](https://github.com/storytold/effectcraft/releases/tag/v0.8.0) |
 | DesignCraft | Вёрстка публикаций | [0.6.0](https://github.com/storytold/designcraft/releases/tag/v0.6.0) |
-| WordCraft | Текстовые документы | [0.5.0](https://github.com/storytold/wordcraft/releases/tag/v0.5.0) |
+| WordCraft | Текстовые документы | [0.8.0](https://github.com/storytold/wordcraft/releases/tag/v0.8.0) |
 | SoundCraft | Работа со звуком | [0.5.0](https://github.com/storytold/soundcraft/releases/tag/v0.5.0) |
 | DeckCraft | Презентации | [0.5.0](https://github.com/storytold/deckcraft/releases/tag/v0.5.0) |
 | CADCraft | САПР и черчение | [0.5.0](https://github.com/storytold/cadcraft/releases/tag/v0.5.0) |

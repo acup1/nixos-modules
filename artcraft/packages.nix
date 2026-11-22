@@ -110,13 +110,13 @@ in {
   };
 
   wordcraft = mkApp "wordcraft" {
-    version = "0.5.0";
+    version = "0.8.0";
     bundleName = "WordCraft";
     description = "Word processor reimplementation written in pure Rust";
-    linuxX86 = "sha256-mUuzdkee9tdnNc9AKeXvPC1SqFpMms3is3wzsZxXAgM=";
-    linuxArm = "sha256-wUSW0At/mkv2WEU6X56sxpFB3MSfJjEDX9mEzvyQy/M=";
-    darwin = "sha256-hVgS8ZoaJ7bcC7tcesccOmC4T1MBtLlwvoujxd/f7OU=";
-    darwinCli = "sha256-ne0EcS+tMslVsyxO/MvkRo/ZXq5PGOo+Mt0zVeZnS1s=";
+    linuxX86 = "sha256-Ds4Hzz2RuSPf2A+QMQ4EmDveZvAnnGtg3c6JWW3eDd8=";
+    linuxArm = "sha256-qGLeIlbkPJh9yOoAm6Uqwl2zQJH9ZJtmYTOTGsaOAsw=";
+    darwin = "sha256-nHwFjkvA6j3U5/NQ6TS15f9XmHI5N/OCx3R4ppePieM=";
+    darwinCli = "sha256-kx8id6NX59dyZt3O6lZUULECynv54GNIIRYve6thbb4=";
   };
 
   soundcraft = mkApp "soundcraft" {
