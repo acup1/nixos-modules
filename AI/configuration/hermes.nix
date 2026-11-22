@@ -25,7 +25,10 @@ in {
     hermes.nixosModules.default
     (import ../../lib/package-options.nix "AI" [
       {id = "hermes-agent";}
-      {id = "codex";}
+      {
+        id = "codex";
+        definitions.components.codex.packages = [pkgs.codex];
+      }
     ])
   ];
 
@@ -53,9 +56,7 @@ in {
     openFirewall = lib.mkEnableOption "opening the Hermes dashboard TCP port in the firewall";
   };
 
-  config = lib.mkMerge [
-    (lib.mkIf (!enabled.codex) { components.codex.enabledPackages.codex = lib.mkDefault false; })
-    (lib.mkIf (cfg.enable && enabled.hermes-agent) {
+  config = lib.mkIf (cfg.enable && enabled.hermes-agent) {
     components.AI.packages = [config.services.hermes-agent.package];
 
     services.hermes-agent = {
@@ -96,6 +97,5 @@ in {
     };
 
     networking.firewall.allowedTCPPorts = lib.optional cfg.openFirewall cfg.port;
-    })
-  ];
+  };
 }
