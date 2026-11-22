@@ -7,6 +7,7 @@
       "linux"
     ]
   },
+  "systems": ["x86_64-linux"],
   "options": [
     {
       "layer": "nixos",

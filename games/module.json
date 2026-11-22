@@ -5,6 +5,9 @@
   "layers": {
     "nixos": [
       "linux"
+    ],
+    "darwin": [
+      "darwin"
     ]
   },
   "options": [
@@ -29,7 +32,10 @@
       "title": "Steam",
       "description": "Включает интеграцию Steam на x86_64 Linux.",
       "type": "bool",
-      "default": true
+      "default": true,
+      "systems": [
+        "x86_64-linux"
+      ]
     },
     {
       "layer": "nixos",
@@ -42,7 +48,10 @@
       "title": "Доступ Steam Remote Play",
       "description": "Разрешает входящие соединения для удалённой игры.",
       "type": "bool",
-      "default": true
+      "default": true,
+      "systems": [
+        "x86_64-linux"
+      ]
     },
     {
       "layer": "nixos",
@@ -55,7 +64,10 @@
       "title": "Доступ игровых серверов",
       "description": "Открывает порт выделенных серверов Steam.",
       "type": "bool",
-      "default": true
+      "default": true,
+      "systems": [
+        "x86_64-linux"
+      ]
     },
     {
       "layer": "nixos",
@@ -68,7 +80,10 @@
       "title": "Bottles",
       "description": "Подключает графический менеджер Wine на Linux x86.",
       "type": "bool",
-      "default": true
+      "default": true,
+      "systems": [
+        "x86_64-linux"
+      ]
     },
     {
       "layer": "nixos",
@@ -94,7 +109,10 @@
       "title": "Steam",
       "description": "Включает Steam и правила межсетевого экрана на x86_64 Linux.",
       "type": "bool",
-      "default": true
+      "default": true,
+      "systems": [
+        "x86_64-linux"
+      ]
     },
     {
       "layer": "nixos",
@@ -106,6 +124,46 @@
       ],
       "title": "Wine с Wayland",
       "description": "Подключает Wine с Wayland в этом компоненте.",
+      "type": "bool",
+      "default": true,
+      "systems": [
+        "x86_64-linux"
+      ]
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "games",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "games",
+        "enabledPackages",
+        "gnome-sudoku"
+      ],
+      "title": "gnome-sudoku",
+      "description": "Подключает gnome-sudoku в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "games",
+        "enabledPackages",
+        "steam"
+      ],
+      "title": "Steam",
+      "description": "Устанавливает приложение через Homebrew Cask (steam).",
       "type": "bool",
       "default": true
     }

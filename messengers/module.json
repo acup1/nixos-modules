@@ -5,6 +5,9 @@
   "layers": {
     "nixos": [
       "linux"
+    ],
+    "darwin": [
+      "darwin"
     ]
   },
   "options": [
@@ -43,7 +46,10 @@
       "title": "discord",
       "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
       "type": "bool",
-      "default": true
+      "default": true,
+      "systems": [
+        "x86_64-linux"
+      ]
     },
     {
       "layer": "nixos",
@@ -55,6 +61,56 @@
       ],
       "title": "rocketchat-desktop",
       "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "messengers",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "messengers",
+        "enabledPackages",
+        "telegram-desktop"
+      ],
+      "title": "telegram-desktop",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "messengers",
+        "enabledPackages",
+        "discord"
+      ],
+      "title": "discord",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "messengers",
+        "enabledPackages",
+        "rocketchat-desktop"
+      ],
+      "title": "rocketchat-desktop",
+      "description": "Устанавливает приложение через Homebrew Cask (rocket-chat).",
       "type": "bool",
       "default": true
     }

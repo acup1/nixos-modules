@@ -1,10 +1,13 @@
 {
   "schemaVersion": 1,
-  "title": "Базовая система NixOS",
-  "description": "Настраивает Nix, кеши, сеть, SSH и Zsh, добавляет базовые утилиты.",
+  "title": "Базовая система",
+  "description": "Основные утилиты для NixOS и macOS. В NixOS также настраивает Nix, кеши, сеть, SSH и Zsh.",
   "layers": {
     "nixos": [
       "linux"
+    ],
+    "darwin": [
+      "darwin"
     ]
   },
   "options": [
@@ -214,6 +217,160 @@
     },
     {
       "layer": "nixos",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "zsh"
+      ],
+      "title": "zsh",
+      "description": "Подключает zsh в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "base",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "bat"
+      ],
+      "title": "bat",
+      "description": "Подключает bat в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "fastfetch"
+      ],
+      "title": "fastfetch",
+      "description": "Подключает fastfetch в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "fzf"
+      ],
+      "title": "fzf",
+      "description": "Подключает fzf в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "git"
+      ],
+      "title": "git",
+      "description": "Подключает git в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "neovim"
+      ],
+      "title": "neovim",
+      "description": "Подключает neovim в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "nh"
+      ],
+      "title": "nh",
+      "description": "Устанавливает команду nh для сборки конфигураций Nix.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "p7zip"
+      ],
+      "title": "p7zip",
+      "description": "Подключает p7zip в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "unzip"
+      ],
+      "title": "unzip",
+      "description": "Подключает unzip в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "usbutils"
+      ],
+      "title": "usbutils",
+      "description": "Подключает usbutils в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "wget"
+      ],
+      "title": "wget",
+      "description": "Подключает wget в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
       "path": [
         "components",
         "base",

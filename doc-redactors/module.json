@@ -98,7 +98,8 @@
       "title": "wpsoffice-cn",
       "description": "Подключает wpsoffice-cn в этом компоненте.",
       "type": "bool",
-      "default": true
+      "default": true,
+      "systems": ["x86_64-linux"]
     },
     {
       "layer": "nixos",

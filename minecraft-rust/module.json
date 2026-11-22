@@ -7,6 +7,7 @@
       "darwin"
     ]
   },
+  "systems": ["aarch64-darwin"],
   "options": [
     {
       "layer": "darwin",

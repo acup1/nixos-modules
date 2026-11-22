@@ -83,7 +83,36 @@
       "title": "Zen Browser",
       "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
       "type": "bool",
-      "default": true
+      "default": true,
+      "systems": [
+        "aarch64-darwin"
+      ]
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "browsers",
+        "enabledPackages",
+        "google-chrome"
+      ],
+      "title": "Google Chrome",
+      "description": "Устанавливает браузер через Homebrew.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "browsers",
+        "enabledPackages",
+        "tor-browser"
+      ],
+      "title": "Tor Browser",
+      "description": "Устанавливает браузер через Homebrew.",
+      "type": "bool",
+      "default": false
     }
   ]
 }

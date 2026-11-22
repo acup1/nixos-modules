@@ -44,6 +44,34 @@
       "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "nvf",
+        "theme"
+      ],
+      "title": "Цветовая тема",
+      "description": "Выбирает цветовую тему Neovim и её вариант. Настройка прозрачного фона сохраняется.",
+      "type": "string",
+      "choices": [
+        "onedark/darker",
+        "onedark/dark",
+        "onedark/cool",
+        "onedark/deep",
+        "onedark/warm",
+        "onedark/warmer",
+        "catppuccin/mocha",
+        "catppuccin/latte",
+        "catppuccin/frappe",
+        "catppuccin/macchiato",
+        "tokyonight/moon",
+        "tokyonight/storm",
+        "tokyonight/night",
+        "tokyonight/day"
+      ],
+      "default": "onedark/darker"
     }
   ]
 }

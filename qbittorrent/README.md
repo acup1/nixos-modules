@@ -1,6 +1,6 @@
 # Модуль `qbittorrent`
 
-* **Экспорт**: `nixos`
+* **Экспорт**: `nixos`, `darwin`
 * **Назначение**: Клиент пиринговых сетей BitTorrent.
 
 ## Структура
@@ -9,3 +9,5 @@
 * `nixos.nix` — подключает `packages/`.
 * `packages/qbittorrent.nix`:
   * Пакет `qbittorrent`.
+
+На обеих ОС устанавливается qBittorrent из nixpkgs.

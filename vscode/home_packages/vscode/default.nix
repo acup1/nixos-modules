@@ -1,4 +1,20 @@
 {config, options, lib, pkgs, ...}: let
+  inherit (pkgs.stdenv) hostPlatform;
+  cfg = config.components.vscode;
+  enabled = cfg.enabledPackages;
+  localThemes = map (theme: theme.label) (
+    (builtins.fromJSON (builtins.readFile ./local-theme/package.json)).contributes.themes
+  );
+  builtInThemes = ["Default High Contrast" "Default High Contrast Light"];
+  selectedTheme =
+    if !enabled.local-colorways && builtins.elem cfg.theme localThemes
+    then "Default High Contrast"
+    else cfg.theme;
+  mcpIntegrationAvailable =
+    options ? programs.mcp.servers
+    && (options.programs.vscode.profiles.type.getSubOptions ["programs" "vscode" "profiles" "default"])
+      ? enableMcpIntegration;
+
   localColorways = pkgs.vscode-utils.buildVscodeExtension {
     pname = "acup-local-colorways";
     version = "1.0.0";
@@ -10,14 +26,31 @@
     meta.license = lib.licenses.mit;
   };
 
+  codexAssets = {
+    aarch64-darwin = {
+      arch = "darwin-arm64";
+      hash = "sha256-JKSbsmx4QLw43Kle0Pj3L6+9bUYNO0ggyaapbaT9MPs=";
+    };
+    x86_64-darwin = {
+      arch = "darwin-x64";
+      hash = "sha256-lMbgS80pVAts5d2AWaacnJucnPxCBk+2jKQGyUDz5TI=";
+    };
+    aarch64-linux = {
+      arch = "linux-arm64";
+      hash = "sha256-ZCIn+vK8P+xkrdEsoZKXHSuuNJt9GBLCHLRy/8Y8X4I=";
+    };
+    x86_64-linux = {
+      arch = "linux-x64";
+      hash = "sha256-dc7nSXzzjHIc/qpzg7V5U3tORDkIb5liWHBd5doDrVY=";
+    };
+  };
+  codexAsset = codexAssets.${hostPlatform.system} or null;
   codexExtension = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
     mktplcRef = {
       publisher = "openai";
       name = "chatgpt";
       version = "26.51007.21434";
-      arch = "darwin-arm64";
-      hash = "sha256-JKSbsmx4QLw43Kle0Pj3L6+9bUYNO0ggyaapbaT9MPs=";
-    };
+    } // codexAsset;
   };
 
   mapCommand = before: command: {
@@ -39,25 +72,33 @@
     config.components.macos-keyboard.enabledPackages.karabiner-elements
       or (options ? components.macos-keyboard.packages);
   toggleTerminal = "workbench.action.terminal.toggleTerminal";
-  terminalWhen = "terminalFocus || (editorTextFocus && vim.active && !inDebugRepl)";
-  enabled = config.components.vscode.enabledPackages.vscode;
+  terminalWhen =
+    if enabled.vim
+    then "terminalFocus || (editorTextFocus && vim.active && !inDebugRepl)"
+    else "terminalFocus || (editorTextFocus && !inDebugRepl)";
 in {
-  nixpkgs.config.allowUnfreePredicate = lib.mkIf enabled (
+  options.components.vscode.theme = lib.mkOption {
+    type = lib.types.enum (localThemes ++ builtInThemes);
+    default = "Ocean High Contrast";
+    description = "VS Code color theme. Bundled labels fall back to Default High Contrast when Local Colorways is disabled.";
+  };
+
+  config.nixpkgs.config.allowUnfreePredicate = lib.mkIf enabled.vscode (
     pkg: builtins.elem (lib.getName pkg) ["vscode"]
   );
 
-  programs.vscode = lib.mkIf (enabled && lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.vscode) {
+  config.programs.vscode = lib.mkIf (enabled.vscode && lib.meta.availableOn hostPlatform pkgs.vscode) {
     enable = true;
     package = pkgs.vscode;
 
     profiles.default = {
       extensions =
-        [pkgs.vscode-extensions.vscodevim.vim]
-        ++ lib.optional (pkgs.stdenv.hostPlatform.system == "aarch64-darwin") codexExtension
-        ++ [localColorways];
+        lib.optional enabled.vim pkgs.vscode-extensions.vscodevim.vim
+        ++ lib.optional (enabled.codex && codexAsset != null) codexExtension
+        ++ lib.optional enabled.local-colorways localColorways;
 
       userSettings = {
-        "workbench.colorTheme" = "Ocean High Contrast";
+        "workbench.colorTheme" = lib.mkDefault selectedTheme;
 
         "editor.tabSize" = 2;
         "editor.insertSpaces" = true;
@@ -66,6 +107,11 @@ in {
         "editor.formatOnSave" = true;
         "workbench.editor.enablePreview" = false;
 
+        "terminal.integrated.commandsToSkipShell" = [
+          toggleTerminal
+          "workbench.action.focusActiveEditorGroup"
+        ];
+      } // lib.optionalAttrs enabled.vim {
         "vim.leader" = "<space>";
         "vim.useSystemClipboard" = true;
         "vim.useCtrlKeys" = true;
@@ -140,14 +186,9 @@ in {
         "vim.visualModeKeyBindingsNonRecursive" = [
           (mapCommand ["<leader>" "/"] "editor.action.commentLine")
         ];
-
-        "terminal.integrated.commandsToSkipShell" = [
-          toggleTerminal
-          "workbench.action.focusActiveEditorGroup"
-        ];
       };
 
-      keybindings = [
+      keybindings = lib.optionals enabled.vim [
         # Native bindings also work when Vim does not receive Tab or Ctrl keys.
         (normalKey "tab" "workbench.action.nextEditor")
         (normalKey "shift+tab" "workbench.action.previousEditor")
@@ -160,6 +201,7 @@ in {
           command = "workbench.action.files.save";
           when = "editorTextFocus && vim.active && !inDebugRepl";
         }
+      ] ++ [
         {
           key = "ctrl+'";
           command = toggleTerminal;
@@ -175,7 +217,7 @@ in {
           command = "workbench.action.focusActiveEditorGroup";
           when = "terminalFocus && !terminalFindVisible && !terminalSuggestWidgetVisible";
         }
-      ] ++ lib.optionals (pkgs.stdenv.hostPlatform.isDarwin && karabinerEnabled) [
+      ] ++ lib.optionals (hostPlatform.isDarwin && karabinerEnabled) [
         # macos-keyboard installs Karabiner's Linux-style GUI shortcuts.
         # Convert them back to control characters inside VS Code's terminal.
         (terminalSequence "cmd+a" (builtins.fromJSON ''"\u0001"''))
@@ -210,6 +252,8 @@ in {
           when = "terminalFocus";
         }
       ];
+    } // lib.optionalAttrs mcpIntegrationAvailable {
+      enableMcpIntegration = lib.mkDefault true;
     };
   };
 }

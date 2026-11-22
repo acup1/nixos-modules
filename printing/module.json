@@ -33,7 +33,8 @@
       "title": "Fuji Xerox Linux Print",
       "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
       "type": "bool",
-      "default": true
+      "default": true,
+      "systems": ["x86_64-linux"]
     },
     {
       "layer": "nixos",

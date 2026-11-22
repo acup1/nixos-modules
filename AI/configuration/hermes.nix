@@ -4,8 +4,7 @@
   pkgs,
   ...
 }: let
-  # Hermes Agent v0.23.3.
-  hermes = builtins.getFlake "github:NousResearch/hermes-agent/caafe5389ae585ef77387a962aee05b1bcf17029";
+  hermes = import ../hermes-source.nix;
   cfg = config.services.hermes-web;
   enabled = config.components.AI.enabledPackages;
   ollama = config.services.ollama;

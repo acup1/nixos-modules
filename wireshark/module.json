@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "title": "Wireshark",
+  "description": "Анализ сетевых записей, доступ к захвату без sudo и локальный MCP.",
+  "layers": {
+    "nixos": [
+      "linux"
+    ],
+    "darwin": [
+      "darwin"
+    ],
+    "home": [
+      "linux",
+      "darwin"
+    ]
+  },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "wireshark",
+        "enabledPackages",
+        "wireshark"
+      ],
+      "title": "Wireshark",
+      "description": "Включить Wireshark и связанные настройки этого слоя.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "wireshark",
+        "capture",
+        "enable"
+      ],
+      "title": "Захват без sudo",
+      "description": "Предоставить указанным пользователям доступ к устройствам захвата.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "wireshark",
+        "capture",
+        "users"
+      ],
+      "title": "Пользователи для захвата",
+      "description": "Локальные имена пользователей. По умолчанию используется username из config.nix.",
+      "type": "string_list"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "wireshark",
+        "enabledPackages",
+        "wireshark"
+      ],
+      "title": "Wireshark",
+      "description": "Включить Wireshark и связанные настройки этого слоя.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "wireshark",
+        "capture",
+        "enable"
+      ],
+      "title": "Захват без sudo",
+      "description": "Предоставить указанным пользователям доступ к устройствам захвата.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "wireshark",
+        "capture",
+        "users"
+      ],
+      "title": "Пользователи для захвата",
+      "description": "Локальные имена пользователей. По умолчанию используется username из config.nix.",
+      "type": "string_list"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "wireshark",
+        "enabledPackages",
+        "wireshark"
+      ],
+      "title": "Wireshark",
+      "description": "Включить Wireshark и связанные настройки этого слоя.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "wireshark",
+        "mcp",
+        "enable"
+      ],
+      "title": "Wireshark MCP",
+      "description": "Зарегистрировать локальный stdio-сервер для анализа файлов PCAP.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "wireshark",
+        "mcp",
+        "captureDirectory"
+      ],
+      "title": "Каталог записей для MCP",
+      "description": "Каталог .pcap и .pcapng. Пустое значение использует рабочий каталог клиента.",
+      "type": "string",
+      "default": ""
+    }
+  ]
+}

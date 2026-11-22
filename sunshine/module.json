@@ -1,13 +1,16 @@
 {
   "schemaVersion": 1,
   "title": "Sunshine",
-  "description": "Сервер игрового стриминга с виртуальным монитором для клиента Moonlight.",
+  "description": "Сервер игрового стриминга для Moonlight. На Linux включает настройку виртуального монитора.",
   "layers": {
     "nixos": [
       "linux"
     ],
     "home": [
       "linux"
+    ],
+    "darwin": [
+      "darwin"
     ]
   },
   "options": [
@@ -82,6 +85,38 @@
       "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "sunshine",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "sunshine",
+        "enabledPackages",
+        "sunshine"
+      ],
+      "title": "Sunshine",
+      "description": "Устанавливает Sunshine для ручного запуска сервера стриминга на Apple Silicon.",
+      "type": "bool",
+      "default": true,
+      "systems": [
+        "aarch64-darwin"
+      ]
     }
+  ],
+  "systems": [
+    "aarch64-linux",
+    "x86_64-linux",
+    "aarch64-darwin"
   ]
 }

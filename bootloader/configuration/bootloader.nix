@@ -22,6 +22,7 @@ in {
     }
     {
       id = "qemu-aarch64";
+      available = pkgs.stdenv.hostPlatform.system != "aarch64-linux";
       definitions.boot.binfmt.emulatedSystems = ["aarch64-linux"];
     }
   ])];

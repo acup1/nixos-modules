@@ -5,6 +5,9 @@
   "layers": {
     "nixos": [
       "linux"
+    ],
+    "darwin": [
+      "darwin"
     ]
   },
   "options": [
@@ -21,6 +24,30 @@
     },
     {
       "layer": "nixos",
+      "path": [
+        "components",
+        "qbittorrent",
+        "enabledPackages",
+        "qbittorrent"
+      ],
+      "title": "qbittorrent",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "qbittorrent",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
       "path": [
         "components",
         "qbittorrent",

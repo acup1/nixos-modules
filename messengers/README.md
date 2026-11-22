@@ -1,6 +1,6 @@
 # Модуль `messengers`
 
-* **Экспорт**: `nixos`
+* **Экспорт**: `nixos`, `darwin`
 * **Назначение**: Клиенты мгновенных сообщений и голосовой связи.
 
 ## Структура
@@ -10,3 +10,5 @@
 * `packages/messengers.nix`:
   * `telegram-desktop`
   * `discord`
+
+На macOS Telegram Desktop и Discord устанавливаются из nixpkgs, а Rocket.Chat — через Homebrew Cask.

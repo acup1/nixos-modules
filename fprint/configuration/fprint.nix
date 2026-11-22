@@ -27,7 +27,9 @@
       components.fprint.packages = with pkgs; [fprintd];
       services.fprintd = {
         enable = true;
-        tod = lib.mkIf config.components.fprint.enabledPackages.libfprint-goodix {
+        # The vendor driver contains an x86-64 shared object.
+        tod = lib.mkIf (config.components.fprint.enabledPackages.libfprint-goodix
+          && pkgs.stdenv.hostPlatform.system == "x86_64-linux") {
           enable = true;
           driver = pkgs.libfprint-2-tod1-goodix; # change if needed
         };
