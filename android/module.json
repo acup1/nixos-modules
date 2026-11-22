@@ -42,6 +42,32 @@
       "description": "Добавляет поддержку камеры телефона через DroidCam.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "android",
+        "enabledPackages",
+        "droidcam"
+      ],
+      "title": "DroidCam",
+      "description": "Подключает DroidCam в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "android",
+        "enabledPackages",
+        "waydroid"
+      ],
+      "title": "Waydroid",
+      "description": "Подключает Waydroid в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

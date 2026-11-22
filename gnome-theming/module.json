@@ -50,6 +50,97 @@
         "rounded-corners",
         "tray-icons-reloaded"
       ]
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "gnome-theming",
+        "enabledPackages",
+        "appindicator"
+      ],
+      "title": "appindicator",
+      "description": "Подключает appindicator в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "gnome-theming",
+        "enabledPackages",
+        "blur-my-shell"
+      ],
+      "title": "blur-my-shell",
+      "description": "Подключает blur-my-shell в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "gnome-theming",
+        "enabledPackages",
+        "dash-to-dock"
+      ],
+      "title": "dash-to-dock",
+      "description": "Подключает dash-to-dock в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "gnome-theming",
+        "enabledPackages",
+        "desktop-clock"
+      ],
+      "title": "desktop-clock",
+      "description": "Подключает desktop-clock в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "gnome-theming",
+        "enabledPackages",
+        "desktop-icons-ng-ding"
+      ],
+      "title": "desktop-icons-ng-ding",
+      "description": "Подключает desktop-icons-ng-ding в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "gnome-theming",
+        "enabledPackages",
+        "rounded-corners"
+      ],
+      "title": "rounded-corners",
+      "description": "Подключает rounded-corners в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "gnome-theming",
+        "enabledPackages",
+        "tray-icons-reloaded"
+      ],
+      "title": "tray-icons-reloaded",
+      "description": "Подключает tray-icons-reloaded в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

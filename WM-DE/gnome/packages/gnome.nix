@@ -1,3 +1,5 @@
 {pkgs, ...}: {
-  components.gnome.packages = with pkgs; [ gnomeExtensions.screen-rotate ];
+  imports = [(import ../../../lib/package-options.nix "gnome" (with pkgs; [
+    {id = "screen-rotate"; package = gnomeExtensions.screen-rotate;}
+  ]))];
 }

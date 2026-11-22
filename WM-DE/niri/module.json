@@ -32,6 +32,58 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "niri",
+        "enabledPackages",
+        "iio-niri"
+      ],
+      "title": "iio-niri",
+      "description": "Подключает iio-niri в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "niri",
+        "enabledPackages",
+        "niri"
+      ],
+      "title": "Niri",
+      "description": "Подключает сессию и пользовательские настройки композитора.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "niri",
+        "enabledPackages",
+        "iio-niri"
+      ],
+      "title": "iio-niri",
+      "description": "Подключает iio-niri в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "niri",
+        "enabledPackages",
+        "niri"
+      ],
+      "title": "Niri",
+      "description": "Подключает сессию и пользовательские настройки композитора.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

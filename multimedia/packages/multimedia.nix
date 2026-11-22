@@ -1,5 +1,7 @@
 {pkgs, ...}: {
-  components.multimedia.packages = with pkgs; [
-    obs-studio
+  imports = [
+    (import ../../lib/package-options.nix "multimedia" [
+      { id = "obs-studio"; package = pkgs.obs-studio; }
+    ])
   ];
 }

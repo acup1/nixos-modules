@@ -1,3 +1,5 @@
 {pkgs, ...}: {
-  components.codex.packages = [pkgs.codex];
+  imports = [(import ../../lib/package-options.nix "codex" (with pkgs; [
+    {id = "codex"; package = codex;}
+  ]))];
 }

@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{config, lib, pkgs, ...}:
+lib.mkIf (
+  config.components.openfpgaloader.enabledPackages.openfpgaloader
+  && lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.openfpgaloader
+) {
   users.groups.plugdev = {};
 
   services.udev.packages = [pkgs.openfpgaloader];

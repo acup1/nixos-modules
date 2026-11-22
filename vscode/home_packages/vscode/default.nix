@@ -1,4 +1,4 @@
-{options, lib, pkgs, ...}: let
+{config, options, lib, pkgs, ...}: let
   localColorways = pkgs.vscode-utils.buildVscodeExtension {
     pname = "acup-local-colorways";
     version = "1.0.0";
@@ -35,13 +35,18 @@
     args = {inherit text;};
     when = "terminalFocus";
   };
+  karabinerEnabled =
+    config.components.macos-keyboard.enabledPackages.karabiner-elements
+      or (options ? components.macos-keyboard.packages);
   toggleTerminal = "workbench.action.terminal.toggleTerminal";
   terminalWhen = "terminalFocus || (editorTextFocus && vim.active && !inDebugRepl)";
+  enabled = config.components.vscode.enabledPackages.vscode;
 in {
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) ["vscode"];
+  nixpkgs.config.allowUnfreePredicate = lib.mkIf enabled (
+    pkg: builtins.elem (lib.getName pkg) ["vscode"]
+  );
 
-  programs.vscode = {
+  programs.vscode = lib.mkIf (enabled && lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.vscode) {
     enable = true;
     package = pkgs.vscode;
 
@@ -170,7 +175,7 @@ in {
           command = "workbench.action.focusActiveEditorGroup";
           when = "terminalFocus && !terminalFindVisible && !terminalSuggestWidgetVisible";
         }
-      ] ++ lib.optionals (pkgs.stdenv.hostPlatform.isDarwin && options ? components.macos-keyboard.packages) [
+      ] ++ lib.optionals (pkgs.stdenv.hostPlatform.isDarwin && karabinerEnabled) [
         # macos-keyboard installs Karabiner's Linux-style GUI shortcuts.
         # Convert them back to control characters inside VS Code's terminal.
         (terminalSequence "cmd+a" (builtins.fromJSON ''"\u0001"''))

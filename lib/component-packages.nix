@@ -14,7 +14,10 @@ in {
   key = "${toString ./component-packages.nix}:${name}:${scope}";
 
   options.components.${name}.packages = lib.mkOption {
-    type = lib.types.listOf lib.types.package;
+    type = lib.types.listOf (lib.types.nullOr lib.types.package);
+    # Optional providers may return null. Filter the merged result after
+    # overrides, so replaced providers do not have to be evaluated.
+    apply = builtins.filter (package: package != null);
     default = [];
     description = "Packages contributed by the ${name} component.";
   };

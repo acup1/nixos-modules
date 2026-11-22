@@ -30,8 +30,11 @@ hl.device({
 
 -- DMS 0.55+ generates Lua bindings. Keep them optional so the first Hyprland
 -- start still succeeds before `dms setup` has created the fragments.
-local dmsBindsLoaded = pcall(require, "dms.binds")
-pcall(require, "dms.binds-user")
+local dmsBindsLoaded = false
+if dmsEnabled then
+  dmsBindsLoaded = pcall(require, "dms.binds")
+  pcall(require, "dms.binds-user")
+end
 
 if not dmsBindsLoaded then
   hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
@@ -77,16 +80,20 @@ hl.bind(mainMod .. " + SHIFT + E", hl.dsp.exec_cmd(fileManager .. " ~/.config/")
 hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.exec_cmd(processManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(statusBar .. " || pkill " .. statusBar))
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("pkill " .. statusBar))
+if waybarEnabled then
+  hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(statusBar .. " || pkill " .. statusBar))
+  hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("pkill " .. statusBar))
+end
 
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + A", hl.dsp.window.pin())
-hl.bind("Print", hl.dsp.exec_cmd("grimblast copy screen"))
 hl.bind("SHIFT + Print", hl.dsp.exec_cmd("caelestia shell picker openFreezeClip"))
-hl.bind("ALT + Print", hl.dsp.exec_cmd("grimblast copy active"))
+if grimblastEnabled then
+  hl.bind("Print", hl.dsp.exec_cmd("grimblast copy screen"))
+  hl.bind("ALT + Print", hl.dsp.exec_cmd("grimblast copy active"))
+end
 
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("systemctl sleep"), { locked = true })
 

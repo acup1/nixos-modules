@@ -4,6 +4,8 @@
   pkgs,
   ...
 }: let
+  yabaiEnabled = config.components.macos-tiling.enabledPackages.yabai
+    && lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.yabai;
   yabai = lib.getExe pkgs.yabai;
   jq = lib.getExe pkgs.jq;
   skhd = lib.getExe pkgs.skhd;
@@ -87,12 +89,18 @@
     /usr/bin/osascript -e 'display dialog "Mod (left Command)" & return & return & "Arrows: focus" & return & "Ctrl + H/J/K/L or arrows: move" & return & "1..9: space" & return & "Shift + 1..9: move to space" & return & "Page Down/Page Up: next/previous space" & return & "F: maximize" & return & "F14: floating/tiling" with title "yabai shortcuts" buttons {"OK"} default button "OK"'
   '';
 in {
-  imports = [(import ../lib/component-packages.nix "macos-tiling" "home")];
+  imports = [
+    (import ../lib/component-packages.nix "macos-tiling" "home")
+    (import ../lib/package-options.nix "macos-tiling" [
+      { id = "yabai"; }
+      { id = "skhd"; }
+    ])
+  ];
 
-  services.skhd = {
+  services.skhd = lib.mkIf (config.components.macos-tiling.enabledPackages.skhd && lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.skhd) {
     enable = true;
     package = pkgs.skhd;
-    config = ''
+    config = lib.optionalString yabaiEnabled ''
       # Focus windows with arrows. Letter bindings are left to applications.
       lcmd - left  : ${yabai} -m window --focus west
       lcmd - down  : ${yabai} -m window --focus south
@@ -184,13 +192,13 @@ in {
 
       # Applications and system actions.
       f13          : ${closeWindowUnderMouse}
+      lcmd + shift - 0x2C : ${hotkeyHelp}
+    '' + ''
       lcmd - q      : ${openGhostty}
       lcmd - x      : ${skhd} -k 'f19'
       lcmd - o      : /usr/bin/open '/System/Applications/Mission Control.app'
       lcmd + shift - k : osascript -e 'set currentVolume to output volume of (get volume settings)' -e 'set volume output volume (currentVolume - 5)'
       lcmd + shift - l : osascript -e 'set currentVolume to output volume of (get volume settings)' -e 'set volume output volume (currentVolume + 5)'
-      lcmd + shift - 0x2C : ${hotkeyHelp}
-
     '';
   };
 }

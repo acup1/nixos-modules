@@ -32,6 +32,19 @@
       "description": "Разрешает подтверждать sudo с помощью Touch ID.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "macos-base",
+        "enabledPackages",
+        "middleclick"
+      ],
+      "title": "MiddleClick",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

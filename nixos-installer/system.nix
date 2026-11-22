@@ -14,8 +14,12 @@
     install -Dm755 ${binary} "$out/bin/nixos-installer"
   '';
 in {
-  imports = [(import ../lib/component-packages.nix "nixos-installer" "system")];
-  config = lib.mkIf (builtins.hasAttr system hashes) {
-    components.nixos-installer.packages = [package];
-  };
+  imports = [
+    (import ../lib/component-packages.nix "nixos-installer" "system")
+    (import ../lib/package-options.nix "nixos-installer" [{
+      id = "nixos-installer";
+      available = builtins.hasAttr system hashes;
+      inherit package;
+    }])
+  ];
 }

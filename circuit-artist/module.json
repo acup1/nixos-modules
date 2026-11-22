@@ -18,6 +18,19 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "circuit-artist",
+        "enabledPackages",
+        "circuit-artist"
+      ],
+      "title": "circuit-artist",
+      "description": "Подключает circuit-artist в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

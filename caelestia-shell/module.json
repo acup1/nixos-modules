@@ -18,6 +18,19 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "caelestia-shell",
+        "enabledPackages",
+        "caelestia-shell"
+      ],
+      "title": "caelestia-shell",
+      "description": "Подключает caelestia-shell в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

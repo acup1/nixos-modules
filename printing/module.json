@@ -18,6 +18,32 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "printing",
+        "enabledPackages",
+        "fxlinuxprint"
+      ],
+      "title": "Fuji Xerox Linux Print",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "printing",
+        "enabledPackages",
+        "cups"
+      ],
+      "title": "CUPS",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

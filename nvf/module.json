@@ -31,6 +31,19 @@
       "description": "Включает сборку и установку Neovim через nvf.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "nvf",
+        "enabledPackages",
+        "neovim"
+      ],
+      "title": "Neovim (nvf)",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

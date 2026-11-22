@@ -1,18 +1,24 @@
 {config, lib, pkgs, ...}: let
   cfg = config.components.gnome-theming;
-  packages = map (name: pkgs.gnomeExtensions.${name} or null) cfg.extensions;
+  defaultExtensions = [
+    "appindicator"
+    "blur-my-shell"
+    "dash-to-dock"
+    "desktop-icons-ng-ding"
+    "desktop-clock"
+    "rounded-corners"
+    "tray-icons-reloaded"
+  ];
+  enabledExtensions = lib.filter (name: cfg.enabledPackages.${name} or true) cfg.extensions;
+  packages = map (name: pkgs.gnomeExtensions.${name} or null) enabledExtensions;
 in {
+  imports = [(import ../../../lib/package-options.nix "gnome-theming" (
+    map (id: {inherit id;}) defaultExtensions
+  ))];
+
   options.components.gnome-theming.extensions = lib.mkOption {
     type = lib.types.listOf lib.types.str;
-    default = [
-      "appindicator"
-      "blur-my-shell"
-      "dash-to-dock"
-      "desktop-icons-ng-ding"
-      "desktop-clock"
-      "rounded-corners"
-      "tray-icons-reloaded"
-    ];
+    default = defaultExtensions;
     description = "Extensions to install and enable, by nixpkgs gnomeExtensions attribute name.";
   };
   config.programs.gnome-shell = {

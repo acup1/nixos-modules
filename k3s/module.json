@@ -45,6 +45,19 @@
         "cni0",
         "flannel.1"
       ]
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "k3s",
+        "enabledPackages",
+        "k3s"
+      ],
+      "title": "K3s",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

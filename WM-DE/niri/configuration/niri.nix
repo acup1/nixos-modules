@@ -1,4 +1,5 @@
 {...}: {
-  programs.niri.enable = true;
-  # programs.niri.package = inputs.niri.packages.${pkgs.system}.niri;
+  imports = [(import ../../../lib/package-options.nix "niri" [
+    {id = "niri"; definitions.programs.niri.enable = true;}
+  ])];
 }

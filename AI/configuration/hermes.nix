@@ -7,6 +7,7 @@
   # Hermes Agent v0.23.3.
   hermes = builtins.getFlake "github:NousResearch/hermes-agent/caafe5389ae585ef77387a962aee05b1bcf17029";
   cfg = config.services.hermes-web;
+  enabled = config.components.AI.enabledPackages;
   ollama = config.services.ollama;
   ollamaHost =
     if ollama.host == "0.0.0.0"
@@ -20,7 +21,13 @@
     else ollamaHost;
   ollamaUrl = "http://${ollamaAuthority}:${toString ollama.port}/v1";
 in {
-  imports = [hermes.nixosModules.default];
+  imports = [
+    hermes.nixosModules.default
+    (import ../../lib/package-options.nix "AI" [
+      {id = "hermes-agent";}
+      {id = "codex";}
+    ])
+  ];
 
   options.services.hermes-web = {
     enable = lib.mkEnableOption "the Hermes Agent web dashboard" // {default = true;};
@@ -46,12 +53,14 @@ in {
     openFirewall = lib.mkEnableOption "opening the Hermes dashboard TCP port in the firewall";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkMerge [
+    (lib.mkIf (!enabled.codex) { components.codex.enabledPackages.codex = lib.mkDefault false; })
+    (lib.mkIf (cfg.enable && enabled.hermes-agent) {
     components.AI.packages = [config.services.hermes-agent.package];
 
     services.hermes-agent = {
       enable = true;
-      extraPackages = [pkgs.codex];
+      extraPackages = lib.optional enabled.codex pkgs.codex;
       # Reclaim this profile if the dashboard started a detached gateway.
       extraArgs = lib.mkBefore ["run" "--replace"];
       backend = {
@@ -62,12 +71,13 @@ in {
       # Hermes merges settings recursively in definition order.
       settings = lib.mkBefore (
         {
-          model = {
+          model = lib.optionalAttrs ollama.enable {
             default = "qwen3.5:9b";
             provider = "ollama";
             base_url = ollamaUrl;
-            codex_bin = lib.getExe' pkgs.codex "codex";
-          };
+          } // lib.optionalAttrs enabled.codex { codex_bin = lib.getExe' pkgs.codex "codex"; };
+        }
+        // lib.optionalAttrs ollama.enable {
           providers.ollama = {
             name = "Ollama";
             base_url = ollamaUrl;
@@ -86,5 +96,6 @@ in {
     };
 
     networking.firewall.allowedTCPPorts = lib.optional cfg.openFirewall cfg.port;
-  };
+    })
+  ];
 }

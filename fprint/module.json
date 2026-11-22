@@ -18,6 +18,32 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "fprint",
+        "enabledPackages",
+        "fprintd"
+      ],
+      "title": "Служба отпечатков fprintd",
+      "description": "Включает службу отпечатков и аутентификацию для входа и sudo.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "fprint",
+        "enabledPackages",
+        "libfprint-goodix"
+      ],
+      "title": "Драйвер Goodix для fprintd",
+      "description": "Подключает Драйвер Goodix для fprintd в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

@@ -19,6 +19,22 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "music",
+        "enabledPackages",
+        "muffon"
+      ],
+      "title": "Muffon",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true,
+      "platforms": [
+        "linux"
+      ]
     }
   ]
 }

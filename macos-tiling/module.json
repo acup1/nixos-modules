@@ -56,6 +56,45 @@
       "description": "Запускает skhd для переключения окон и рабочих пространств.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "macos-tiling",
+        "enabledPackages",
+        "yabai"
+      ],
+      "title": "yabai",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "macos-tiling",
+        "enabledPackages",
+        "skhd"
+      ],
+      "title": "skhd",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "macos-tiling",
+        "enabledPackages",
+        "yabai"
+      ],
+      "title": "yabai",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

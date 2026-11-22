@@ -1,3 +1,5 @@
 {pkgs, ...}: {
-  components.common.packages = with pkgs; [ networkmanagerapplet ];
+  imports = [(import ../../../lib/package-options.nix "common" (with pkgs; [
+    {id = "networkmanagerapplet"; package = networkmanagerapplet;}
+  ]))];
 }

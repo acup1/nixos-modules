@@ -18,6 +18,58 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "file-viewers",
+        "enabledPackages",
+        "mpv"
+      ],
+      "title": "mpv",
+      "description": "Подключает mpv в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "file-viewers",
+        "enabledPackages",
+        "nautilus"
+      ],
+      "title": "nautilus",
+      "description": "Подключает nautilus в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "file-viewers",
+        "enabledPackages",
+        "qimgv"
+      ],
+      "title": "qimgv",
+      "description": "Подключает qimgv в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "file-viewers",
+        "enabledPackages",
+        "vlc"
+      ],
+      "title": "vlc",
+      "description": "Подключает vlc в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

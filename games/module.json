@@ -56,6 +56,58 @@
       "description": "Открывает порт выделенных серверов Steam.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "games",
+        "enabledPackages",
+        "bottles"
+      ],
+      "title": "Bottles",
+      "description": "Подключает графический менеджер Wine на Linux x86.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "games",
+        "enabledPackages",
+        "gnome-sudoku"
+      ],
+      "title": "gnome-sudoku",
+      "description": "Подключает gnome-sudoku в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "games",
+        "enabledPackages",
+        "steam"
+      ],
+      "title": "Steam",
+      "description": "Включает Steam и правила межсетевого экрана на x86_64 Linux.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "games",
+        "enabledPackages",
+        "wine-wayland"
+      ],
+      "title": "Wine с Wayland",
+      "description": "Подключает Wine с Wayland в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

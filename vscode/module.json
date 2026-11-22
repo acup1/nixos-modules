@@ -49,6 +49,19 @@
       "description": "Запускает форматтер при сохранении файла.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "vscode",
+        "enabledPackages",
+        "vscode"
+      ],
+      "title": "Visual Studio Code",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

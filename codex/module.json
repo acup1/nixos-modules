@@ -32,6 +32,32 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "codex",
+        "enabledPackages",
+        "codex"
+      ],
+      "title": "Codex CLI",
+      "description": "Подключает терминальный клиент для работы с кодом.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "codex",
+        "enabledPackages",
+        "codex"
+      ],
+      "title": "Codex CLI",
+      "description": "Подключает терминальный клиент для работы с кодом.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

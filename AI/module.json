@@ -90,6 +90,45 @@
       "description": "IP-адрес, на котором Ollama принимает запросы.",
       "type": "string",
       "default": "127.0.0.1"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "AI",
+        "enabledPackages",
+        "codex"
+      ],
+      "title": "Codex CLI",
+      "description": "Подключает терминальный клиент для работы с кодом.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "AI",
+        "enabledPackages",
+        "hermes-agent"
+      ],
+      "title": "Hermes Agent",
+      "description": "Включает Hermes Agent, веб-панель и её параметры сети.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "AI",
+        "enabledPackages",
+        "ollama"
+      ],
+      "title": "Ollama",
+      "description": "Запускает локальный API моделей и включает интеграцию с Hermes.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

@@ -18,6 +18,110 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "TV",
+        "enabledPackages",
+        "kdeconnect-kde"
+      ],
+      "title": "kdeconnect-kde",
+      "description": "Подключает kdeconnect-kde в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "TV",
+        "enabledPackages",
+        "kirigami-addons"
+      ],
+      "title": "kirigami-addons",
+      "description": "Подключает kirigami-addons в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "TV",
+        "enabledPackages",
+        "kitemmodels"
+      ],
+      "title": "kitemmodels",
+      "description": "Подключает kitemmodels в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "TV",
+        "enabledPackages",
+        "layer-shell-qt"
+      ],
+      "title": "layer-shell-qt",
+      "description": "Подключает layer-shell-qt в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "TV",
+        "enabledPackages",
+        "libcec"
+      ],
+      "title": "libcec",
+      "description": "Подключает libcec в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "TV",
+        "enabledPackages",
+        "pipewire"
+      ],
+      "title": "PipeWire",
+      "description": "Подключает PipeWire в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "TV",
+        "enabledPackages",
+        "plasma-bigscreen"
+      ],
+      "title": "Plasma Bigscreen",
+      "description": "Подключает телевизионную сессию, вход через SDDM и автологин.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "TV",
+        "enabledPackages",
+        "plasma-nano"
+      ],
+      "title": "plasma-nano",
+      "description": "Подключает plasma-nano в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

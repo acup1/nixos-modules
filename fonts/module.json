@@ -28,6 +28,110 @@
       "title": "Системные шрифты",
       "description": "Выбирает пакеты шрифтов для системной регистрации.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "fonts",
+        "enabledPackages",
+        "corefonts"
+      ],
+      "title": "corefonts",
+      "description": "Подключает corefonts в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "fonts",
+        "enabledPackages",
+        "migmix"
+      ],
+      "title": "migmix",
+      "description": "Подключает migmix в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "fonts",
+        "enabledPackages",
+        "nerd-fonts.code-new-roman"
+      ],
+      "title": "nerd-fonts.code-new-roman",
+      "description": "Подключает nerd-fonts.code-new-roman в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "fonts",
+        "enabledPackages",
+        "nerd-fonts.jetbrains-mono"
+      ],
+      "title": "nerd-fonts.jetbrains-mono",
+      "description": "Подключает nerd-fonts.jetbrains-mono в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "fonts",
+        "enabledPackages",
+        "nerd-fonts.symbols-only"
+      ],
+      "title": "nerd-fonts.symbols-only",
+      "description": "Подключает nerd-fonts.symbols-only в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "fonts",
+        "enabledPackages",
+        "noto-fonts-cjk-sans"
+      ],
+      "title": "noto-fonts-cjk-sans",
+      "description": "Подключает noto-fonts-cjk-sans в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "fonts",
+        "enabledPackages",
+        "noto-fonts-cjk-serif"
+      ],
+      "title": "noto-fonts-cjk-serif",
+      "description": "Подключает noto-fonts-cjk-serif в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "fonts",
+        "enabledPackages",
+        "vista-fonts"
+      ],
+      "title": "vista-fonts",
+      "description": "Подключает vista-fonts в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

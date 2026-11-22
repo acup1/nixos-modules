@@ -32,6 +32,32 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "macos-keyboard",
+        "enabledPackages",
+        "karabiner-elements"
+      ],
+      "title": "Karabiner-Elements",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "macos-keyboard",
+        "enabledPackages",
+        "karabiner-elements"
+      ],
+      "title": "Karabiner-Elements",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

@@ -18,6 +18,19 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "gpu-unlock",
+        "enabledPackages",
+        "gpu-unlock"
+      ],
+      "title": "gpu-unlock",
+      "description": "Подключает gpu-unlock в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

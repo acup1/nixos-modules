@@ -1,11 +1,7 @@
-{
-  pkgs,
-  config,
-  inputs,
-  ...
-}: {
-  components.terminal.packages = with pkgs; [
-    cava
+{pkgs, ...}: {
+  imports = [
+    (import ../../../lib/package-options.nix "terminal" [
+      { id = "cava"; package = pkgs.cava; definitions = { xdg.configFile."cava".source = ./.config/cava; }; }
+    ])
   ];
-  xdg.configFile."cava".source = ./.config/cava;
 }

@@ -26,20 +26,25 @@
     };
   });
 in {
-  services.ollama = {
-    enable = true;
-    package = ollama;
+  imports = [(import ../../lib/package-options.nix "AI" [{
+    id = "ollama";
+    definitions = {
+      services.ollama = {
+        enable = true;
+        package = ollama;
 
-    host = lib.mkDefault "127.0.0.1";
-    port = 11434;
+        host = lib.mkDefault "127.0.0.1";
+        port = 11434;
 
-    user = "ollama";
-    group = "ollama";
-    home = "/var/lib/ollama";
-    modelsDir = "/var/lib/ollama/models";
+        user = "ollama";
+        group = "ollama";
+        home = "/var/lib/ollama";
+        modelsDir = "/var/lib/ollama/models";
 
-    environmentVariables.OLLAMA_CONTEXT_LENGTH = "64000";
-  };
+        environmentVariables.OLLAMA_CONTEXT_LENGTH = "64000";
+      };
 
-  systemd.services.ollama.serviceConfig.DynamicUser = lib.mkForce false;
+      systemd.services.ollama.serviceConfig.DynamicUser = lib.mkForce false;
+    };
+  }])];
 }

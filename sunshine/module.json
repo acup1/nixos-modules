@@ -56,6 +56,32 @@
       "description": "Разрешает входящий трафик игрового стриминга.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "sunshine",
+        "enabledPackages",
+        "sunshine"
+      ],
+      "title": "Sunshine",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "sunshine",
+        "enabledPackages",
+        "sunshine"
+      ],
+      "title": "Sunshine",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

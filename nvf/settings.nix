@@ -14,7 +14,7 @@ in {
   imports = [
     nvf.homeManagerModules.default
   ];
-  programs.nvf = {
+  programs.nvf = lib.mkIf (config.components.nvf.enabledPackages.neovim or true) {
     enable = true;
     settings.vim = {
       theme = {

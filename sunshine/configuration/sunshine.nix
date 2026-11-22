@@ -75,7 +75,10 @@
       exit 1
     fi
   '';
-in {
+in lib.mkIf (
+  config.components.sunshine.enabledPackages.sunshine
+  && lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.sunshine
+) {
   # VKMS предоставляет GNOME виртуальный DRM-дисплей без HDMI-заглушки.
   boot.kernelModules = [ "vkms" ];
 

@@ -18,6 +18,175 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "artcraft",
+        "enabledPackages",
+        "cadcraft"
+      ],
+      "title": "cadcraft",
+      "description": "Подключает cadcraft в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "artcraft",
+        "enabledPackages",
+        "craft-launcher"
+      ],
+      "title": "craft-launcher",
+      "description": "Подключает craft-launcher в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "artcraft",
+        "enabledPackages",
+        "deckcraft"
+      ],
+      "title": "deckcraft",
+      "description": "Подключает deckcraft в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "artcraft",
+        "enabledPackages",
+        "designcraft"
+      ],
+      "title": "designcraft",
+      "description": "Подключает designcraft в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "artcraft",
+        "enabledPackages",
+        "effectcraft"
+      ],
+      "title": "effectcraft",
+      "description": "Подключает effectcraft в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "artcraft",
+        "enabledPackages",
+        "filmcraft"
+      ],
+      "title": "filmcraft",
+      "description": "Подключает filmcraft в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "artcraft",
+        "enabledPackages",
+        "gridcraft"
+      ],
+      "title": "gridcraft",
+      "description": "Подключает gridcraft в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "artcraft",
+        "enabledPackages",
+        "lightcraft"
+      ],
+      "title": "lightcraft",
+      "description": "Подключает lightcraft в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "artcraft",
+        "enabledPackages",
+        "pdfcraft"
+      ],
+      "title": "pdfcraft",
+      "description": "Подключает pdfcraft в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "artcraft",
+        "enabledPackages",
+        "photocraft"
+      ],
+      "title": "photocraft",
+      "description": "Подключает photocraft в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "artcraft",
+        "enabledPackages",
+        "soundcraft"
+      ],
+      "title": "soundcraft",
+      "description": "Подключает soundcraft в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "artcraft",
+        "enabledPackages",
+        "vectorcraft"
+      ],
+      "title": "vectorcraft",
+      "description": "Подключает vectorcraft в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "artcraft",
+        "enabledPackages",
+        "wordcraft"
+      ],
+      "title": "wordcraft",
+      "description": "Подключает wordcraft в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

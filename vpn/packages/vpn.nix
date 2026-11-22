@@ -39,13 +39,17 @@
       '';
     };
 in {
-  components.vpn.packages = with pkgs; [
-    amnezia-vpn
-    # hiddify-app
-    # v2raya
-    clash-verge-rev
-    (mkTunCommand "vpnon" true)
-    (mkTunCommand "vpnoff" false)
-    # flclash
+  imports = [
+    (import ../../lib/package-options.nix "vpn" [
+      { id = "amnezia-vpn"; package = pkgs.amnezia-vpn; }
+      {
+        id = "clash-verge-rev";
+        package = pkgs.clash-verge-rev;
+        definitions.components.vpn.packages = [
+          (mkTunCommand "vpnon" true)
+          (mkTunCommand "vpnoff" false)
+        ];
+      }
+    ])
   ];
 }

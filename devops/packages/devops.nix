@@ -1,10 +1,17 @@
-{lib, pkgs, ...}: {
-  components.devops.packages = with pkgs;
-    [docker docker-compose]
-    ++ lib.optional stdenv.hostPlatform.isLinux winboat
-    ++ [kubectl]
-    ++ lib.optionals stdenv.hostPlatform.isDarwin [kubernetes-helm minikube]
-    ++ lib.optionals stdenv.hostPlatform.isLinux [virt-manager qemu]
-    ++ [terraform terragrunt]
-    ++ lib.optional stdenv.hostPlatform.isDarwin colima;
+{pkgs, ...}: let
+  inherit (pkgs.stdenv) hostPlatform;
+in {
+  imports = [(import ../../lib/package-options.nix "devops" (with pkgs; [
+    {id = "docker"; package = docker;}
+    {id = "docker-compose"; package = docker-compose;}
+    {id = "winboat"; package = winboat; available = hostPlatform.isLinux;}
+    {id = "kubectl"; package = kubectl;}
+    {id = "kubernetes-helm"; package = kubernetes-helm; available = hostPlatform.isDarwin;}
+    {id = "minikube"; package = minikube; available = hostPlatform.isDarwin;}
+    {id = "virt-manager"; package = virt-manager; available = hostPlatform.isLinux;}
+    {id = "qemu"; package = qemu; available = hostPlatform.isLinux;}
+    {id = "terraform"; package = terraform;}
+    {id = "terragrunt"; package = terragrunt;}
+    {id = "colima"; package = colima; available = hostPlatform.isDarwin;}
+  ]))];
 }

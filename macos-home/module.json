@@ -18,6 +18,71 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "macos-home",
+        "enabledPackages",
+        "btop"
+      ],
+      "title": "btop",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "macos-home",
+        "enabledPackages",
+        "ghostty"
+      ],
+      "title": "Ghostty",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "macos-home",
+        "enabledPackages",
+        "yazi"
+      ],
+      "title": "Yazi",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "macos-home",
+        "enabledPackages",
+        "zsh"
+      ],
+      "title": "Zsh",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "macos-home",
+        "enabledPackages",
+        "starship"
+      ],
+      "title": "Starship",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

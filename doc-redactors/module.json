@@ -18,6 +18,110 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "doc-redactors",
+        "enabledPackages",
+        "libreoffice-qt-stable"
+      ],
+      "title": "libreoffice-qt-stable",
+      "description": "Подключает libreoffice-qt-stable в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "doc-redactors",
+        "enabledPackages",
+        "obsidian"
+      ],
+      "title": "obsidian",
+      "description": "Подключает obsidian в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "doc-redactors",
+        "enabledPackages",
+        "pdfarranger"
+      ],
+      "title": "pdfarranger",
+      "description": "Подключает pdfarranger в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "doc-redactors",
+        "enabledPackages",
+        "texliveFull"
+      ],
+      "title": "texliveFull",
+      "description": "Подключает texliveFull в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "doc-redactors",
+        "enabledPackages",
+        "typst"
+      ],
+      "title": "typst",
+      "description": "Подключает typst в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "doc-redactors",
+        "enabledPackages",
+        "wpsoffice-cn"
+      ],
+      "title": "wpsoffice-cn",
+      "description": "Подключает wpsoffice-cn в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "doc-redactors",
+        "enabledPackages",
+        "xournalpp"
+      ],
+      "title": "xournalpp",
+      "description": "Подключает xournalpp в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "doc-redactors",
+        "enabledPackages",
+        "zathura"
+      ],
+      "title": "zathura",
+      "description": "Подключает zathura в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

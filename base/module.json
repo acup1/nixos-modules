@@ -42,6 +42,188 @@
       "description": "Управляет сетевыми подключениями через NetworkManager.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "bat"
+      ],
+      "title": "bat",
+      "description": "Подключает bat в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "fastfetch"
+      ],
+      "title": "fastfetch",
+      "description": "Подключает fastfetch в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "fzf"
+      ],
+      "title": "fzf",
+      "description": "Подключает fzf в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "git"
+      ],
+      "title": "git",
+      "description": "Подключает git в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "neovim"
+      ],
+      "title": "neovim",
+      "description": "Подключает neovim в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "networkmanager"
+      ],
+      "title": "NetworkManager",
+      "description": "Подключает NetworkManager в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "nh"
+      ],
+      "title": "nh",
+      "description": "Подключает nh в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "nix-ld"
+      ],
+      "title": "nix-ld",
+      "description": "Подключает nix-ld в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "openssh"
+      ],
+      "title": "Служба OpenSSH",
+      "description": "Запускает SSH-сервер и добавляет правила для его портов.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "p7zip"
+      ],
+      "title": "p7zip",
+      "description": "Подключает p7zip в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "unzip"
+      ],
+      "title": "unzip",
+      "description": "Подключает unzip в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "usbutils"
+      ],
+      "title": "usbutils",
+      "description": "Подключает usbutils в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "wget"
+      ],
+      "title": "wget",
+      "description": "Подключает wget в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "zsh"
+      ],
+      "title": "zsh",
+      "description": "Подключает zsh в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

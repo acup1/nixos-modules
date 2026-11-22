@@ -1,4 +1,4 @@
-{lib, ...}: let
+{config, lib, pkgs, ...}: let
   noSleep = {
     lockAll = true;
     settings = {
@@ -11,7 +11,10 @@
       };
     };
   };
-in {
+in lib.mkIf (
+  config.components.sunshine.enabledPackages.sunshine
+  && lib.meta.availableOn pkgs.stdenv.hostPlatform pkgs.sunshine
+) {
   # Sunshine-хост должен оставаться доступным независимо от сессии GNOME.
   systemd.sleep.settings.Sleep = {
     AllowSuspend = false;

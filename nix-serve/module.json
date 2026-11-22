@@ -54,6 +54,19 @@
       "description": "Разрешает входящие соединения на порт nix-serve.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "nix-serve",
+        "enabledPackages",
+        "nix-serve"
+      ],
+      "title": "nix-serve",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

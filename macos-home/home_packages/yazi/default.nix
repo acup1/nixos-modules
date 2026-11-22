@@ -8,8 +8,12 @@
     '';
   };
 in {
-  components.macos-home.packages = lib.optional yaziAvailable yaziWithoutYa;
-  xdg.configFile."yazi" = lib.mkIf yaziAvailable {
-    source = ./.config/yazi;
-  };
+  imports = [
+    (import ../../../lib/package-options.nix "macos-home" [{
+      id = "yazi";
+      available = yaziAvailable;
+      package = yaziWithoutYa;
+      definitions.xdg.configFile."yazi".source = ./.config/yazi;
+    }])
+  ];
 }

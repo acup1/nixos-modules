@@ -19,6 +19,19 @@
       "title": "Пакеты",
       "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
       "type": "packages"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "kicad",
+        "enabledPackages",
+        "kicad"
+      ],
+      "title": "KiCad",
+      "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

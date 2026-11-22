@@ -53,5 +53,3 @@ export SHELL=zsh
 if [[ "$OSTYPE" == darwin* ]]; then
   export PATH="/opt/homebrew/bin:$PATH"
 fi
-
-eval "$(starship init zsh)"

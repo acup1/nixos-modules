@@ -45,6 +45,71 @@
       "description": "Разрешает запуск приложений X11 в Hyprland.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "hypr",
+        "enabledPackages",
+        "grimblast"
+      ],
+      "title": "grimblast",
+      "description": "Подключает grimblast в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": [
+        "components",
+        "hypr",
+        "enabledPackages",
+        "hyprland"
+      ],
+      "title": "Hyprland",
+      "description": "Подключает сессию и пользовательские настройки композитора.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "hypr",
+        "enabledPackages",
+        "grimblast"
+      ],
+      "title": "grimblast",
+      "description": "Подключает grimblast в этом компоненте.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "hypr",
+        "enabledPackages",
+        "hyprland"
+      ],
+      "title": "Hyprland",
+      "description": "Подключает сессию и пользовательские настройки композитора.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "hypr",
+        "enabledPackages",
+        "iio-hyprland"
+      ],
+      "title": "iio-hyprland",
+      "description": "Подключает iio-hyprland в этом компоненте.",
+      "type": "bool",
+      "default": true
     }
   ]
 }

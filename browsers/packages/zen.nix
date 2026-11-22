@@ -3,9 +3,10 @@
   zen = builtins.getFlake "github:youwen5/zen-browser-flake";
   zenPackage = zen.packages.${hostPlatform.system}.default or null;
 in {
-  components.browsers.packages = lib.optional
-    (hostPlatform.isLinux && zenPackage != null)
-    (zenPackage.overrideAttrs (old: {
+  imports = [(import ../../lib/package-options.nix "browsers" [{
+    id = "zen-browser";
+    available = hostPlatform.isLinux;
+    package = if zenPackage == null then null else zenPackage.overrideAttrs (old: {
       # Zen loads AAC/H.264 decoders at runtime; keep a supported FFmpeg major.
       makeWrapperArgs = (old.makeWrapperArgs or []) ++ [
         "--prefix"
@@ -13,5 +14,6 @@ in {
         ":"
         (lib.makeLibraryPath [pkgs.ffmpeg_8])
       ];
-    }));
+    });
+  }])];
 }
