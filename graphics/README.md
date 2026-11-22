@@ -14,3 +14,5 @@
   * Драйверы Nvidia: `linuxPackages.nvidia_x11`.
 
 На macOS доступны Coin3D и Darktable из nixpkgs, а FreeCAD — через Homebrew Cask. Драйверы и утилиты OpenGL из Linux-набора остаются в NixOS.
+
+В Darwin `libglvnd` можно включить отдельно для программ OpenGL.

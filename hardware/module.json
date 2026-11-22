@@ -5,6 +5,9 @@
   "layers": {
     "nixos": [
       "linux"
+    ],
+    "darwin": [
+      "darwin"
     ]
   },
   "options": [
@@ -31,6 +34,30 @@
       "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "hardware",
+        "packages"
+      ],
+      "title": "Пакеты",
+      "description": "Имена пакетов из nixpkgs, которыми можно заменить стандартный список компонента.",
+      "type": "packages"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "hardware",
+        "enabledPackages",
+        "hal-hardware-analyzer"
+      ],
+      "title": "HAL Hardware Analyzer",
+      "description": "Устанавливает анализатор логических схем HAL.",
+      "type": "bool",
+      "default": false
     }
   ]
 }

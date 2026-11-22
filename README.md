@@ -46,6 +46,7 @@ modules = [
 | :--- | :--- | :--- | :--- |
 | **AI** | NixOS + Home (macOS) | Ollama, веб-чат Hermes Agent и Codex CLI | [AI/README.md](AI/README.md) |
 | **android** | NixOS | Подсистема Android (Waydroid) и вебкамера через телефон (DroidCam) | [android/README.md](android/README.md) |
+| **artcraft** | NixOS + Darwin | 13 приложений ArtCraft из готовых релизов GitHub | [artcraft/README.md](artcraft/README.md) |
 | **base** | NixOS + Darwin | Базовая система: сеть, Nix, кэши, NH, SSH, локаль, Zsh | [base/README.md](base/README.md) |
 | **bootloader** | NixOS | GRUB UEFI загрузчик с кастомной темой Intervals и поддержкой aarch64 | [bootloader/README.md](bootloader/README.md) |
 | **browsers** | NixOS + Darwin | Веб-браузеры: Google Chrome, Tor Browser, Zen Browser | [browsers/README.md](browsers/README.md) |
@@ -62,7 +63,7 @@ modules = [
 | **games** | NixOS + Darwin | Игры: Wine Wayland, Bottles, Sudoku, Steam с пробросом портов | [games/README.md](games/README.md) |
 | **gnome-theming** | Home (Linux) | Расширения GNOME Shell для панели, дока и рабочего стола | [gnome-theming/README.md](gnome-theming/README.md) |
 | **graphics** | NixOS + Darwin | САПР и графика: FreeCAD, Darktable, библиотеки OpenGL/Nvidia/Mesa | [graphics/README.md](graphics/README.md) |
-| **hardware** | NixOS | Диагностика оборудования (HAL Hardware Analyzer) | [hardware/README.md](hardware/README.md) |
+| **hardware** | NixOS + Darwin | Диагностика оборудования (HAL Hardware Analyzer) | [hardware/README.md](hardware/README.md) |
 | **kicad** | Darwin + Home | САПР печатных плат KiCad | [kicad/README.md](kicad/README.md) |
 | **macos-base** | Darwin | Базовые настройки macOS | [macos-base/default.nix](macos-base/default.nix) |
 | **macos-home** | Home (macOS) | Совместимость с прежним набором настроек терминала macOS | [macos-home/default.nix](macos-home/default.nix) |
@@ -73,21 +74,22 @@ modules = [
 | **minecraft-rust** | Darwin (Apple Silicon) | Minecraft Java Edition 26.3 на Rust, игровой клиент и лаунчер Horizon | [minecraft-rust/README.md](minecraft-rust/README.md) |
 | **moonlight** | NixOS + Darwin | Клиент игрового стриминга Moonlight | [moonlight/README.md](moonlight/README.md) |
 | **multimedia** | NixOS + Darwin | Запись и стриминг экрана: OBS Studio | [multimedia/README.md](multimedia/README.md) |
-| **music** | Home (x86_64 Linux) | Музыкальный плеер Muffon | [music/README.md](music/README.md) |
+| **music** | Home (x86_64 Linux, macOS) | Музыкальный плеер Muffon | [music/README.md](music/README.md) |
 | **nix-serve** | NixOS | Локальный бинарный кэш-сервер Nix на порту 5000 | [nix-serve/README.md](nix-serve/README.md) |
 | **nixos-installer** | NixOS + Darwin | Готовый бинарник установщика и редактора конфигурации | [nixos-installer/README.md](nixos-installer/README.md) |
 | **nvf** | Home | Модульная конфигурация Neovim на базе фреймворка nvf | [nvf/README.md](nvf/README.md) |
 | **openfpgaloader** | NixOS + Darwin | Программатор FPGA с правилами udev для отладочных плат | [openfpgaloader/README.md](openfpgaloader/README.md) |
-| **photoGIMP** | Home (Linux) | GIMP 3 с темой и раскладкой PhotoGIMP (Photoshop UI) | [photoGIMP/README.md](photoGIMP/README.md) |
+| **photoGIMP** | Darwin + Home | GIMP 3 с темой и раскладкой PhotoGIMP | [photoGIMP/README.md](photoGIMP/README.md) |
 | **printing** | NixOS + Darwin | Печать: пакеты CUPS и драйвер fxlinuxprint | [printing/README.md](printing/README.md) |
 | **qbittorrent** | NixOS + Darwin | Торрент-клиент qBittorrent | [qbittorrent/README.md](qbittorrent/README.md) |
 | **ru-locale** | NixOS | Русская локализация (`ru_RU.UTF-8`) и системная консоль | [ru-locale/README.md](ru-locale/README.md) |
-| **sound** | NixOS | Звук: Pipewire и утилита управления воспроизведением Playerctl | [sound/README.md](sound/README.md) |
+| **sound** | NixOS + Darwin | Звук: Pipewire и утилита управления воспроизведением Playerctl | [sound/README.md](sound/README.md) |
 | **sunshine** | NixOS + Darwin + Home (Linux) | Сервер игрового стриминга Sunshine, скрипты виртуального монитора | [sunshine/README.md](sunshine/README.md) |
 | **cli-tools** | NixOS + Darwin + Home | CLI-утилиты и настройки Yazi и btop | [cli-tools](cli-tools/default.nix) |
 | **shell** | NixOS + Darwin + Home | Zsh и приглашение Starship | [shell](shell/default.nix) |
 | **terminal-emulators** | NixOS + Darwin + Home | Ghostty, Alacritty и декорации окон | [terminal-emulators](terminal-emulators/default.nix) |
-| **terminal** | NixOS + Home | CLI утилиты, терминал Ghostty/Alacritty, конфиги btop, cava, yazi, zsh | [terminal/README.md](terminal/README.md) |
+| **terminal** | NixOS + Darwin + Home | CLI утилиты, терминал Ghostty/Alacritty, конфиги btop, cava, yazi, zsh | [terminal/README.md](terminal/README.md) |
+| **TV** | NixOS + Darwin | Plasma Bigscreen на NixOS, HDMI-CEC, KDE Connect на NixOS и Mac с Apple Silicon | [TV/default.nix](TV/default.nix) |
 | **udev-rules** | NixOS | Дополнительные системные правила udev | [udev-rules/README.md](udev-rules/README.md) |
 | **vpn** | NixOS + Darwin | VPN и прокси: Amnezia VPN, Clash Verge с TUN-режимом | [vpn/README.md](vpn/README.md) |
 | **wireshark** | NixOS + Darwin + Home | Wireshark, захват без sudo и MCP для файлов PCAP | [wireshark/README.md](wireshark/README.md) |

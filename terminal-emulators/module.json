@@ -108,7 +108,7 @@
         "enabledPackages",
         "nerd-fonts-code-new-roman"
       ],
-      "title": "nerd-fonts-code-new-roman",
+      "title": "Code New Roman Nerd Font",
       "description": "Подключает nerd-fonts-code-new-roman в этом компоненте.",
       "type": "bool",
       "default": true,
@@ -124,7 +124,7 @@
         "enabledPackages",
         "nerd-fonts-symbols-only"
       ],
-      "title": "nerd-fonts-symbols-only",
+      "title": "Nerd Fonts Symbols",
       "description": "Подключает nerd-fonts-symbols-only в этом компоненте.",
       "type": "bool",
       "default": true,
@@ -142,6 +142,38 @@
       "title": "Рамки и заголовки окон",
       "description": "Применяет выбранное оформление окна к Ghostty и Alacritty. Без переопределения сохраняет оформление каждой платформы.",
       "type": "bool"
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "terminal-emulators",
+        "enabledPackages",
+        "nerd-fonts-code-new-roman"
+      ],
+      "title": "Code New Roman Nerd Font",
+      "description": "Устанавливает шрифт через системный профиль macOS.",
+      "type": "bool",
+      "default": false,
+      "platforms": [
+        "darwin"
+      ]
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "terminal-emulators",
+        "enabledPackages",
+        "nerd-fonts-symbols-only"
+      ],
+      "title": "Nerd Fonts Symbols",
+      "description": "Устанавливает шрифт через системный профиль macOS.",
+      "type": "bool",
+      "default": false,
+      "platforms": [
+        "darwin"
+      ]
     }
   ]
 }

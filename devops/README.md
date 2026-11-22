@@ -15,3 +15,5 @@
   * В NixOS устанавливаются `qemu`, `virt-manager` и `winboat`.
   * В macOS устанавливаются `colima`, `kubernetes-helm` и `minikube`.
   * Инфраструктура как код (IaC): `terraform`, `terragrunt`.
+
+На macOS в `components.devops.enabledPackages` можно дополнительно включить `libvirt`, `qemu`, `swtpm` и `virt-manager`. Эти переключатели устанавливают пакеты. Служба `virtualisation.libvirtd` относится к конфигурации NixOS.

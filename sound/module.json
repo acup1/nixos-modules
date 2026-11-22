@@ -5,8 +5,12 @@
   "layers": {
     "nixos": [
       "linux"
+    ],
+    "darwin": [
+      "darwin"
     ]
   },
+  "systems": ["aarch64-linux", "x86_64-linux", "aarch64-darwin"],
   "options": [
     {
       "layer": "nixos",
@@ -42,6 +46,19 @@
       ],
       "title": "pipewire",
       "description": "Устанавливает пакет и применяет связанные с ним настройки компонента.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "sound",
+        "enabledPackages",
+        "playerctl"
+      ],
+      "title": "playerctl",
+      "description": "Управление проигрывателями с MPRIS через D-Bus.",
       "type": "bool",
       "default": true
     }

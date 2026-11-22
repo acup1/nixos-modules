@@ -381,6 +381,19 @@
       "description": "Подключает zsh в этом компоненте.",
       "type": "bool",
       "default": true
+    },
+    {
+      "layer": "darwin",
+      "path": [
+        "components",
+        "base",
+        "enabledPackages",
+        "openssh"
+      ],
+      "title": "openssh",
+      "description": "Установить пакет OpenSSH. Управление Remote Login остаётся за macOS.",
+      "type": "bool",
+      "default": false
     }
   ]
 }

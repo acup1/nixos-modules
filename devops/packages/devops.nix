@@ -8,8 +8,8 @@ in {
     {id = "kubectl"; package = kubectl;}
     {id = "kubernetes-helm"; package = kubernetes-helm; available = hostPlatform.isDarwin;}
     {id = "minikube"; package = minikube; available = hostPlatform.isDarwin;}
-    {id = "virt-manager"; package = virt-manager; available = hostPlatform.isLinux;}
-    {id = "qemu"; package = qemu; available = hostPlatform.isLinux;}
+    {id = "virt-manager"; package = virt-manager; default = hostPlatform.isLinux;}
+    {id = "qemu"; package = qemu; default = hostPlatform.isLinux;}
     {id = "terraform"; package = terraform;}
     {id = "terragrunt"; package = terragrunt;}
     {id = "colima"; package = colima; available = hostPlatform.isDarwin;}

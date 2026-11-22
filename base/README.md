@@ -17,3 +17,5 @@
   };
 }
 ```
+
+В Darwin `components.base.enabledPackages.openssh` дополнительно устанавливает OpenSSH из nixpkgs.

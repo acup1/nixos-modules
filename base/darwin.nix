@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    (import ../lib/named-packages.nix "base" {names = ["openssh"]; default = false;})
     (import ../lib/component-packages.nix "base" "system")
     ./packages/base.nix
     (import ../lib/package-options.nix "base" [{
