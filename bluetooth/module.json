@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "title": "Bluetooth",
+  "description": "Служба BlueZ для поиска, сопряжения и подключения Bluetooth-устройств.",
+  "layers": { "nixos": ["linux"] },
+  "options": [
+    {
+      "layer": "nixos",
+      "path": ["components", "bluetooth", "enabledPackages", "bluez"],
+      "title": "BlueZ",
+      "description": "Включает системную службу Bluetooth и утилиту bluetoothctl.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": ["hardware", "bluetooth", "powerOnBoot"],
+      "title": "Включать адаптер при загрузке",
+      "description": "BlueZ автоматически включает питание Bluetooth-контроллера.",
+      "type": "bool",
+      "default": true
+    },
+    {
+      "layer": "nixos",
+      "path": ["components", "bluetooth", "packages"],
+      "title": "Дополнительные пакеты",
+      "description": "Утилиты Bluetooth из nixpkgs.",
+      "type": "packages"
+    }
+  ]
+}

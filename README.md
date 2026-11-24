@@ -52,6 +52,7 @@ modules = [
 | **android** | NixOS | Подсистема Android (Waydroid) и вебкамера через телефон (DroidCam) | [android/README.md](android/README.md) |
 | **artcraft** | NixOS + Darwin | 13 приложений ArtCraft из готовых релизов GitHub | [artcraft/README.md](artcraft/README.md) |
 | **base** | NixOS + Darwin | Базовая система: сеть, Nix, кэши, NH, SSH, локаль, Zsh | [base/README.md](base/README.md) |
+| **bluetooth** | NixOS | BlueZ и управление Bluetooth-адаптерами | [bluetooth/README.md](bluetooth/README.md) |
 | **bootloader** | NixOS | GRUB UEFI загрузчик с кастомной темой Intervals и поддержкой aarch64 | [bootloader/README.md](bootloader/README.md) |
 | **browsers** | NixOS + Darwin | Веб-браузеры: Google Chrome, Tor Browser, Zen Browser | [browsers/README.md](browsers/README.md) |
 | **caelestia-shell** | NixOS | Оболочка Caelestia Shell из внешнего Flake | [caelestia-shell/README.md](caelestia-shell/README.md) |
