@@ -129,6 +129,34 @@
       "description": "Каталог .pcap и .pcapng. Пустое значение использует рабочий каталог клиента.",
       "type": "string",
       "default": ""
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "wireshark",
+        "mcp",
+        "liveCapture",
+        "enable"
+      ],
+      "title": "Захват пакетов через MCP",
+      "description": "Открыть инструменты для запуска локального захвата пакетов.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "wireshark",
+        "mcp",
+        "liveCapture",
+        "interface"
+      ],
+      "title": "Интерфейс захвата через MCP",
+      "description": "При пустом значении интерфейс задаётся при вызове инструмента.",
+      "type": "string",
+      "default": ""
     }
   ]
 }
