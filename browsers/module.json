@@ -8,6 +8,10 @@
     ],
     "darwin": [
       "darwin"
+    ],
+    "home": [
+      "linux",
+      "darwin"
     ]
   },
   "options": [
@@ -113,6 +117,114 @@
       "description": "Устанавливает браузер через Homebrew.",
       "type": "bool",
       "default": false
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "browsers",
+        "mcp",
+        "chrome",
+        "enable"
+      ],
+      "title": "Chrome MCP",
+      "description": "Включить MCP и команду запуска отдельного профиля.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "browsers",
+        "mcp",
+        "chrome",
+        "port"
+      ],
+      "title": "Порт Chrome MCP",
+      "description": "Порт отладки на loopback.",
+      "type": "integer",
+      "default": 9222
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "browsers",
+        "mcp",
+        "chrome",
+        "profileDirectory"
+      ],
+      "title": "Профиль Chrome MCP",
+      "description": "Абсолютный путь к отдельному профилю браузера для MCP.",
+      "type": "string"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "browsers",
+        "mcp",
+        "chrome",
+        "executable"
+      ],
+      "title": "Исполняемый файл Chrome",
+      "description": "Путь к браузеру или команда из PATH.",
+      "type": "string"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "browsers",
+        "mcp",
+        "zen",
+        "enable"
+      ],
+      "title": "Zen MCP",
+      "description": "Включить MCP и команду запуска отдельного профиля.",
+      "type": "bool",
+      "default": false
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "browsers",
+        "mcp",
+        "zen",
+        "port"
+      ],
+      "title": "Порт Zen MCP",
+      "description": "Порт отладки на loopback.",
+      "type": "integer",
+      "default": 9223
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "browsers",
+        "mcp",
+        "zen",
+        "profileDirectory"
+      ],
+      "title": "Профиль Zen MCP",
+      "description": "Абсолютный путь к отдельному профилю браузера для MCP.",
+      "type": "string"
+    },
+    {
+      "layer": "home",
+      "path": [
+        "components",
+        "browsers",
+        "mcp",
+        "zen",
+        "executable"
+      ],
+      "title": "Исполняемый файл Zen",
+      "description": "Путь к браузеру или команда из PATH.",
+      "type": "string"
     }
   ]
 }
